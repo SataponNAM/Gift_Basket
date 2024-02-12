@@ -1,17 +1,29 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './Navbar/Navbar.jsx'
-import Login from './Login_SignUp/Login.jsx'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
+import Navbar from './components/Navbar.jsx'
+import Home from './screen/Home.jsx'
+import Login from './screen/Login.jsx'
+import Register from './screen/Register.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <Login />
-    </>
+    <Router>
+      <Navbar />
+
+      <main>
+        <Container>
+          <Routes>
+            <Route path='/' element={<Home />} />
+
+            <Route path='/Login' element={<Login />} />
+
+            <Route path='/Register' element={<Register />} />
+          </Routes>
+        </Container>
+      </main>
+    </Router>
   )
 }
 
