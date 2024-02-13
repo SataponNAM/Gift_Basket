@@ -5,6 +5,7 @@ Server
 4. dotenv
 5. uuid
 6. cookie-parser
+7. JWT
 
 Client
 1. redux
