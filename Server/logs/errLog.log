@@ -1,0 +1,12 @@
+20240211	18:09:08	64499804-acbd-49b0-bd4b-ea461e5d50f5	Error: Not allowed by CORS	OPTIONS	/	
+    https://www.google.com
+20240211	18:09:08	738e0279-b7b0-4301-9520-5d746ff54d12	Error: Not allowed by CORS	GET	/	
+    https://www.google.com
+20240212	17:36:31	2ba66e9a-e29f-4da2-91ac-95334c3304c4	TypeError: Cannot destructure property 'firstname' of 'require.body' as it is undefined.	POST	/users	
+    undefined
+20240212	17:37:34	95a7e8f7-5ec2-40f1-99c0-25f362c3e254	TypeError: roles.length is not a function	POST	/users	
+    undefined
+20240212	17:38:07	1cdfe3b1-f988-4f01-92d4-4d1f049eaba3	TypeError: roles.length is not a function	POST	/users	
+    undefined
+20240212	17:38:26	c7207fbc-759f-46e5-9e5c-a4e3bc70f635	ValidationError: User validation failed: roles: Cast to string failed for value "[ 'Customer' ]" (type Array) at path "roles"	POST	/users	
+    undefined

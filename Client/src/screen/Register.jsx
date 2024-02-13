@@ -3,8 +3,8 @@ import { Container, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom'
-import { register } from "../actions/userActions";
-import Message from '../components/Message.jsx'
+//import { register } from "../actions/userActions";
+//import Message from '../components/Message.jsx'
 
 const Register = ({location, history}) => {
     const [email, setEmail] = useState('');

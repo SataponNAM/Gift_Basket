@@ -13,3 +13,5 @@ export const register = (fname, lname, email, password) => async (dispatch) => {
         
     }
 }
+import axios from 'axios';
+

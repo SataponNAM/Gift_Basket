@@ -29,6 +29,7 @@ app.use('/', express.static(path.join(__dirname, '/public')))
 
 app.use('/', require('./routes/root.jsx'))
 app.use('/users', require('./routes/userRoutes.jsx'))
+app.use('/auth', require('./routes/authRoutes.jsx'))
 
 app.use(errorHandler)
 
