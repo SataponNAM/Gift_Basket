@@ -11,4 +11,3 @@ Client
 1. redux
 2. router
 3. react-bootstrap
-4. axios
