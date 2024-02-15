@@ -5,11 +5,12 @@ import Navbar from './components/Navbar.jsx'
 import Home from './screen/Home.jsx'
 import Login from './screen/Login.jsx'
 import Register from './screen/Register.jsx'
+import Success from './screen/Success.jsx'
 
 function App() {
 
   return (
-    <Router>
+    <>
       <Navbar />
 
       <main>
@@ -20,11 +21,12 @@ function App() {
             <Route path='/Login' element={<Login />} />
 
             <Route path='/Register' element={<Register />} />
+
+            <Route path='/success' element={<Success />} />
           </Routes>
         </Container>
       </main>
-    </Router>
-
+    </>
   )
 }
 

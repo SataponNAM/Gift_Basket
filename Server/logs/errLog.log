@@ -10,3 +10,9 @@
     undefined
 20240212	17:38:26	c7207fbc-759f-46e5-9e5c-a4e3bc70f635	ValidationError: User validation failed: roles: Cast to string failed for value "[ 'Customer' ]" (type Array) at path "roles"	POST	/users	
     undefined
+20240213	18:29:09	c3202e2f-7383-4fc2-a6c9-839406e074c4	Error: Not allowed by CORS	OPTIONS	/auth	
+    http://localhost:8080
+20240213	18:34:18	8585cccc-fb70-41f5-9976-ddef2413af4c	Error: Not allowed by CORS	OPTIONS	/auth	
+    http://localhost:8080
+20240215	16:39:09	7e352aba-9512-4cd1-ab07-24c78652374f	ReferenceError: cpassword is not defined	POST	/auth/register	
+    undefined

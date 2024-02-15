@@ -40,7 +40,7 @@ const login = asyncHandler(async (req, res) => {
     const refreshToken = jwt.sign(
         { "email": foundUser.email },
         process.env.REFRESH_JWT_SECRET,
-        { expiresIn: '1d'}
+        { expiresIn: '15m'}
     )
     
     // create secure cookie with refresh token
@@ -117,8 +117,46 @@ const logout = (req, res) => {
     res.json({ message: 'Cookie cleared' })
 }
 
+// Register POST
+const register = asyncHandler (async (req, res) => {
+    const { firstname, lastname, email, password, cpassword } = req.body
+    const roles = ["Customer"]
+
+    if(!firstname || !lastname || !email || !password || !Array.isArray(roles) || !roles.length) {
+        return res.status(400).json({ message : 'All fields are required'})
+    }
+
+    // check email
+    const duplicate = await User.findOne({ email }).lean().exec()
+
+    if(duplicate){
+        return res.status(409).json({ message : 'Email is used'})
+    }
+
+    // chech password and confirm password
+    if (password !== cpassword){
+        return res.status(400).json({ message: 'Password not match.'})
+    }
+
+    // Hash password
+    const hashPassword = await bcrypt.hash(password, 10)
+
+    const userObject = { firstname, lastname ,email, "password" : hashPassword, roles}
+
+    // create and store user
+    const user = await User.create(userObject)
+
+    if(user) {
+        // create
+        res.status(201).json({ message: `New user ${firstname} ${lastname} created`})
+    } else {
+        res.status(400).json({ message : 'Invalid user data recieved'})
+    }
+})
+
 module.exports = {
     login,
     refresh,
-    logout
+    logout,
+    register,
 } 
