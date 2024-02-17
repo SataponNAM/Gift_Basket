@@ -18,11 +18,8 @@ console.log(process.env.NODE_ENV)
 connectDB()
 
 app.use(logger)
-
 app.use(cors(corsOption))
-
 app.use(express.json())
-
 app.use(cookieParser())
 
 app.use('/', express.static(path.join(__dirname, '/public')))

@@ -7,10 +7,15 @@
 nav {
     background-color: rgb(49, 49, 49);
     padding: 1rem;
+    color: white;
 }
 
 nav a{
     color: white;
     margin: 0 1rem;
     text-decoration: none;
+}
+
+nav-item {
+    color: white;
 }

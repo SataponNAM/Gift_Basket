@@ -16,3 +16,5 @@
     http://localhost:8080
 20240215	16:39:09	7e352aba-9512-4cd1-ab07-24c78652374f	ReferenceError: cpassword is not defined	POST	/auth/register	
     undefined
+20240216	17:20:58	40ca849b-3828-499b-886b-d751980a9070	ReferenceError: localStorage is not defined	POST	/auth	
+    http://localhost:8080
