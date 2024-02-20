@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { setCredentials, logOut } from '../slices/authSlice'
+import { setCredentials } from '../slices/authSlice'
 
 const baseQuery = fetchBaseQuery({
     baseUrl: 'http://localhost:3001',
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token
+
         if(token){
-            headers.set("authorization", 'Bearer ${token}')
+            headers.set("authorization", `Bearer ${token}`)
         }
         return headers
     }
@@ -25,15 +26,17 @@ const baseQueryWithReauth = async (args, api, extraOpion) => {
         console.log(refreshResult)
 
         if(refreshResult?.data){
-            const user = api.getState().auth.user
 
             // store new token
-            api.dispatch(setCredentials({ ...refreshResult.data, user }))
+            api.dispatch(setCredentials({ ...refreshResult.data }))
 
             // retry original query with new access token
             result = await baseQuery(args, api, extraOpion)
         } else {
-            api.dispatch(logOut())
+            if (refreshResult?.error?.status === 403) {
+                refreshResult.error.data.message = "Your login has expired."
+            }
+            return refreshResult
         }
     }
 
@@ -42,5 +45,6 @@ const baseQueryWithReauth = async (args, api, extraOpion) => {
 
 export const apiSlice = createApi({
     baseQuery: baseQueryWithReauth,
+    tagTypes: ['Address', 'User'],
     endpoints: builder => ({})
 })

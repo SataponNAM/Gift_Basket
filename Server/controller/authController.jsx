@@ -119,10 +119,10 @@ const logout = (req, res) => {
 
 // Register POST
 const register = asyncHandler (async (req, res) => {
-    const { firstname, lastname, email, password, cpassword } = req.body
+    const { firstname, lastname, email, phone, password, cpassword } = req.body
     const roles = ["Customer"]
 
-    if(!firstname || !lastname || !email || !password || !Array.isArray(roles) || !roles.length) {
+    if(!firstname || !lastname || !email || !phone || !password || !Array.isArray(roles) || !roles.length) {
         return res.status(400).json({ message : 'All fields are required'})
     }
 
@@ -141,7 +141,7 @@ const register = asyncHandler (async (req, res) => {
     // Hash password
     const hashPassword = await bcrypt.hash(password, 10)
 
-    const userObject = { firstname, lastname ,email, "password" : hashPassword, roles}
+    const userObject = { firstname, lastname ,email ,phone ,"password" : hashPassword, roles}
 
     // create and store user
     const user = await User.create(userObject)

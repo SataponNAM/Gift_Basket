@@ -8,11 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Register = () => {
     const errRef = useRef()
-    const [email, setEmail] = useState('');
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [password, setPassword] = useState('');
-    const [cpassword, setCPassword] = useState('');
+    const [email, setEmail] = useState('')
+    const [firstname, setFirstname] = useState('')
+    const [lastname, setLastname] = useState('')
+    const [phone, setPhone] = useState('')
+    const [password, setPassword] = useState('')
+    const [cpassword, setCPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
 
     const navigate = useNavigate()
@@ -25,10 +26,11 @@ const Register = () => {
         e.preventDefault()
         
         try {
-            const result = await register({ firstname, lastname, email, password, cpassword})
+            const result = await register({ firstname, lastname, email ,phone ,password, cpassword})
             setEmail('')
             setFirstname('')
             setLastname('')
+            setPhone('')
             setPassword('')
             setCPassword('')
             navigate('/login')
@@ -54,6 +56,9 @@ const Register = () => {
     }
     const inputEmail = (e) =>{
         setEmail(e.target.value)
+    }
+    const inputPhone = (e) =>{
+        setPhone(e.target.value)
     }
     const inputPsw = (e) =>{
         setPassword(e.target.value)
@@ -94,6 +99,15 @@ const Register = () => {
                         placeholder="Email" 
                         value={email} 
                         onChange={inputEmail}
+                        required />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Control 
+                        type="text" 
+                        placeholder="Phone" 
+                        value={phone} 
+                        onChange={inputPhone}
                         required />
                 </Form.Group>
 

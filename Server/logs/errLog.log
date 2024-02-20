@@ -18,3 +18,27 @@
     undefined
 20240216	17:20:58	40ca849b-3828-499b-886b-d751980a9070	ReferenceError: localStorage is not defined	POST	/auth	
     http://localhost:8080
+20240217	18:30:08	625dec35-b798-4049-a370-eb02e4a3ca18	TypeError: Cannot read properties of undefined (reading '_id')	GET	/address	
+    undefined
+20240217	18:30:45	1500dd73-3565-4fc1-8631-2974606b7264	TypeError: Cannot read properties of undefined (reading '_id')	GET	/address	
+    undefined
+20240217	18:31:09	a54295f9-6e69-4b23-bb45-80dabeec959c	TypeError: Cannot read properties of undefined (reading '_id')	GET	/address	
+    undefined
+20240217	18:31:20	a47c9fc4-005d-41a4-a380-96ee69b88a4f	TypeError: Cannot read properties of undefined (reading '_id')	GET	/address	
+    undefined
+20240217	18:31:26	68f2305f-c65a-4b26-8440-2667d8ceab1d	TypeError: Cannot read properties of undefined (reading '_id')	GET	/address	
+    undefined
+20240217	18:31:44	5972ebe9-04ae-49e1-bef8-edc545c99558	TypeError: Cannot read properties of undefined (reading '_id')	GET	/address	
+    undefined
+20240218	15:13:49	d8028910-1f2f-4c45-bdc7-45400b70a75c	TypeError: Cannot read properties of null (reading 'email')	GET	/address	
+    undefined
+20240218	15:14:32	9400f03e-360f-46c1-9936-eb805dac39ce	TypeError: Cannot read properties of null (reading '_id')	GET	/address	
+    undefined
+20240218	15:15:39	89092a42-9402-4a94-82e9-829bef6ea277	TypeError: Cannot read properties of undefined (reading '_id')	GET	/address	
+    undefined
+20240218	15:16:19	b966a447-6311-4016-81f8-e6012980a1b8	TypeError: Cannot read properties of null (reading 'id')	GET	/address	
+    undefined
+20240218	15:17:21	0d2573db-979b-45ad-97e3-34c660a44828	TypeError: Cannot read properties of null (reading 'email')	GET	/address	
+    undefined
+20240218	15:19:50	004c080f-1e4c-4a90-9a34-0328f5388dbb	TypeError: Cannot read properties of null (reading 'ObjectId')	GET	/address	
+    undefined

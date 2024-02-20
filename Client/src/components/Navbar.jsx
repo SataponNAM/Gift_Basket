@@ -6,10 +6,12 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 import { useSendLogoutMutation } from '../slices/authApiSlice'
+import useAuth from '../hooks/useAuth'
 
 function nav() {
+    const { isAdmin } = useAuth()
+
     const navigate = useNavigate()
-    const dispatch = useDispatch();
 
     const userLogin = useSelector((state) => state.auth.isAuthenticated)
 
@@ -22,13 +24,12 @@ function nav() {
 
     useEffect(() => {
         if (isSuccess) {
-            navigate('/')
+            navigate('/home')
         }
     }, [isSuccess, navigate])
 
     const onLogoutClicked = () => {
         sendLogout()
-        navigate('/')
     }
 
     if (isLoading) {
@@ -38,21 +39,32 @@ function nav() {
         return <p>Error: {error.data?.message}</p>
     }
 
+    const dropdownButton = userLogin ? (
+        // When user login
+        isAdmin ? (
+            // Admin navbar
+            <div>Admin Navbar</div>
+        ) : (
+            
+            // Customer navbar
+            <NavDropdown title="Profile" id='username'>             
+                <NavDropdown.Item as={Link} to='/address'>Address</NavDropdown.Item>
+                {/* Logout */}
+                <NavDropdown.Item onClick={onLogoutClicked}>Logout</NavDropdown.Item>
+            </NavDropdown>
+        )
+    ) : (
+        //  When user is not logged in
+        <LinkContainer to='/login'>
+            <Nav.Link>Login</Nav.Link>
+        </LinkContainer>
+    );
+
     return (
         <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
-            <Nav.Link to='/'>Home</Nav.Link>
-
-            {userLogin ? (
-                <NavDropdown title="Profile" id='username'>
-                    {/* Logout */}
-                    <NavDropdown.Item onClick={onLogoutClicked}>Log out</NavDropdown.Item>
-                </NavDropdown>
-            ) : (
-                // Login
-                <LinkContainer to='/login'>
-                    <Nav.Link>Login</Nav.Link>
-                </LinkContainer>
-            )}
+            <Link to='/home'>Home</Link>
+            
+            {dropdownButton}
         </Navbar>
     )
 }

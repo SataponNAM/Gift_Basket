@@ -2,14 +2,16 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const path = require('path')
-const { logger } = require('./middleware/logger.jsx')
-const errorHandler = require('./middleware/errorHandler.jsx')
-const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
+const mongoose = require('mongoose')
+
+const { logger, logEvents } = require('./middleware/logger.jsx')
+const errorHandler = require('./middleware/errorHandler.jsx')
+
 const corsOption = require('./config/corsOption.jsx')
 const connectDB = require('./config/dbConnection.jsx')
-const mongoose = require('mongoose')
-const { logEvents } = require('./middleware/logger.jsx')
+
 
 const PORT  = process.env.PORT || 3001
 
@@ -27,6 +29,7 @@ app.use('/', express.static(path.join(__dirname, '/public')))
 app.use('/', require('./routes/root.jsx'))
 app.use('/users', require('./routes/userRoutes.jsx'))
 app.use('/auth', require('./routes/authRoutes.jsx'))
+app.use('/address', require('./routes/addressRoutes.jsx'))
 
 app.use(errorHandler)
 

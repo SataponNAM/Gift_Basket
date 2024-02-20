@@ -5,18 +5,20 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from '../slices/authSlice'
 import { useLoginMutation } from '../slices/authApiSlice'
+import usePersist from '../hooks/usePersist.jsx'
 
 function login (){
     const userRef = useRef()
     const errRef = useRef()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState('') 
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const [login, { isLoading }] = useLoginMutation()
+    const [persist, setPersist] = usePersist()
 
     useEffect(() => {
         userRef.current.focus()
@@ -33,7 +35,7 @@ function login (){
             dispatch(setCredentials({ accessToken }))
             setEmail('')
             setPassword('')
-            navigate('/success')
+            navigate('/home')
         } catch (err) {
             if(!err.status){
                 setErrorMessage('No server response')
@@ -50,15 +52,14 @@ function login (){
 
     const errClass = errorMessage ? "errmsg" : "offscreen"
 
-    if(isLoading) {
-        return <p>Loading...</p>
-    }
-
     const inputEmail = (e) =>{
         setEmail(e.target.value)
     }
     const inputPassword = (e) =>{
         setPassword(e.target.value)
+    }
+    const handleToggle = () => {
+        setPersist(persist => !persist)
     }
 
     return (
@@ -86,6 +87,15 @@ function login (){
                 </Form.Group>
                 { /* print error message*/ }
                 <p ref={errRef} className={errClass} aria-live='assertive'>{errorMessage}</p>
+
+                <Form.Group>
+                    <input 
+                        type='checkbox'
+                        onChange={handleToggle}
+                        checked={persist}
+                    />
+                    Remember Me
+                </Form.Group>
 
                 <Button type="summit" variant="primary">เข้าสู่ระบบ</Button>
 

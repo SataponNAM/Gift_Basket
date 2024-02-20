@@ -16,14 +16,14 @@ const getAllUsers = asyncHandler (async (req, res) => {
 // SignUp
 // route POST /users
 const createNewUser = asyncHandler (async (req, res) => {
-    const { firstname, lastname, email, password, roles } = req.body
+    const { firstname, lastname, email, password, phone ,roles } = req.body
 
     // confirm data
-    if(!firstname || !lastname || !email || !password || !Array.isArray(roles) || !roles.length) {
+    if(!firstname || !lastname || !email || !password || !phone || !Array.isArray(roles) || !roles.length) {
         return res.status(400).json({ message : 'All fields are required'})
     }
 
-    // check fro diplicate
+    // check fro duplicate
     const duplicate = await User.findOne({ email }).lean().exec()
 
     if(duplicate){
@@ -33,7 +33,7 @@ const createNewUser = asyncHandler (async (req, res) => {
     // Hash password
     const hashPassword = await bcrypt.hash(password, 10) // 10 salt
 
-    const userObject = { firstname, lastname ,email, "password" : hashPassword, roles}
+    const userObject = { firstname, lastname ,email, "password" : hashPassword,phone ,roles}
 
     // create and store user
     const user = await User.create(userObject)
@@ -49,10 +49,10 @@ const createNewUser = asyncHandler (async (req, res) => {
 // update user
 // route PATCH /users
 const updateUser = asyncHandler (async (req, res) => {
-    const { id, firstname, lastname, email, roles, password} = req.body
+    const { id, firstname, lastname, email, phone ,roles, password} = req.body
 
     // confirm data
-    if(!id || !email || !firstname || !lastname || !Array.isArray(roles) || !roles.length) {
+    if(!id || !email || !firstname || !lastname || !phone || !Array.isArray(roles) || !roles.length) {
         return res.status(400).json({ message : 'All field are required'})
     }
 
@@ -73,6 +73,7 @@ const updateUser = asyncHandler (async (req, res) => {
     user.firstname = firstname
     user.lastname = lastname
     user.email = email
+    user.phone = phone
     user.roles = roles
 
     if(password){
