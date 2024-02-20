@@ -9,6 +9,8 @@ import Address from './screen/AddressList.jsx'
 import Layout from './components/Layout.jsx'
 import Prefetch from './hooks/Prefetch.jsx'
 import PersistLogin from './components/PersistLogin.jsx'
+import { ROLES } from './config/Roles.jsx'
+import RequireAuth from './hooks/RequireAuth.jsx'
 
 function App() {
 
@@ -20,18 +22,31 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<Layout />}>
+              {/* Public */}
               <Route path='/home' element={<Home />} />
 
               <Route path='/Login' element={<Login />} />
 
               <Route path='/Register' element={<Register />} />
 
+              {/* Protected */}
               <Route element={<PersistLogin />}>
-                <Route element={<Prefetch />}>
-                  <Route path='/address' element={<Address />} />
+                <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
+                  <Route element={<Prefetch />}>
+
+                    {/* Customer Routes */}
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Customer]} />}>
+                      <Route path='/address' element={<Address />} />
+                    </Route>
+
+                    {/* Admin Routes */}
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+                      
+                    </Route>
+
+                  </Route> 
                 </Route>
-              </Route>
-              
+              </Route> 
             </Route>
 
           </Routes>

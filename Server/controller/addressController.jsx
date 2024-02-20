@@ -23,15 +23,23 @@ const getAddress = asyncHandler ( async (req, res) => {
 // Add address 
 //POST /address
 const addAddress = asyncHandler (async (req, res) => {
-    const { user, address, city, state, country, isDefault } = req.body
+    const { user, address, city, state, country, postal, isDefault } = req.body
 
-    if (!user || !address || !city || !state || !country) {
+    if (!user || !address || !city || !state || !country || !postal) {
         return res.status(400).json({ message : 'All fields are required'})
     }
 
-    const userObjects = { user, address, city, state, country, isDefault }
+    const userObject = await User.findById(user)
+    if (!userObject) {
+        return res.status(404).json({ message: 'User not found' })
+    }
+    const firstname = userObject.firstname
+    const lastname = userObject.lastname
+    const phone = userObject.phone
 
-    const userAddress = Address.create(userObjects)
+    // Create new address
+    const addressObjects = { user, firstname, lastname, address, city, state, country, postal, phone, isDefault }
+    const userAddress = Address.create(addressObjects)
 
     if(userAddress){
         res.status(201).json({ message: `New address is created`})

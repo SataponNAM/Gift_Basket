@@ -24,7 +24,11 @@ function nav() {
 
     useEffect(() => {
         if (isSuccess) {
-            navigate('/home')
+            if (isAdmin) {
+                // Dashboard page
+            }else {
+                navigate('/home')
+            }  
         }
     }, [isSuccess, navigate])
 

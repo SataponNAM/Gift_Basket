@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
 import useAuth from '../hooks/useAuth.jsx'
 import { useGetAddressQuery } from '../slices/addressApiSlice'
 import Address from '../components/Address.jsx'
@@ -44,6 +44,7 @@ function address(){
     return (
         <Container>
             <h1>Address</h1>
+            <Button>Add Address</Button>
             {content}
         </Container>
     )

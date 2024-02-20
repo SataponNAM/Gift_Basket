@@ -42,3 +42,5 @@
     undefined
 20240218	15:19:50	004c080f-1e4c-4a90-9a34-0328f5388dbb	TypeError: Cannot read properties of null (reading 'ObjectId')	GET	/address	
     undefined
+20240220	17:35:25	b7032fbb-a821-4afe-8a84-c7c292d22ab4	SyntaxError: Expected ',' or '}' after property value in JSON at position 64	GET	/address	
+    undefined

@@ -59,8 +59,8 @@ export const addressApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetAddressQuery,
-    useAddAddress,
-    useDeleteAddress,
+    useAddAddressMutation,
+    useDeleteAddressMutation,
 } = addressApiSlice
 
 // return query result

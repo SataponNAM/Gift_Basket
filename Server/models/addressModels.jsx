@@ -6,7 +6,11 @@ const addressSchema = new mongoose.Schema({
         require: true,
         ref: 'User'
     },
-    phone: {
+    firstname: {
+        type: String,
+        require: true,
+    },
+    lastname: {
         type: String,
         require: true,
     },
@@ -25,6 +29,14 @@ const addressSchema = new mongoose.Schema({
     country: {
         type: String,
         require: true,
+    },
+    postal: {
+        type: String,
+        require: true
+    },
+    phone: {
+        type: String,
+        required: true
     },
     isDefault: {
         type: Boolean,
