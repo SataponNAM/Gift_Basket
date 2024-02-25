@@ -3,9 +3,9 @@ import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
-import { setCredentials } from '../slices/authSlice'
-import { useLoginMutation } from '../slices/authApiSlice'
-import usePersist from '../hooks/usePersist.jsx'
+import { setCredentials } from '../../slices/Reducers/authReducers.jsx'
+import { useLoginMutation } from '../../slices/authApiSlice.jsx'
+import usePersist from '../../hooks/usePersist.jsx'
 
 function login (){
     const userRef = useRef()
@@ -35,14 +35,16 @@ function login (){
             dispatch(setCredentials({ accessToken }))
             setEmail('')
             setPassword('')
-            navigate('/home')
+            navigate('/dash/home')
         } catch (err) {
             if(!err.status){
                 setErrorMessage('No server response')
             }else if(err.status === 400){
-                setErrorMessage('Missing email or password')
+                // ใส่ input ไม่ครบทุกช่อง
+                setErrorMessage('All fields are required.')
             }else if(err.status === 401){
-                setErrorMessage('Unauthorized')
+                // ใส่รหัส หรือ email ผิด
+                setErrorMessage('Incorrect email or password')
             }else {
                 setErrorMessage(err.data?.message)
             }

@@ -44,3 +44,15 @@
     undefined
 20240220	17:35:25	b7032fbb-a821-4afe-8a84-c7c292d22ab4	SyntaxError: Expected ',' or '}' after property value in JSON at position 64	GET	/address	
     undefined
+20240225	10:14:04	230fda26-9b9a-415c-bb42-b28314b05805	TypeError: addressOject.save is not a function	PATCH	/address	
+    undefined
+20240225	10:15:16	9033f5cb-a2ba-4be7-86ec-29cb9ec27d41	TypeError: addressOject.save is not a function	PATCH	/address	
+    undefined
+20240225	10:17:27	951cf888-a7f8-40bc-9b51-45c4bd50c501	TypeError: addressOject.save is not a function	PATCH	/address	
+    undefined
+20240225	10:17:43	16b49fb7-0248-4e1e-b410-228aa128aec0	TypeError: Cannot read properties of undefined (reading 'firstname')	PATCH	/address	
+    undefined
+20240225	10:18:50	1f86e243-798a-49b5-97dd-a9cac665846b	TypeError: address.save is not a function	PATCH	/address	
+    undefined
+20240225	10:19:47	7807da8a-dff9-45ae-910a-09160ae9d793	TypeError: address.save is not a function	PATCH	/address	
+    undefined

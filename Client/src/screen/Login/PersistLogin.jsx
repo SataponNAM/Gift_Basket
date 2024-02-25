@@ -1,9 +1,9 @@
 import { Outlet, Link } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
-import { useRefreshMutation } from "../slices/authApiSlice.jsx"
-import usePersist from "../hooks/usePersist.jsx"
+import { useRefreshMutation } from "../../slices/authApiSlice.jsx"
+import usePersist from "../../hooks/usePersist.jsx"
 import { useSelector } from "react-redux"
-import { selectCurrentToken } from "../slices/authSlice"
+import { selectCurrentToken } from "../../slices/Reducers/authReducers.jsx"
 
 const PersistLogin = () => {
     const [persist] = usePersist()

@@ -18,15 +18,15 @@ const addressSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    city: {
+    province: {
         type: String,
         require: true,
       },
-    state: {
+    district: {
         type: String,
         require: true,
     },
-    country: {
+    subdistrict: {
         type: String,
         require: true,
     },

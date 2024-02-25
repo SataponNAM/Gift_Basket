@@ -1,10 +1,13 @@
 import { Button, Container } from 'react-bootstrap'
-import useAuth from '../hooks/useAuth.jsx'
-import { useGetAddressQuery } from '../slices/addressApiSlice'
-import Address from '../components/Address.jsx'
+import { useNavigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth.jsx'
+import { useGetAddressQuery } from '../../slices/addressApiSlice.jsx'
+import Address from '../../components/Address/Address.jsx'
 
 function address(){
     const { email, isAdmin } = useAuth()
+
+    const navigate = useNavigate()
 
     const {
         data: address,
@@ -33,18 +36,21 @@ function address(){
         if (isAdmin) {
             filteredIds = [...ids]
         } else {
-            filteredIds = ids.filter(addressId => entities[addressId].email === email)
+            filteredIds = ids?.filter(addressId => entities[addressId].email === email)
         }
 
         // frontend อยู่ใน  /components/Address.jsx
         content = ids?.length && filteredIds.map(addressId => <Address key={addressId} addressId={addressId} />)
+    }
 
+    const onAddAddressClicked = () => {
+        navigate('/dash/address/addAddress')
     }
 
     return (
         <Container>
             <h1>Address</h1>
-            <Button>Add Address</Button>
+            <Button onClick={onAddAddressClicked}>Add Address</Button>
             {content}
         </Container>
     )

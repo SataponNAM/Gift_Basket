@@ -53,6 +53,19 @@ export const addressApiSlice = apiSlice.injectEndpoints({
             invalidatesTags: (result, error, arg) => [
                 {type: 'Address', id: arg.id}
             ]
+        }),
+
+        updateAddress: builder.mutation({
+            query: initialAddress => ({
+                url: '/address',
+                method: 'PATCH',
+                body: {
+                    ...initialAddress,
+                }
+            }),
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Address', id: arg.id }
+            ]
         })
     })
 })
@@ -61,6 +74,7 @@ export const {
     useGetAddressQuery,
     useAddAddressMutation,
     useDeleteAddressMutation,
+    useUpdateAddressMutation,
 } = addressApiSlice
 
 // return query result

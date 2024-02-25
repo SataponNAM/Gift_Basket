@@ -9,5 +9,6 @@ router.route('/')
     .get(addressController.getAddress)
     .post(addressController.addAddress)
     .delete(addressController.deleteAddress)
+    .patch(addressController.updateAddress)
 
 module.exports = router

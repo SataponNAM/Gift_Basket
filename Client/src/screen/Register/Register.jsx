@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { useRegisterMutation } from "../slices/authApiSlice";
+import { useRegisterMutation } from "../../slices/authApiSlice";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -41,6 +41,8 @@ const Register = () => {
                 setErrorMessage('All fiedls are required.')
             }else if(err.status === 409){
                 setErrorMessage('Email is used.')
+            }else if(err.status === 401) {
+                setErrorMessage("Password do not match.")
             }else {
                 setErrorMessage(err.data?.message)
             }

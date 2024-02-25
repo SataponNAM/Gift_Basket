@@ -135,7 +135,7 @@ const register = asyncHandler (async (req, res) => {
 
     // chech password and confirm password
     if (password !== cpassword){
-        return res.status(400).json({ message: 'Password not match.'})
+        return res.status(401).json({ message: 'Password not match.'})
     }
 
     // Hash password
