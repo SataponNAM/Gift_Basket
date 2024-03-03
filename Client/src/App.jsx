@@ -12,6 +12,11 @@ import Home from './screen/Home/Home.jsx'
 import Address from './screen/Address/AddressList.jsx'
 import AddAddress from './screen/Address/Add/AddAddress.jsx'
 import EditAddress from './screen/Address/Edit/EditAddress.jsx'
+import Basket from './screen/MakeBasket/SelectBasket/SelectBasketForm.jsx'
+import Decoration from './screen/MakeBasket/SelectDeco/SelectDecoForm.jsx'
+import Product from './screen/MakeBasket/SelectProduct/SelectProductForm.jsx'
+import Card from './screen/MakeBasket/SelectCard/SelectCardForm.jsx'
+import MakeBasket from './screen/MakeBasket/Make/makeGiftBasket.jsx'
 
 import { ROLES } from './config/Roles.jsx'
 import RequireAuth from './hooks/RequireAuth.jsx'
@@ -45,6 +50,14 @@ function App() {
                     <Route index element={<Address />} />
                     <Route path='addAddress' element={<AddAddress />} />
                     <Route path=":id" element={<EditAddress />} />
+                  </Route>
+
+                  <Route path='makeBasket'>
+                    <Route path='basket' element={<Basket />}/>
+                    <Route path='decoration' element={<Decoration />}></Route>
+                    <Route path='product' element={<Product />}></Route>
+                    <Route path='card' element={<Card />}></Route>
+                    <Route path='giftbasket' element={<MakeBasket />}></Route>
                   </Route>
 
                 </Route>

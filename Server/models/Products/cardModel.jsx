@@ -2,16 +2,20 @@ const mongoose = require('mongoose')
 
 const cardSchema = new mongoose.Schema(
     {
+        name: {
+            type: String,
+            require: true,
+        },
         color: {
-            type: Sttring,
+            type: String,
             require: true,
         },
         decoration: {
-            type: Sttring,
+            type: String,
             require: true,
         },
         price: {
-            type: number,
+            type: Number,
             require: true,
         },
         image: {
@@ -20,3 +24,5 @@ const cardSchema = new mongoose.Schema(
         },
     }
 )
+
+module.exports = mongoose.model('Card', cardSchema)

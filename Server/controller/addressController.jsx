@@ -12,7 +12,6 @@ const getAddress = asyncHandler ( async (req, res) => {
         return res.status(400).json({ message : 'No address found'})
     }
 
-    // 
     const addressWithUser = await Promise.all(address.map(async (address) => {
         const user = await User.findById(address.user).lean().exec()
         return { ...address, email: user.email}
@@ -64,7 +63,7 @@ const updateAddress = asyncHandler(async (req, res) => {
     const address = await Address.findById(id).exec();
 
     if (!address) {
-        return res.status(404).json({ message: 'User not found.' });
+        return res.status(404).json({ message: 'Address not found.' });
     }
 
     address.user = user;

@@ -118,12 +118,12 @@ const logout = (req, res) => {
 }
 
 // Register POST
-const register = asyncHandler (async (req, res) => {
+const register = asyncHandler(async (req, res) => {
     const { firstname, lastname, email, phone, password, cpassword } = req.body
     const roles = ["Customer"]
 
     if(!firstname || !lastname || !email || !phone || !password || !Array.isArray(roles) || !roles.length) {
-        return res.status(400).json({ message : 'All fields are required'})
+        return res.status(400).json({ message: 'All fields are required.'})
     }
 
     // check email
@@ -147,8 +147,9 @@ const register = asyncHandler (async (req, res) => {
     const user = await User.create(userObject)
 
     if(user) {
+        const reply = { message: `New user ${firstname} ${lastname} created`}
         // create
-        res.status(201).json({ message: `New user ${firstname} ${lastname} created`})
+        res.json(reply)
     } else {
         res.status(400).json({ message : 'Invalid user data recieved'})
     }

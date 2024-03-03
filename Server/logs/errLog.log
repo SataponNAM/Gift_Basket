@@ -56,3 +56,79 @@
     undefined
 20240225	10:19:47	7807da8a-dff9-45ae-910a-09160ae9d793	TypeError: address.save is not a function	PATCH	/address	
     undefined
+20240226	13:13:07	c39bc503-f924-4e8a-8e19-6b50cabc67fb	TypeError: Decoration.find is not a function	GET	/decoration	
+    undefined
+20240226	13:17:01	5337917d-f08f-4e29-b7f0-52e3ebb3ad3e	SyntaxError: Expected double-quoted property name in JSON at position 181	PATCH	/decoration	
+    undefined
+20240301	09:17:57	26dae6bf-0281-4e69-a7c9-b59f56db513f	SyntaxError: Expected double-quoted property name in JSON at position 42	DELETE	/card	
+    undefined
+20240301	09:19:05	df476fb3-4f36-48ad-8401-7a219c16990b	ReferenceError: card is not defined	PATCH	/product	
+    undefined
+20240301	09:20:20	ca136d89-7d0a-4611-9dd4-ddf9e4404e6d	SyntaxError: Expected double-quoted property name in JSON at position 42	DELETE	/product	
+    undefined
+20240302	18:16:17	7eab0325-05b7-4b22-9660-f3e64068799e	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:17:20	9d8db0f8-d949-46ff-8eea-271a08df26be	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:17:21	6168b759-4f40-4040-b264-dbd155cc5ad6	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:17:34	823b34dc-8661-4b20-99eb-2e62e3bfa18b	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:20:20	838822d6-ad3b-4dd1-b938-85829021f07f	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:21:19	aa35a173-2791-4e54-9409-0f69f384c5bb	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:21:20	0c63f081-6c58-4933-82ed-c38aed986b5c	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:21:51	98f98bb2-676b-4c71-8064-8b20d3bd6235	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:22:47	c531e214-a4c5-4546-8f36-27200fc83b66	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:22:52	4e1fd304-d53e-49fe-b80a-b0f4b78f9ba4	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:22:52	359f83c7-19ac-46bb-b0e4-66768d849839	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:22:52	e2bf8a1b-0f88-42fb-a25d-2d6bffaae056	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:22:52	82c3ee02-1031-4683-b511-d572a449d38a	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:23:08	3a396471-bcfa-409e-bb45-1c9d551e4782	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:23:09	4667a335-2a0d-4a53-a2da-fe8fe1ce76e1	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:23:09	5d7a745e-9222-4b7f-b013-99ab2b66e9e1	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:23:32	b1e00285-06f9-411b-8630-15e02ab226e1	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240302	18:24:22	4fc85b28-86aa-4f58-922f-6c3369c5dce9	PayloadTooLargeError: request entity too large	POST	/giftbasket	
+    http://localhost:8080
+20240303	10:06:27	5515c7b4-f8a4-440c-bf4e-137c0eee6ea1	ReferenceError: giftBasket is not defined	POST	/giftbasket	
+    http://localhost:8080
+20240303	10:44:22	c550dc88-a9c8-421b-9d15-873cee0dcdd3	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	10:47:07	d76ecdde-a911-4342-9dfa-549b0b62d3c8	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	10:47:47	0bb7fbdc-29cd-497c-bace-dcf1618686fc	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	10:52:19	993ba22a-4e7b-441f-8711-547e1dec0990	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	10:53:06	6e4330af-2660-407b-bae9-2b0a9dc3829e	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	10:59:30	23455ff5-b667-4694-9bb5-c2463b4a6dac	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	10:59:41	2418d493-8608-4bda-8fa1-5fdf042f7e02	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	10:59:58	12447708-54b1-45f1-b397-7b646119ce47	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	11:00:10	41c97d96-4df5-4ee4-8da8-d0b74956f540	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	11:00:46	a2ea85fc-edc9-4f6b-b57b-a31ccd2bf479	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	11:01:58	0c1e0bff-5a64-4cbe-9ed4-1ab910ea33d5	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	11:02:04	ab1bc8ae-802f-40af-a10b-2b97fd1f1a96	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	11:03:26	f715b779-bd5d-4dcf-9dd3-48221899b7a5	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080
+20240303	11:04:01	08e2a5a1-2fc1-4cc0-b4d3-3459313ba75c	TypeError: Cart.save is not a function	PATCH	/cart	
+    http://localhost:8080

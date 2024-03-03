@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const basketSchema = new mongoose.Schema(
     {
         name: {
-            type: Sttring,
+            type: String,
             require: true,
         },
         price: {
-            type: number,
+            type: Number,
             require: true,
         },
         image: {
@@ -16,3 +16,5 @@ const basketSchema = new mongoose.Schema(
         },
     }
 )
+
+module.exports = mongoose.model('Basket', basketSchema)

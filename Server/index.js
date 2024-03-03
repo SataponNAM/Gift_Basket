@@ -30,6 +30,12 @@ app.use('/', require('./routes/root.jsx'))
 app.use('/users', require('./routes/userRoutes.jsx'))
 app.use('/auth', require('./routes/authRoutes.jsx'))
 app.use('/address', require('./routes/addressRoutes.jsx'))
+app.use('/basket', require('./routes/basketRoutes.jsx'))
+app.use('/decoration', require('./routes/decorationRoutes.jsx'))
+app.use('/product', require('./routes/productRoutes.jsx'))
+app.use('/card', require('./routes/cardRoutes.jsx'))
+app.use('/giftbasket', require('./routes/giftBasketRoutes.jsx'))
+app.use('/cart', require('./routes/cartRoutes.jsx'))
 
 app.use(errorHandler)
 

@@ -2,14 +2,13 @@ version: '25.0.2'
 
 services:
   client:
-    build: client
+    build: Client
     ports:
       - '8080:8080'
   server:
-    build: server
+    build: Server
     environment:
       - PORT=3001
-      - BASE_API_URL=api
       - CLIENT_URL=http://localhost:8080
       - JWT_SECRET=eb439ea020157f820f37a3184dc2d2afaec792897f19ad41ba0433152b646
                     6f360b67ffa7118f14017ac907a3cffbca0cdb91984c408aa667c2e1a471fcb9e3b

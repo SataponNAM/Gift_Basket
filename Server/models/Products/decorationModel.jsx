@@ -3,19 +3,19 @@ const mongoose = require('mongoose')
 const decorationSchema = new mongoose.Schema(
     {
         name: {
-            type: Sttring,
+            type: String,
             require: true,
         },
         category: {
-            type: Sttring,
+            type: String,
             require: true,
         },
         type: {
-            type: Sttring,
+            type: String,
             require: true,
         },
         price: {
-            type: number,
+            type: Number,
             require: true,
         },
         image: {
@@ -24,3 +24,5 @@ const decorationSchema = new mongoose.Schema(
         },
     }
 )
+
+module.exports = mongoose.model('Decoration', decorationSchema)

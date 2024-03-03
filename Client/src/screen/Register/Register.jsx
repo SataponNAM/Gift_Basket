@@ -20,35 +20,44 @@ const Register = () => {
 
     const [register, { isloading }] = useRegisterMutation()
 
-    const errClass = errorMessage ? "errmsg" : "offscreen"
+    useEffect(() => {
+        setErrorMessage('')
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
+
+        // have problem ไม่ catch error
+        // ยังไม่ได้แก้
         try {
             const result = await register({ firstname, lastname, email ,phone ,password, cpassword})
-            setEmail('')
-            setFirstname('')
-            setLastname('')
-            setPhone('')
-            setPassword('')
-            setCPassword('')
-            navigate('/login')
-        } catch (err) {
-            if(!err.status){
+            console.log(result)
+            
+            // setEmail('')
+            // setFirstname('')
+            // setLastname('')
+            // setPhone('')
+            // setPassword('')
+            // setCPassword('')
+            //navigate('/login')
+            
+        } catch (error) {
+            if(!error.status){
                 setErrorMessage('No server response')
-            }else if(err.status === 400){
+            }else if(error.status === 400){
                 setErrorMessage('All fiedls are required.')
-            }else if(err.status === 409){
+            }else if(error.status === 409){
                 setErrorMessage('Email is used.')
-            }else if(err.status === 401) {
+            }else if(error.status === 401) {
                 setErrorMessage("Password do not match.")
             }else {
-                setErrorMessage(err.data?.message)
+                setErrorMessage(error.data?.message)
             }
             errRef.current.focus()
         }
     }
+
+    const errClass = errorMessage ? "errmsg" : "offscreen"
 
     const inputFirstname = (e) =>{
         setFirstname(e.target.value)

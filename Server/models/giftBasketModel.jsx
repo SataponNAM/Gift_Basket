@@ -17,10 +17,10 @@ const giftBasketSchema = new mongoose.Schema(
             require: true,
             ref: 'Decoration'
         }],
-        object: [{
+        product: [{
             type: mongoose.Schema.Types.ObjectId,
             require: true,
-            ref: 'Object'
+            ref: 'Product'
         }],
         card: {
             type: mongoose.Schema.Types.ObjectId,
@@ -37,3 +37,5 @@ const giftBasketSchema = new mongoose.Schema(
         }
     }
 )
+
+module.exports = mongoose.model('GiftBasket', giftBasketSchema)
