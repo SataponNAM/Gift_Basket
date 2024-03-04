@@ -3,16 +3,23 @@ import { useGetCardQuery } from "../../slices/cardApiSlice";
 import { memo } from 'react';
 import { Container, Card } from "react-bootstrap";
 
-const CardCompo = ({ cardId, selectedCard, setSelectedCard }) => {
+const CardCompo = ({ cardId, selectedCard, setSelectedCard, total, setTotal }) => {
   const { cardData } = useGetCardQuery("cardList", {
     selectFromResult: ({ data }) => ({
         cardData: data?.entities[cardId]
     })
   });
 
-  const selected = () => {
+  const handleOnClick = () => {
+    if (selectedCard !== null) {
+      if (cardData._id !== selectedCard.id) {
+          setTotal((prevTotal) => prevTotal - selectedCard.price);
+          setTotal((prevTotal) => prevTotal + cardData.price);
+      }
+  } else {
+      setTotal((prevTotal) => prevTotal + cardData.price);
+  }
     setSelectedCard(cardData)
-    console.log(selectedCard)
   };
 
   // css ของขอบ card
@@ -21,7 +28,7 @@ const CardCompo = ({ cardId, selectedCard, setSelectedCard }) => {
   if (cardData) {
     return (
       <Container className="mt-2">
-        <Card style={{ width: '18rem' }} onClick={selected} className={classes}>
+        <Card style={{ width: '18rem' }} onClick={handleOnClick} className={classes}>
           <Card.Img variant="top" src={cardData.image} />
           <Card.Body>
             <Card.Text>{cardData.name}</Card.Text>

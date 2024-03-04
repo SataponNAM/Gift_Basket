@@ -10,11 +10,16 @@ const Bow = ({ decoId, selectedBow, setSelectedBow, total, setTotal }) => {
     })
 
     const handleOnClick = () => {
-        if (selectedBow !== null && deco._id !== selectedBow.id) {
-            setTotal((prevTotal) => prevTotal - selectedBow.price);
+        if (selectedBow !== null) {
+            if (deco._id !== selectedBow.id) {
+                setTotal((prevTotal) => prevTotal - selectedBow.price);
+                setTotal((prevTotal) => prevTotal + deco.price);
+            }
+        } else {
+            setTotal((prevTotal) => prevTotal + deco.price);
         }
         setSelectedBow(deco);
-        setTotal((prevTotal) => prevTotal + deco.price);
+
     }
 
     const classes = selectedBow != null && deco._id === selectedBow.id ? "border border-success" : null;

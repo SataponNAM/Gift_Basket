@@ -2,7 +2,7 @@ import { useGetProductQuery } from "../../slices/productApiSlice"
 import { Container, Image, Card, CardBody, Form } from "react-bootstrap";
 import { memo } from 'react';
 
-const Drink = ({ productId, selectedDrink, setSelectedDrink, sumDrink, setSumDrink }) => {
+const Drink = ({ productId, selectedDrink, setSelectedDrink }) => {
     const { product } = useGetProductQuery("productList", {
         selectFromResult: ({ data }) => ({
             product: data?.entities[productId]
@@ -10,14 +10,12 @@ const Drink = ({ productId, selectedDrink, setSelectedDrink, sumDrink, setSumDri
     })
 
     const handleOnChange = (e) => {
-        const { value, checked } = e.target;
-    
-        // console.log(`${value} is ${checked}`);
+        const { id, checked } = e.target;
     
         if (checked) {
-            setSelectedDrink([...selectedDrink, value]);
+            setSelectedDrink([...selectedDrink, product]);
         } else {
-            setSelectedDrink(selectedDrink.filter((item) => item !== value));
+            setSelectedDrink(selectedDrink.filter((item) => item.id !== id));
         }
     };
 
@@ -29,7 +27,7 @@ const Drink = ({ productId, selectedDrink, setSelectedDrink, sumDrink, setSumDri
                         <Form.Check
                             type={type}
                             id={product.id}
-                            value={product.id}
+                            value={product.price}
                             label={product.name}
                             onChange={handleOnChange}
                         />

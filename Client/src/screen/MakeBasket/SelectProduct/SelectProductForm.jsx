@@ -5,13 +5,14 @@ import Fruit from '../../../components/Product/Fruit.jsx'
 import Drink from '../../../components/Product/Drink.jsx'
 import { useGetProductQuery } from "../../../slices/productApiSlice";
 
+// problem
+// คิดราคารวมยังไม่ได้ แต่แยกคิดได้ และส่งราคารวมไปหน้าต่อไปได้ถูกต้อง
+
 function SelectProductForm() {
     const navigate = useNavigate();
     const location = useLocation();
     const [total, setTotal] = useState(location.state.nextState.total)
-    const prevTotal = total
-    const [sumFruit, setSumFruit] = useState(0)
-    const [sumDrink, setSumDrink] = useState(0)
+    const [nt, setNt] = useState(0)
 
     const {
         data: product,
@@ -48,21 +49,46 @@ function SelectProductForm() {
 
         filteredIds = [...ids]
 
-        FruitContent = ids?.length && filteredIds.map(productId => <Fruit key={productId} productId={productId} 
-            selectedFruit={selectedFruit} setSelectedFruit={setSelectedFruit} sumFruit={sumFruit} setSumFruit={setSumFruit} />)
-        DrinkContent = ids?.length && filteredIds.map(productId => <Drink key={productId} productId={productId} 
-            selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink} sumDrink={sumDrink} setSumDrink={setSumDrink} />)
+        FruitContent = ids?.length && filteredIds.map(productId => <Fruit key={productId} productId={productId}
+            selectedFruit={selectedFruit} setSelectedFruit={setSelectedFruit} />)
+
+        DrinkContent = ids?.length && filteredIds.map(productId => <Drink key={productId} productId={productId}
+            selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink} />)
     }
 
+    const [sumFruit, setSumFruit] = useState(0)
+    const [sumDrink, setSumDrink] = useState(0)
+
+    const calculateFruitTotal = () => {
+        let fruitTotal = 0;
+        selectedFruit.forEach((fruit) => {
+            fruitTotal +=  fruit.price;
+        });
+        setSumFruit(fruitTotal);
+    };
+
+    const calculateDrinkTotal = () => {
+        let drinkTotal = 0;
+        selectedDrink.forEach((drink) => {
+            drinkTotal +=  drink.price;
+        });
+        setSumDrink(drinkTotal);
+    };
+
+    const calculateTotal = () => {
+        calculateFruitTotal();
+        calculateDrinkTotal();
+    };
+
     useEffect(() => {
-        setSelectedProduct(selectedProductType === 'fruit' ? selectedFruit : selectedDrink)
-        //
+        setSelectedProduct(selectedProductType === 'fruit' ? selectedFruit : selectedDrink);
+        setNt(selectedProductType === 'fruit' ? sumFruit : sumDrink);
+        calculateTotal();
     }, [selectedFruit, selectedDrink, selectedProductType, sumFruit, sumDrink]);
-    
+
 
     const handleProductTypeChange = (type) => {
-        setSelectedProductType(type);   
-        setTotal(prevTotal)
+        setSelectedProductType(type);
     }
 
     const nextPage = () => {
@@ -71,13 +97,13 @@ function SelectProductForm() {
         const selectedRibbon = location.state.nextState.selectedRibbon
         const selectedBow = location.state.nextState.selectedBow
 
-        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, selectedProduct, total };
+        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, selectedProduct, total: total + nt };
         // console.log(selectedProduct)
         navigate('/dash/makeBasket/card', { state: { nextState } })
     }
 
     const nextButton = (
-        selectedProduct === null ? (
+        selectedProduct.length <= 0 ? (
             <Button className="mt-2" disabled>Next</Button>
         ) :
             (
@@ -145,6 +171,7 @@ function SelectProductForm() {
             </Container>
 
             <div>
+                <p>ราคาของ : {nt}</p>
                 <p>ราคารวม : {total} บาท</p>
             </div>
 

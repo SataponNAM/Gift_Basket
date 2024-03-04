@@ -26,10 +26,8 @@ const addCart = asyncHandler(async (req, res) => {
     }
 
     try {
-        const createCart = await Cart.create({
-            giftbasket,
-            user
-        });
+        const cartObj = {giftBasket: giftbasket, user}
+        const createCart = await Cart.create(cartObj)
 
         if (createCart) {
             res.status(201).json({ message: 'New cart is created.' });

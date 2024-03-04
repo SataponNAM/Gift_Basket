@@ -2,27 +2,20 @@ import { useGetProductQuery } from "../../slices/productApiSlice";
 import { Container, Form, Image } from "react-bootstrap";
 import { memo, useEffect } from 'react';
 
-const Fruit = ({ productId, selectedFruit, setSelectedFruit, sumFruit, setSumFruit }) => {
+const Fruit = ({ productId, selectedFruit, setSelectedFruit }) => {
     const { product } = useGetProductQuery("productList", {
         selectFromResult: ({ data }) => ({
             product: data?.entities[productId]
         })
     });
 
-    useEffect(() => {
-        console.log(selectedFruit)
-    }, [selectedFruit])
-
     const handleOnChange = (e) => {
         const { id, checked } = e.target;
     
         if (checked) {
-            setSelectedFruit([...selectedFruit, id]);
-            setSumFruit(sumFruit + product.price);
+            setSelectedFruit([...selectedFruit, product]);
         } else {
-            console.log(product.price)
-            setSumFruit(sumFruit - product.price);
-            setSelectedFruit(selectedFruit.filter((item) => item !== id));   
+            setSelectedFruit(selectedFruit.filter((item) => item.id !== id));   
         }
     };
 

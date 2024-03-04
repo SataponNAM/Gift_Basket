@@ -7,13 +7,14 @@ import { useState, useRef, useEffect } from "react";
 import { useAddGiftBasketMutation } from "../../../slices/giftBasketApiSlice.jsx";
 import { useAddCartMutation } from "../../../slices/cartApiSlice.jsx";
 import { useGetCartQuery, useUpdateCartMutation } from "../../../slices/cartApiSlice.jsx";
+import xtype from 'xtypejs'
 
 function makeBasket() {
     const location = useLocation()
     const navigate = useNavigate()
     let content
     const errRef = useRef()
-    const [errorMessage, setErrorMessage] = useState('Err')
+    const [errorMessage, setErrorMessage] = useState('Err') // test เฉยๆ 
     const errClass = errorMessage ? "errmsg" : "offscreen"
 
     const basket = location.state.nextState.selectedBasket
@@ -133,7 +134,7 @@ function makeBasket() {
 
     const user = LoadUser()
     const productData = LoadProductData()
-    const productIds = LoadProductId()
+    const productIds = product.map(product => product.id);
     const decoration = LoadDecoration()
 
     const [addGiftBasket, { isloading }] = useAddGiftBasketMutation()
@@ -177,7 +178,6 @@ function makeBasket() {
     };
 
     let cartCheck = LoadCart()
-    //console.log(cartCheck)
 
     const addToCart = async (e) => {
         e.preventDefault();
@@ -195,15 +195,14 @@ function makeBasket() {
 
             const createdGiftBasketId = result.data.id;
 
-            // problem
-            // ไใ่ยอมใส่ giftbasket ในกรณีที่ยังไม่มีประวัติ cart
             if (!cartCheck) {
-                // If no cart is found, create a new one
+                // If no cart is found (user don't have cart), create a new 
                 await addCart({ giftbasket: [createdGiftBasketId], user });
             } else {
                 console.log("Cart found. Updating the existing one.");
                 await updateCart({ id: cartCheck, giftbasket: createdGiftBasketId, user });
             }
+            navigate('/dash/cart')
         } catch (err) {
             console.error(err);
             if (!err.response) {
@@ -238,6 +237,7 @@ function makeBasket() {
                 ))}
                 <p>{card.name}</p>
                 <p>{cardText}</p>
+                <p>ราคารวม : {totalPrice} บาท</p>
             </Container>
             <Form onSubmit={addToCart}>
                 {addToCartButton}

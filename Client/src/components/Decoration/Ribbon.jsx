@@ -10,12 +10,16 @@ const Ribbon = ({ decoId, selectedRibbon, setSelectedRibbon, total, setTotal }) 
     })
 
     const handleOnClick = () => {
-        if (selectedRibbon !== null && deco._id !== selectedRibbon.id) {
-          setTotal((prevTotal) => prevTotal - selectedRibbon.price);
+        if (selectedRibbon !== null) {
+            if (deco._id !== selectedRibbon.id) {
+                setTotal((prevTotal) => prevTotal - selectedRibbon.price);
+                setTotal((prevTotal) => prevTotal + deco.price);
+            }
+        } else {
+            setTotal((prevTotal) => prevTotal + deco.price);
         }
         setSelectedRibbon(deco);
-        setTotal((prevTotal) => prevTotal + deco.price);
-      }
+    }
 
     const classes = selectedRibbon != null && deco._id === selectedRibbon.id ? "border border-success" : null;
 

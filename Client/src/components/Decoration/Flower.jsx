@@ -11,11 +11,15 @@ const Flower = ({ decoId, selectedFlower, setSelectedFlower, total, setTotal }) 
   })
 
   const handleOnChange = () => {
-    if (selectedFlower !== null && deco._id !== selectedFlower.id) {
-      setTotal((prevTotal) => prevTotal - selectedFlower.price);
+    if (selectedFlower !== null) {
+      if (deco._id !== selectedFlower.id) {
+        setTotal((prevTotal) => prevTotal - selectedFlower.price);
+        setTotal((prevTotal) => prevTotal + deco.price);
+      }
+    } else {
+      setTotal((prevTotal) => prevTotal + deco.price);
     }
     setSelectedFlower(deco);
-    setTotal((prevTotal) => prevTotal + deco.price);
   }
 
   const classes = selectedFlower != null && deco._id === selectedFlower.id ? "border border-success" : null;

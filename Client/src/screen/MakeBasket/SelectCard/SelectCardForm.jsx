@@ -40,7 +40,8 @@ function SelectCardForm() {
 
         filteredIds = [...ids]
 
-        content = ids?.length && filteredIds.map(cardId => <CardCompo key={cardId} cardId={cardId} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />)
+        content = ids?.length && filteredIds.map(cardId => <CardCompo key={cardId} cardId={cardId} 
+            selectedCard={selectedCard} setSelectedCard={setSelectedCard} total={total} setTotal={setTotal} />)
     }
 
     const nextPage = () => {
@@ -58,7 +59,7 @@ function SelectCardForm() {
     }
 
     const nextButton = (
-        selectedCard === null ? (
+        selectedCard === null || cardText.length <= 0 ? (
             <Button className="mt-2" disabled>Next</Button>
         ) :
             (
@@ -94,6 +95,10 @@ function SelectCardForm() {
                         />
                     </Form.Group>
                 </Form>
+            </div>
+
+            <div>
+                <p>ราคารวม : {total} บาท</p>
             </div>
 
             <div>

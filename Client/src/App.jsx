@@ -17,6 +17,7 @@ import Decoration from './screen/MakeBasket/SelectDeco/SelectDecoForm.jsx'
 import Product from './screen/MakeBasket/SelectProduct/SelectProductForm.jsx'
 import Card from './screen/MakeBasket/SelectCard/SelectCardForm.jsx'
 import MakeBasket from './screen/MakeBasket/Make/makeGiftBasket.jsx'
+import Cart from './screen/Cart/CartList.jsx'
 
 import { ROLES } from './config/Roles.jsx'
 import RequireAuth from './hooks/RequireAuth.jsx'
@@ -58,6 +59,10 @@ function App() {
                     <Route path='product' element={<Product />}></Route>
                     <Route path='card' element={<Card />}></Route>
                     <Route path='giftbasket' element={<MakeBasket />}></Route>
+                  </Route>
+
+                  <Route path='cart'>
+                    <Route index element={<Cart />} />
                   </Route>
 
                 </Route>
