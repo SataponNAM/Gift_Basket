@@ -14,7 +14,7 @@ export const giftBasketApiSlice = apiSlice.injectEndpoints({
             validateStatus: (response, result) => {
                 return response.status === 200 && !result.isError
             },
-            ransformResponse: responseData => {
+            transformResponse: responseData => {
                 const loadedGiftBasket = responseData.map(giftbasket => {
                     giftbasket.id = giftbasket._id
                     return giftbasket
@@ -31,7 +31,7 @@ export const giftBasketApiSlice = apiSlice.injectEndpoints({
                     return [{type: 'GiftBasket', id: 'LIST'}]
                 }
             },
-        }),
+        }),        
 
         addGiftBasket: builder.mutation({
             query: initialGiftBasket => ({
@@ -57,6 +57,12 @@ export const giftBasketApiSlice = apiSlice.injectEndpoints({
     })
 })
 
+export const {
+    useGetGiftBasketQuery,
+    useAddGiftBasketMutation,
+    useDeleteGiftBasketMutation,
+} = giftBasketApiSlice
+
 export const selectAllGiftBasketResult = giftBasketApiSlice.endpoints.getGiftBasket.select()
 
 const selectAllGiftBasketData = createSelector(
@@ -66,13 +72,6 @@ const selectAllGiftBasketData = createSelector(
 
 export const {
     selectAll: selectAllGiftBasket,
-    selectById: selectAllselectAllGiftBasketById,
-    selectIds: selectAllselectAllGiftBasketIds
-} = giftBasketAdapter.getSelectors(state => selectAllGiftBasket(state) ?? initialState)
-
-export const {
-    useGetGiftBasketQuery,
-    useAddGiftBasketMutation,
-    useDeleteGiftBasketMutation,
-    useUpdateGiftBasketMutation,
-} = giftBasketApiSlice
+    selectById: selectGiftBasketById,
+    selectIds: selectAllGiftBasketIds
+} = giftBasketAdapter.getSelectors(state => selectAllGiftBasketData(state) ?? initialState)

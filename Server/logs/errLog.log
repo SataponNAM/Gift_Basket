@@ -132,3 +132,7 @@
     http://localhost:8080
 20240303	11:04:01	08e2a5a1-2fc1-4cc0-b4d3-3459313ba75c	TypeError: Cart.save is not a function	PATCH	/cart	
     http://localhost:8080
+20240307	17:58:09	0076db7b-382a-4159-982c-d9c810e7c4a1	ReferenceError: query is not defined	DELETE	/cart/product	
+    http://localhost:8080
+20240307	17:59:29	1b93b879-f162-4a61-8a86-4e2cb9a306db	ReferenceError: query is not defined	DELETE	/cart/product	
+    http://localhost:8080

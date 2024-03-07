@@ -81,7 +81,10 @@ export const selectUsersResult = usersApiSlice.endpoints.getUsers.select()
 
 const selectUsersData = createSelector(
     selectUsersResult,
-    usersResult => usersResult.data 
+    usersResult => {
+        console.log("Users Result:", usersResult);
+        return usersResult.data
+    }
 )
 
 export const {

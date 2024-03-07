@@ -45,6 +45,6 @@ const baseQueryWithReauth = async (args, api, extraOpion) => {
 
 export const apiSlice = createApi({
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Address', 'User'],
+    tagTypes: [ 'Address', 'User', 'Basket' ],
     endpoints: builder => ({})
 })

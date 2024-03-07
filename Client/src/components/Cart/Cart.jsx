@@ -1,27 +1,146 @@
-import { useNavigate } from "react-router-dom"
-import { memo, useEffect } from 'react'
-import { Button, Container, Card } from "react-bootstrap"
-import { useGetCartQuery } from "../../slices/cartApiSlice"
-import { useGetGiftBasketQuery } from "../../slices/giftBasketApiSlice"
+import { useNavigate } from "react-router-dom";
+import { memo, useEffect, useState } from 'react';
+import { Button, Container, Card, Form, ButtonGroup } from "react-bootstrap";
+import { useGetCartQuery, useDeleteCartProductMutation } from "../../slices/cartApiSlice";
+import { useGetGiftBasketQuery } from "../../slices/giftBasketApiSlice";
+import { useGetBasketQuery } from "../../slices/basketApiSlice";
+import { useGetProductQuery } from "../../slices/productApiSlice";
+import { useGetDecorationQuery } from "../../slices/decorationApiSlice";
+import { useGetCardQuery } from "../../slices/cardApiSlice";
+import "./Cart.css"
 
-const Cart = ({ cartId }) => {
+const Cart = ({ cartId, total, setTotal }) => {
     const { cart } = useGetCartQuery("cartList", {
         selectFromResult: ({ data }) => ({
             cart: data?.entities[cartId]
         })
-    })
+    });
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const cartGift = cart.giftBasket;
 
-    return (
-        <Container>
-            <Card>
-                <Card.Text>{cart.id}</Card.Text>
-            </Card>
-        </Container>
-    )
-}
+    const {
+        data: giftbasket,
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    } = useGetGiftBasketQuery('giftbasketList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    });
 
-const memorized = memo(Cart)
+    const {
+        data: basketData,
+        isLoading: basketIsLoading,
+        isSuccess: basketIsSuccess,
+        isError: basketIsError,
+        error: basketError
+    } = useGetBasketQuery('basketList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    });
 
-export default memorized
+    const {
+        data: decorationData,
+        isLoading: decorationIsLoading,
+        isSuccess: decorationIsSuccess,
+        isError: decorationIsError,
+        error: decorationError
+    } = useGetDecorationQuery('decorationList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    });
+
+    const {
+        data: productData,
+        isLoading: productIsLoading,
+        isSuccess: productIsSuccess,
+        isError: productIsError,
+        error: productError
+    } = useGetProductQuery('productList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    });
+
+    const {
+        data: cardData,
+        isLoading: cardIsLoading,
+        isSuccess: cardIsSuccess,
+        isError: cardIsError,
+        error: cardError
+    } = useGetCardQuery('cardList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    });
+
+    const [sendDel] = useDeleteCartProductMutation()
+
+    // send id of giftbast to this function
+    const deleteOnclick = async (e) => {
+        const giftBasketId = e.target.value
+        const result = await sendDel({ id: cartId, giftBasketId })
+    }
+
+    let content;
+
+    if (isLoading || basketIsLoading || decorationIsLoading) {
+        content = <p>Loading...</p>;
+    }
+
+    if (isError || basketIsError || decorationIsError) {
+        content = <p className="errmsg">{error?.data?.message || basketError?.data?.message}</p>;
+    }
+
+    if (isSuccess && basketIsSuccess && decorationIsSuccess) {
+        const { ids, entities } = giftbasket;
+
+        const filteredGiftBasketItems = ids?.filter(giftBasketId => cartGift.includes(entities[giftBasketId].id)).map(giftBasketId => entities[giftBasketId]);
+        const giftBasket = filteredGiftBasketItems;
+
+        if (giftBasket) {
+            const newTotal = giftBasket.reduce((acc, item) => acc + item.totalPrice, 0);
+            setTotal(newTotal);
+
+            content = (
+                <Form.Group>
+                    {giftBasket.map((item, index) => (
+                        <div key={item.id} className="m-3 p-3" >
+                            <Card >
+                                <div className="m-3">
+                                    <Card.Text>กระเช้า : {basketData?.entities[item.basket]?.name}</Card.Text>
+                                    <Card.Text>ของตกแต่ง : {item.decoration.map(decorationId => decorationData?.entities[decorationId]?.name).join(', ')}</Card.Text>
+                                    <Card.Text>สินค้าในกระเช้า : {item.product.map(productId => productData?.entities[productId]?.name).join(', ')}</Card.Text>
+                                    <Card.Text>ราคารวม : {item.totalPrice} บาท</Card.Text>
+                                </div>
+
+                                <div>
+                                    <Button value={item.id} variant="outline-danger" size="sm" className=" button-block m-3" onClick={deleteOnclick}>ลบสินค้า</Button>
+                                </div>
+                            </Card>
+                        </div>
+                    ))}
+                </Form.Group>
+            );
+        } else {
+            content = (
+                <Container>
+                    <p>No cart found.</p>
+                </Container>
+            );
+        }
+    } else {
+        return null;
+    }
+
+    return content;
+};
+
+const memorized = memo(Cart);
+
+export default memorized;

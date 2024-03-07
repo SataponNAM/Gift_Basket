@@ -11,4 +11,7 @@ router.route('/')
     .patch(cartController.updateCart)
     .delete(cartController.deleteCart)
 
+router.route('/product')
+    .delete(cartController.deleteCartProduct)
+
 module.exports = router

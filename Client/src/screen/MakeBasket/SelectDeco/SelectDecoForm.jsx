@@ -66,7 +66,7 @@ function SelectDecoForm() {
     }
 
     const nextButton = (
-        selectedFlower === null && selectedRibbon == null && selectedBow == null ? (
+        selectedFlower === null || selectedRibbon === null || selectedBow === null ? (
             <Button className="mt-2" disabled>Next</Button>
         ) :
         (

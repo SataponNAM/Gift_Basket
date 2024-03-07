@@ -10,15 +10,18 @@ const initialState = addressAdapter.getInitialState()
 export const addressApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getAddress: builder.query({
-            query: () => '/address',
-            validateStatus: (response, result) => {
-                return response.status === 200 && !result.isError
-            },
+            query: () => ({
+                url: '/address',
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            }),
             transformResponse: responseData => {
                 const loadedAddress = responseData.map(address => {
                     address.id = address._id
                     return address
                 });
+                //console.log('Loaded Basket:', loadedAddress);
                 return addressAdapter.setAll(initialState, loadedAddress)
             },
             providesTags: (result, error, arg) => {

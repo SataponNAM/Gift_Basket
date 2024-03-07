@@ -10,48 +10,51 @@ const initialState = basketAdapter.getInitialState()
 export const basketApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getBasket: builder.query({
-            query: () => '/basket',
-            validateStatus: (response, result) => {
-                return response.status === 200 && !result.isError
-            },
+            query: () => ({
+                url: '/basket',
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            }),
             transformResponse: responseData => {
                 const loadedBasket = responseData.map(basket => {
                     basket.id = basket._id
                     return basket
                 });
+
                 return basketAdapter.setAll(initialState, loadedBasket)
             },
             providesTags: (result, error, arg) => {
-                if(result?.ids){
+                if (result?.ids) {
                     return [
-                        {type: 'Basket', id: 'LIST'},
-                        ...result.ids.map(id => ({type: 'Basket', id}))
+                        { type: 'Basket', id: 'LIST' },
+                        ...result.ids.map(id => ({ type: 'Basket', id }))
                     ]
                 } else {
-                    return [{type: 'Basket', id: 'LIST'}]
+                    return [{ type: 'Basket', id: 'LIST' }]
                 }
-            },
+            }
         }),
 
         addBasket: builder.mutation({
             query: initialBasket => ({
                 url: '/basket',
                 method: 'POST',
-                body: {...initialBasket},
+                body: { ...initialBasket },
             }),
             invalidatesTags: [
                 { type: 'Basket', id: "LIST" }
             ]
         }),
 
-        deleteBasket: builder.mutation ({
-            query: ({id}) => ({
+        deleteBasket: builder.mutation({
+            query: ({ id }) => ({
                 url: '/basket',
                 method: 'DELETE',
                 body: { id }
             }),
             invalidatesTags: (result, error, arg) => [
-                {type: 'Basket', id: arg.id}
+                { type: 'Basket', id: arg.id }
             ]
         }),
 
@@ -66,24 +69,9 @@ export const basketApiSlice = apiSlice.injectEndpoints({
             invalidatesTags: (result, error, arg) => [
                 { type: 'Basket', id: arg.id }
             ]
-        }),
+        })
     })
 })
-
-// return query result
-export const selectAllBasketResult = basketApiSlice.endpoints.getBasket.select()
-
-// create memorized selector
-const selectAllBasketData = createSelector(
-    selectAllBasketResult,
-    basketResult => basketResult.data
-)
-
-export const {
-    selectAll: selectAllBasket,
-    selectById: selectAllBasketById,
-    selectIds: selectAllBasketIds
-} = basketAdapter.getSelectors(state => selectAllBasketData(state) ?? initialState)
 
 export const {
     useGetBasketQuery,
@@ -91,3 +79,18 @@ export const {
     useDeleteBasketMutation,
     useUpdateBasketMutation,
 } = basketApiSlice
+
+// return query result
+export const selectBasketResult = basketApiSlice.endpoints.getBasket.select()
+
+// create memorized selector
+const selectBasketData = createSelector(
+    selectBasketResult,
+    basketResult => basketResult.data
+)
+
+export const {
+    selectAll: selectAllBasket,
+    selectById: selectBasketById,
+    selectIds: selectAllBasketIds
+} = basketAdapter.getSelectors(state => selectBasketData(state) ?? initialState)

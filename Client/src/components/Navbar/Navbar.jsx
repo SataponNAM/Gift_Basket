@@ -50,8 +50,9 @@ function nav() {
     )
 
     return (
-        <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
+        <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary" sticky="top">
             <Link to='/dash/home'>Home</Link>
+            <Link to='/dash/cart'>Cart</Link>
 
             {dropdownButton}
         </Navbar>

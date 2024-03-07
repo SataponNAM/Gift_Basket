@@ -96,9 +96,31 @@ const deleteCart = asyncHandler(async (req, res) => {
     res.json(reply)
 })
 
+// DELETE /cart/product
+const deleteCartProduct = asyncHandler (async (req, res) => {
+    const { id, giftBasketId } = req.body
+
+    if(!id || !giftBasketId){
+        return res.status(400).json({ message: 'Cart ID and Product ID required.'})
+    }
+
+    const query = { _id: id };
+    
+    const result = await Cart.updateOne(query, { $pull: { giftBasket: giftBasketId } }).exec();
+    
+    if(!result){
+        return res.status(400).json({ message: "Failed to delete."})
+    }
+
+    const reply = `Cart product deleted`
+
+    res.json(reply)
+})
+
 module.exports = {
     getCart,
     addCart,
     updateCart,
-    deleteCart
+    deleteCart,
+    deleteCartProduct
 }
