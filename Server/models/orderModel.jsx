@@ -2,25 +2,38 @@ const mongoose = require('mongoose')
 
 const orderSchema = new mongoose.Schema(
     {
-        cart: {
-            type: mongoose.Schema.Types.ObjectId,
-            require: true,
-            ref: 'Cart',
-        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             require: 'true',
             ref: 'User'
         },
-        total: {
+        product: [{
+            type: mongoose.Schema.Types.ObjectId,
+            require: 'true',
+            ref: 'GiftBasket'
+        }],
+        totalPrice: {
             type: Number,
             require: true,
             default: 0,
         },
+        address: {
+            type: mongoose.Schema.Types.ObjectId,
+            require: 'true',
+            ref: 'Address'
+        },
+        status: {
+            type: String,
+            require: true
+        },
+        session_id: {
+            type: String,
+            require: true
+        },
         created: {
             type: Date,
             default: Date.now
-        }
+        },
     }
 )
 
