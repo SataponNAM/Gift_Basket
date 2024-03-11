@@ -48,7 +48,13 @@ const checkout = asyncHandler(async (req, res) => {
 
         await order.save();
 
-        res.json({ message: 'Order id created.' })
+        // res.json({
+        //     user,
+        //     productIds,
+        //     sessionID: session.id
+        // })
+
+        res.json({url: session.url})
 
     } catch (error) {
         console.error("Error creating user:", error.message);
@@ -105,13 +111,13 @@ const webhook = asyncHandler(async (req, res) => {
 
 // /order/:id
 const getOrderId = asyncHandler(async (req, res) => {
-    const id =  req.params.id
+    const id = req.params.id
 
     try {
         const result = Order.findById(id)
-        if(!result){
-            res.status(400).send({message : 'Order not found'})
-        }else {
+        if (!result) {
+            res.status(400).send({ message: 'Order not found' })
+        } else {
             res.json(result);
         }
     } catch (error) {

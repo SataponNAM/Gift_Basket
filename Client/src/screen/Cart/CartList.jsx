@@ -5,7 +5,6 @@ import useAuth from '../../hooks/useAuth.jsx'
 import { useGetCartQuery } from '../../slices/cartApiSlice.jsx'
 import { useGetUsersQuery } from '../../slices/userApiSlice.jsx'
 import Cart from '../../components/Cart/Cart.jsx'
-import {loadStripe} from '@stripe/stripe-js';
 
 function CartList() {
     let content
@@ -75,7 +74,7 @@ function CartList() {
 
     const makePayment = async () => {
         // go to choose address
-        navigate('/dash/order/selectaddress', {state: {basketId}})
+        navigate('/dash/order/selectaddress', {state: {basketId, totalPrice: total}})
     }
 
     return (

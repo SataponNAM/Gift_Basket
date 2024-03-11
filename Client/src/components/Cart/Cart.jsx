@@ -84,7 +84,7 @@ const Cart = ({ cartId, total, setTotal }) => {
     // send id of giftbast to this function
     const deleteOnclick = async (e) => {
         const giftBasketId = e.target.value
-        const result = await sendDel({ id: cartId, giftBasketId })
+        await sendDel({ id: cartId, giftBasketId })
     }
 
     let content;

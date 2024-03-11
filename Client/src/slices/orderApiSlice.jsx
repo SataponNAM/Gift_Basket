@@ -61,9 +61,10 @@ export const orderApiSlice = apiSlice.injectEndpoints({
 })
 
 export const {
-    useCheckout,
-    useWebhook,
-    useGetOrderID,
-} = orderApiSlice
+    useCheckoutMutation,
+    useWebhookMutation,
+    useGetOrderIdQuery,
+} = orderApiSlice;
+
 
 
