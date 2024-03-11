@@ -9,7 +9,7 @@ router.use(veriftJWT)
 router.route('/checkout')
     .post(orderController.checkout)
 
-router.route('getOrderId')
+router.route('/getOrderId')
     .get(orderController.getOrderId)
 
 module.exports = router

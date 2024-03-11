@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth.jsx'
 import { useGetCartQuery } from '../../slices/cartApiSlice.jsx'
 import { useGetUsersQuery } from '../../slices/userApiSlice.jsx'
 import Cart from '../../components/Cart/Cart.jsx'
+import {loadStripe} from '@stripe/stripe-js';
 
 function CartList() {
     let content
@@ -54,14 +55,27 @@ function CartList() {
         content = <p className='errmsg'>{error?.data?.message}</p>
     }
 
+    let basketId
+
     if (isSuccess) {
         const { ids, entities } = cart
 
         const filteredIds = ids?.filter(cartId => entities[cartId].user === userId[0])
+        const filterData = ids?.filter(cartId => entities[cartId].user === userId[0]).map(cartId => entities[cartId])
 
-        //console.log(entities)
+        if (filterData.length > 0) {
+            basketId = filterData[0].giftBasket;
+            //console.log(basketId);
+        }
+
+        //console.log(filterData)
 
         content = ids?.length && filteredIds.map(cartId => <Cart key={cartId} cartId={cartId} total={total} setTotal={setTotal} />)
+    }
+
+    const makePayment = async () => {
+        // go to choose address
+        navigate('/dash/order/selectaddress', {state: {basketId}})
     }
 
     return (
@@ -76,7 +90,7 @@ function CartList() {
 
                 <Container>
                     <p>ราคารวม : {total} บาท</p>
-                    <Button>ซื้อสินค้า</Button>
+                    <Button onClick={makePayment}>ซื้อสินค้า</Button>
                 </Container>
 
             </Container>

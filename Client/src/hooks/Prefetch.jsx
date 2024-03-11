@@ -7,6 +7,7 @@ import { basketApiSlice } from '../slices/basketApiSlice.jsx';
 import { decorationApiSlice } from '../slices/decorationApiSlice.jsx';
 import { productApiSlice } from '../slices/productApiSlice.jsx';
 import { cardApiSlice } from '../slices/cardApiSlice.jsx';
+import { orderApiSlice } from '../slices/orderApiSlice.jsx';
 
 const Prefetch = () => {
     useEffect(() => {
@@ -17,6 +18,7 @@ const Prefetch = () => {
         const decoration = store.dispatch(decorationApiSlice.endpoints.getDecoration.initiate())
         const product = store.dispatch(productApiSlice.endpoints.getProduct.initiate())
         const card = store.dispatch(cardApiSlice.endpoints.getCard.initiate())
+        const order = store.dispatch(orderApiSlice.endpoints.getOrderId.initiate())
 
         return () => {
             console.log('unsubscribing')
@@ -26,6 +28,7 @@ const Prefetch = () => {
             decoration.unsubscribe()
             product.unsubscribe()
             card.unsubscribe()
+            order.unsubscribe()
         }
     }, [])
 

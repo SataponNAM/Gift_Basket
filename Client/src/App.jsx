@@ -18,6 +18,8 @@ import Product from './screen/MakeBasket/SelectProduct/SelectProductForm.jsx'
 import Card from './screen/MakeBasket/SelectCard/SelectCardForm.jsx'
 import MakeBasket from './screen/MakeBasket/Make/makeGiftBasket.jsx'
 import Cart from './screen/Cart/CartList.jsx'
+import Checkout from './screen/CheckOut/CheckOut.jsx'
+import SelectAddress from './screen/Address/Select/SelectAddress.jsx'
 
 import { ROLES } from './config/Roles.jsx'
 import RequireAuth from './hooks/RequireAuth.jsx'
@@ -63,6 +65,11 @@ function App() {
 
                   <Route path='cart'>
                     <Route index element={<Cart />} />
+                  </Route>
+
+                  <Route path='order'>
+                    <Route path='checkout' element={<Checkout />} />
+                    <Route path='selectaddress' element={<SelectAddress />} />
                   </Route>
 
                 </Route>
