@@ -42,18 +42,18 @@ function nav() {
 
             // Customer navbar
             <NavDropdown title="Profile" id='username'>
-                <NavDropdown.Item as={Link} to='/dash/address'>Address</NavDropdown.Item>
-                {/* Logout */}
-                <NavDropdown.Item onClick={onLogoutClicked}>Logout</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to='/dash/order/orderlist'>รายการคำสั่งซื้อ</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to='/dash/address'>ที่อยู่</NavDropdown.Item>
+                <NavDropdown.Item onClick={onLogoutClicked}>ออกจากระบบ</NavDropdown.Item> 
             </NavDropdown>
         )
     )
 
     return (
         <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary" sticky="top">
-            <Link to='/dash/home'>Home</Link>
-            <Link to='/dash/cart'>Cart</Link>
+            <Link to='/dash/home'>หน้าหลัก</Link>
 
+            <Link to='/dash/cart'>ตะกร้าสินค้า</Link>
             {dropdownButton}
         </Navbar>
     )

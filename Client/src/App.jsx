@@ -20,8 +20,8 @@ import MakeBasket from './screen/MakeBasket/Make/makeGiftBasket.jsx'
 import Cart from './screen/Cart/CartList.jsx'
 import Checkout from './screen/CheckOut/CheckOut.jsx'
 import SelectAddress from './screen/Address/Select/SelectAddress.jsx'
-import Payment from './screen/Payment/Payment.jsx'
 import Success from './screen/Payment/success/Success.jsx'
+import OrderList from './screen/Order/OrderList.jsx'
 
 import { ROLES } from './config/Roles.jsx'
 import RequireAuth from './hooks/RequireAuth.jsx'
@@ -72,8 +72,8 @@ function App() {
                   <Route path='order'>
                     <Route path='checkout' element={<Checkout />} />
                     <Route path='selectaddress' element={<SelectAddress />} />
-                    <Route path='payment' element={<Payment />} />
-                    <Route path='success:id' element={<Success />} />
+                    <Route path='success/:status' element={<Success />} />
+                    <Route path='orderlist' element={<OrderList />} />
                   </Route>
 
                 </Route>

@@ -36,8 +36,8 @@ const checkout = asyncHandler(async (req, res) => {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: 'payment',
-            success_url: `http://localhost:8080/success.html?id=${orderId}`,
-            cancel_url: `http://localhost:8080/cancel.html?id=${orderId}`,
+            success_url: `http://localhost:8080/dash/order/success/true`,
+            cancel_url: `http://localhost:8080//dash/order/cancel/true`,
         });
 
         console.log("session", session);
@@ -47,12 +47,6 @@ const checkout = asyncHandler(async (req, res) => {
         order.status = session.status
 
         await order.save();
-
-        // res.json({
-        //     user,
-        //     productIds,
-        //     sessionID: session.id
-        // })
 
         res.json({url: session.url})
 
