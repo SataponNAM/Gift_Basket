@@ -7,12 +7,12 @@ import { setCredentials } from '../../slices/Reducers/authReducers.jsx'
 import { useLoginMutation } from '../../slices/authApiSlice.jsx'
 import usePersist from '../../hooks/usePersist.jsx'
 
-function login (){
+function login() {
     const userRef = useRef()
     const errRef = useRef()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState('') 
+    const [errorMessage, setErrorMessage] = useState('')
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -35,17 +35,17 @@ function login (){
             dispatch(setCredentials({ accessToken }))
             setEmail('')
             setPassword('')
-            navigate('/dash/home')
+            navigate('/dash')
         } catch (err) {
-            if(!err.status){
+            if (!err.status) {
                 setErrorMessage('No server response')
-            }else if(err.status === 400){
+            } else if (err.status === 400) {
                 // ใส่ input ไม่ครบทุกช่อง
                 setErrorMessage('All fields are required.')
-            }else if(err.status === 401){
+            } else if (err.status === 401) {
                 // ใส่รหัส หรือ email ผิด
                 setErrorMessage('Incorrect email or password')
-            }else {
+            } else {
                 setErrorMessage(err.data?.message)
             }
             errRef.current.focus()
@@ -54,10 +54,10 @@ function login (){
 
     const errClass = errorMessage ? "errmsg" : "offscreen"
 
-    const inputEmail = (e) =>{
+    const inputEmail = (e) => {
         setEmail(e.target.value)
     }
-    const inputPassword = (e) =>{
+    const inputPassword = (e) => {
         setPassword(e.target.value)
     }
     const handleToggle = () => {
@@ -69,29 +69,29 @@ function login (){
             <Form className="mt-5" onSubmit={handleSubmit}>
                 <h2 className="mb-4">Login</h2>
                 <Form.Group className="mb-3">
-                    <Form.Control 
-                        type="email" 
-                        placeholder="Email" 
+                    <Form.Control
+                        type="email"
+                        placeholder="Email"
                         ref={userRef}
                         value={email}
                         onChange={inputEmail}
-                        required/>
+                        required />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Control 
-                        type="password" 
-                        placeholder="Password" 
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
                         value={password}
                         onChange={inputPassword}
                         require>
                     </Form.Control>
                 </Form.Group>
-                { /* print error message*/ }
+                { /* print error message*/}
                 <p ref={errRef} className={errClass} aria-live='assertive'>{errorMessage}</p>
 
                 <Form.Group>
-                    <input 
+                    <input
                         type='checkbox'
                         onChange={handleToggle}
                         checked={persist}

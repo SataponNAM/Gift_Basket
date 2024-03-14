@@ -2,9 +2,9 @@ import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Navbar, NavDropdown } from 'react-bootstrap'
-
 import { useSendLogoutMutation } from '../../slices/authApiSlice'
 import useAuth from '../../hooks/useAuth'
+
 
 function nav() {
     const { isAdmin } = useAuth()
@@ -19,8 +19,8 @@ function nav() {
     }] = useSendLogoutMutation()
 
     useEffect(() => {
-        if (isSuccess){
-            
+        if (isSuccess) {
+
         }
     }, [isSuccess, navigate])
 
@@ -33,29 +33,35 @@ function nav() {
         return <p>Error: {error.data?.message}</p>
     }
 
-    const dropdownButton = (
+    const nav = (
         // When user login
         isAdmin ? (
-            // Admin navbar
-            <div>Admin Navbar</div>
+            <Navbar bg="light" data-bs-theme="light" expand="lg" className="bg-body-tertiary adminNav" sticky="top">
+                <NavDropdown title="Admin" id='username'>
+                    <NavDropdown.Item onClick={onLogoutClicked}>ออกจากระบบ</NavDropdown.Item>
+                </NavDropdown>
+            </Navbar>
         ) : (
+            <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary custNav" sticky="top">
+                <Link to='/dash/home'>หน้าหลัก</Link>
+                <Link to='/dash/cart'>ตะกร้าสินค้า</Link>
 
+                <NavDropdown title="Profile" id='username'>
+                    <NavDropdown.Item as={Link} to='/dash/order/orderlist'>รายการคำสั่งซื้อ</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/dash/address'>ที่อยู่</NavDropdown.Item>
+                    <NavDropdown.Item onClick={onLogoutClicked}>ออกจากระบบ</NavDropdown.Item>
+                </NavDropdown>
+            </Navbar>
             // Customer navbar
-            <NavDropdown title="Profile" id='username'>
-                <NavDropdown.Item as={Link} to='/dash/order/orderlist'>รายการคำสั่งซื้อ</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to='/dash/address'>ที่อยู่</NavDropdown.Item>
-                <NavDropdown.Item onClick={onLogoutClicked}>ออกจากระบบ</NavDropdown.Item> 
-            </NavDropdown>
+
         )
     )
 
     return (
-        <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary" sticky="top">
-            <Link to='/dash/home'>หน้าหลัก</Link>
+        <>
+            {nav}
+        </>
 
-            <Link to='/dash/cart'>ตะกร้าสินค้า</Link>
-            {dropdownButton}
-        </Navbar>
     )
 }
 

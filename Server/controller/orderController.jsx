@@ -120,8 +120,20 @@ const getOrderId = asyncHandler(async (req, res) => {
     }
 })
 
+// /order/getOrder
+const getOrder = asyncHandler(async (req, res) => {
+    const order = await Order.find().lean()
+
+    if(!order.length){
+        return res.status(400).json({ message : 'No order found'})
+    }
+
+    res.json(order)
+})
+
 module.exports = {
     checkout,
     webhook,
-    getOrderId
+    getOrderId,
+    getOrder
 };

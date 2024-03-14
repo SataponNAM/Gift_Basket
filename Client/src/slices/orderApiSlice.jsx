@@ -57,6 +57,32 @@ export const orderApiSlice = apiSlice.injectEndpoints({
             },
         }),
 
+        getOrder: builder.query({
+            query: () => ({
+                url: '/order/getOrder',
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError;
+                },
+            }),
+            transformResponse: (responseData) => {
+                const loadedOrder = responseData.map((order) => {
+                    order.id = order._id;
+                    return order;
+                });
+                return orderAdapter.setAll(initialState, loadedOrder);
+            },
+            providesTags: (result, error, arg) => {
+                if (result?.ids) {
+                    return [
+                        { type: 'Order', id: 'LIST' },
+                        ...result.ids.map((id) => ({ type: 'Order', id })),
+                    ];
+                } else {
+                    return [{ type: 'Order', id: 'LIST' }];
+                }
+            },
+        }),
+
     })
 })
 
@@ -64,7 +90,22 @@ export const {
     useCheckoutMutation,
     useWebhookMutation,
     useGetOrderIdQuery,
+    useGetOrderQuery
 } = orderApiSlice;
+
+export const selectOrderResult = orderApiSlice.endpoints.getOrder.select()
+
+// create memorized selector
+const selecOrderData = createSelector(
+    selectOrderResult,
+    orderResult => orderResult.data
+)
+
+export const {
+    selectAll: selectAllOrder,
+    selectById: selectAllOrderById,
+    selectIds: selectAllOrderIds
+} = orderAdapter.getSelectors(state => selecOrderData(state) ?? initialState)
 
 
 

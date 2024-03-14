@@ -4,18 +4,22 @@
     box-sizing: border-box;
 }
 
-nav {
+.adminNav a {
+    color: black;
+}
+
+.custNav nav {
     background-color: rgb(49, 49, 49);
     padding: 1rem;
     color: white;
 }
 
-nav a{
+.custNav a{
     color: white;
     margin: 0 1rem;
     text-decoration: none;
 }
 
-nav-item {
+.custNav nav-item {
     color: white;
 }

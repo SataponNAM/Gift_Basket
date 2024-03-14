@@ -12,4 +12,7 @@ router.route('/checkout')
 router.route('/getOrderId')
     .get(orderController.getOrderId)
 
+router.route('/getOrder')
+    .get(orderController.getOrder)
+
 module.exports = router

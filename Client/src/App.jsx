@@ -23,6 +23,8 @@ import SelectAddress from './screen/Address/Select/SelectAddress.jsx'
 import Success from './screen/Payment/success/Success.jsx'
 import OrderList from './screen/Order/OrderList.jsx'
 
+import AdminHome from './screen/Admin/Home/AdminHome.jsx'
+
 import { ROLES } from './config/Roles.jsx'
 import RequireAuth from './hooks/RequireAuth.jsx'
 
@@ -44,13 +46,23 @@ function App() {
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
             <Route element={<Prefetch />}>
-              <Route path='/dash' element={<DashLayout />}>
+              <Route path='dash' element={<DashLayout />}>
+
+                <Route index element={<Home />} />
+
+                {/* Admin Routes */}
+                <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+                  <Route path='admin'>
+                    <Route index element={<AdminHome />} />
+
+                    <Route path='home' element={<AdminHome />} />
+                  </Route>
+                </Route>
 
                 {/* Customer Routes */}
-                <Route element={<RequireAuth allowedRoles={[ROLES.Customer]} />}>
-                  <Route index element={<Home />} />
+                <Route>
                   <Route path='home' element={<Home />} />
-                  
+
                   <Route path='address'>
                     <Route index element={<Address />} />
                     <Route path='addAddress' element={<AddAddress />} />
@@ -58,7 +70,7 @@ function App() {
                   </Route>
 
                   <Route path='makeBasket'>
-                    <Route path='basket' element={<Basket />}/>
+                    <Route path='basket' element={<Basket />} />
                     <Route path='decoration' element={<Decoration />}></Route>
                     <Route path='product' element={<Product />}></Route>
                     <Route path='card' element={<Card />}></Route>
@@ -75,11 +87,6 @@ function App() {
                     <Route path='success/:status' element={<Success />} />
                     <Route path='orderlist' element={<OrderList />} />
                   </Route>
-
-                </Route>
-
-                {/* Admin Routes */}
-                <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
 
                 </Route>
 
