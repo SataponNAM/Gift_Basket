@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { setCredentials } from '../../slices/Reducers/authReducers.jsx'
 import { useLoginMutation } from '../../slices/authApiSlice.jsx'
 import usePersist from '../../hooks/usePersist.jsx'
+import useAuth from '../../hooks/useAuth.jsx'
 
 function login() {
     const userRef = useRef()
@@ -31,11 +32,20 @@ function login() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const { accessToken } = await login({ email, password }).unwrap()
+            const { accessToken, role } = await login({ email, password }).unwrap()
             dispatch(setCredentials({ accessToken }))
+
+            console.log(role[0])
+
             setEmail('')
             setPassword('')
-            navigate('/dash')
+
+            if(role[0] == 'Customer'){
+                navigate('/dash')
+            } else {
+                navigate('/adminDash/admin')
+            }
+            
         } catch (err) {
             if (!err.status) {
                 setErrorMessage('No server response')

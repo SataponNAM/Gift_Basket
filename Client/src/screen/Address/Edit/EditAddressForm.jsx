@@ -17,7 +17,7 @@ function EditAddressForm({ address, users }) {
     const [userId, setUserId] = useState(address.user)
     const [addressId, setAddressId] = useState(address)
 
-    const [addAddress, {
+    const [updateAddress, {
         isLoading,
         isSuccess,
         isError,
@@ -52,7 +52,7 @@ function EditAddressForm({ address, users }) {
 
     const onSaveAddress = async (e) => {
         e.preventDefault()
-        await addAddress({ id: addressId, user: userId, firstname, lastname, add, province, district, subdistrict, postal, phone, isDefault })
+        await updateAddress({ id: addressId, user: userId, firstname, lastname, add, province, district, subdistrict, postal, phone, isDefault })
     }
 
     return (

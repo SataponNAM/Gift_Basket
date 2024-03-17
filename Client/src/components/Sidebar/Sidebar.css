@@ -1,0 +1,10 @@
+
+.sidebar-wrapper {
+    width: 250px; /* Set the desired width */
+    
+}
+
+.sidebar-nav a {
+    color: black;
+    margin: 5px;
+}

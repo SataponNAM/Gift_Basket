@@ -26,6 +26,11 @@ const orderSchema = new mongoose.Schema(
             type: String,
             require: true
         },
+        idDeliver: {
+            type: Boolean,
+            require: true,
+            default: false
+        },
         session_id: {
             type: String,
             require: true

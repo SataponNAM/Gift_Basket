@@ -4,22 +4,30 @@
     box-sizing: border-box;
 }
 
-.adminNav a {
-    color: black;
-}
-
 .custNav nav {
     background-color: rgb(49, 49, 49);
     padding: 1rem;
     color: white;
 }
 
-.custNav a{
+.custNav a {
     color: white;
     margin: 0 1rem;
     text-decoration: none;
 }
 
 .custNav nav-item {
+    color: white;
+}
+
+.dropdown {
+    margin-right: 3rem;
+}
+
+.brand {
+    margin-left: 3rem;
+}
+
+.adminNav {
     color: white;
 }

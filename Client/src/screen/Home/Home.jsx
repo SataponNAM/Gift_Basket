@@ -18,16 +18,16 @@ function home() {
         content = (
             <Container>
                 <div>
-                    
+
                 </div>
-                
+
                 <div>
                     <Button onClick={makeBasket}>Make your own basket.</Button>
                 </div>
             </Container>
         );
     } else {
-        navigate('/dash/admin/home')
+        navigate('/adminDash/admin/home')
     }
 
     return content

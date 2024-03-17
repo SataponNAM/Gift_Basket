@@ -5,7 +5,7 @@ const path = require('path')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser'); 
 
 const { logger, logEvents } = require('./middleware/logger.jsx')
 const errorHandler = require('./middleware/errorHandler.jsx')
@@ -19,21 +19,22 @@ console.log(process.env.NODE_ENV)
 
 connectDB()
 
-
-
 app.use(logger)
 app.use(cors(corsOption))
-//app.use(express.raw({type: 'application/json'}))
-app.use((req, res, next) => {
-    if (req.originalUrl === "/webhook") {
-        next();
-    } else {
-        express.json()(req, res, next);
-    }
-});
 
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
+// app.use((req, res, next) => {
+//     if (req.originalUrl === "/webhook") {
+//         next();
+//     } else {
+//         express.json()(req, res, next);
+//     }
+// });
+
+
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+// app.use(express.static("public"));
+// app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser())
 
 app.use('/', express.static(path.join(__dirname, '/public')))

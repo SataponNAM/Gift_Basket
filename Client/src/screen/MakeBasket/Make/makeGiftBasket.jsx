@@ -7,7 +7,6 @@ import { useState, useRef, useEffect } from "react";
 import { useAddGiftBasketMutation } from "../../../slices/giftBasketApiSlice.jsx";
 import { useAddCartMutation } from "../../../slices/cartApiSlice.jsx";
 import { useGetCartQuery, useUpdateCartMutation } from "../../../slices/cartApiSlice.jsx";
-import xtype from 'xtypejs'
 
 function makeBasket() {
     const location = useLocation()

@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 
-import Navbar from './components/Navbar/Navbar.jsx'
-import Layout from './components/Layout.jsx'
 import Prefetch from './hooks/Prefetch.jsx'
 import PersistLogin from './screen/Login/PersistLogin.jsx'
 import Login from './screen/Login/Login.jsx'
@@ -28,7 +26,12 @@ import AdminHome from './screen/Admin/Home/AdminHome.jsx'
 import { ROLES } from './config/Roles.jsx'
 import RequireAuth from './hooks/RequireAuth.jsx'
 
-import DashLayout from './components/DashLayout.jsx'
+import Layout from './components/Layout/Layout.jsx'
+import DashLayout from './components/Layout/DashLayout.jsx'
+import AdminLayout from './components/Layout/AdminLayout.jsx'
+import BasketList from './screen/Admin/Basket/List/BasketList.jsx'
+import BasketEdit from './screen/Admin/Basket/Edit/BasketEditForm.jsx'
+import AddBasket from './screen/Admin/Basket/Add/AddBasketForm.jsx'
 
 function App() {
 
@@ -49,15 +52,6 @@ function App() {
               <Route path='dash' element={<DashLayout />}>
 
                 <Route index element={<Home />} />
-
-                {/* Admin Routes */}
-                <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-                  <Route path='admin'>
-                    <Route index element={<AdminHome />} />
-
-                    <Route path='home' element={<AdminHome />} />
-                  </Route>
-                </Route>
 
                 {/* Customer Routes */}
                 <Route>
@@ -91,6 +85,28 @@ function App() {
                 </Route>
 
               </Route>
+
+              {/* Admin Route */}
+              <Route path='adminDash' element={<AdminLayout />}>
+                <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+                
+                  <Route path='admin'>
+                    <Route index element={<AdminHome />} />
+
+                    <Route path='home' element={<AdminHome />} />
+
+                    <Route path='product'>
+                    
+                      <Route path='basket'>
+                        <Route path='basketList' element={<BasketList />} />
+                        <Route path='edit/:id' element={<BasketEdit />} />
+                        <Route path='add' element={<AddBasket />} />
+                      </Route>
+                    </Route>
+                  </Route>
+                </Route>
+              </Route>
+
             </Route>
           </Route>
         </Route>

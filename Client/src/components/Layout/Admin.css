@@ -1,0 +1,39 @@
+.contain {
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh; 
+}
+
+#sidebar {
+    width: 200px;
+    min-width: 170px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #fafbfe;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+}
+
+.main {
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    padding: 1rem 0 0 2rem;
+    background-color: #eceff8;
+    flex: 1; /* Fill the remaining space */
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}

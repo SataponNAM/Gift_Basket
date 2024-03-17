@@ -1,7 +1,7 @@
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { Navbar, NavDropdown } from 'react-bootstrap'
+import { Container, Navbar, NavDropdown } from 'react-bootstrap'
 import { useSendLogoutMutation } from '../../slices/authApiSlice'
 import useAuth from '../../hooks/useAuth'
 
@@ -36,10 +36,13 @@ function nav() {
     const nav = (
         // When user login
         isAdmin ? (
-            <Navbar bg="light" data-bs-theme="light" expand="lg" className="bg-body-tertiary adminNav" sticky="top">
-                <NavDropdown title="Admin" id='username'>
-                    <NavDropdown.Item onClick={onLogoutClicked}>ออกจากระบบ</NavDropdown.Item>
-                </NavDropdown>
+            <Navbar bg="primary" data-bs-theme="dark" className="adminNav" sticky="top">
+                <Navbar.Brand className='brand'>Gift Basket</Navbar.Brand>
+                <Navbar.Collapse className="justify-content-end">
+                    <NavDropdown title="Admin" id="dropdown-menu-align-responsive-2" align={{ lg: 'end' }} className='dropdown'>
+                        <NavDropdown.Item onClick={onLogoutClicked}>ออกจากระบบ</NavDropdown.Item>
+                    </NavDropdown>
+                </Navbar.Collapse>
             </Navbar>
         ) : (
             <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary custNav" sticky="top">

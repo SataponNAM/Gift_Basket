@@ -52,7 +52,7 @@ const login = asyncHandler(async (req, res) => {
     })
 
     // send accessToken contain email and roles
-    res.json({ accessToken })
+    res.json({ accessToken, role: foundUser.roles })
 })
 
 // Refresh GET Public

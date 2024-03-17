@@ -21,7 +21,7 @@ const Basket = ({ basketId, selectedBasket, setSelectedBasket }) => {
     return (
       <Container className="mt-2">
         <Card style={{ width: '18rem' }} onClick={selectedCard} className={classes}>
-          <Card.Img variant="top" src={`data:image/jpeg;base64,${basket.image}`} />
+          <Card.Img variant="top" src={basket.image} />
           <Card.Body>
             <Card.Text>{basket.name}</Card.Text>
             <Card.Text>{basket.price} baths</Card.Text>
