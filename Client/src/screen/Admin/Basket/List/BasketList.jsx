@@ -1,5 +1,5 @@
 import { Button, Col, Container, Row } from "react-bootstrap"
-import ManageBasket from '../../../../components/Basket/Manager/ManageBasket.jsx'
+import ManageBasket from '../../../../components/Basket/Manage/ManageBasket.jsx'
 import { useGetBasketQuery } from "../../../../slices/basketApiSlice"
 import { useNavigate } from "react-router-dom"
 

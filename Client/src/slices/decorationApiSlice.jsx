@@ -78,9 +78,9 @@ const selectAllDecorationData = createSelector(
 )
 
 export const {
-    selectAll: selectAllDecoration,
-    selectById: selectAllDecorationById,
-    selectIds: selectAllDecorationIds
+    selectAll: selectDecoration,
+    selectById: selectDecorationById,
+    selectIds: selectDecorationIds
 } = decorationAdapter.getSelectors(state => selectAllDecorationData(state) ?? initialState)
 
 export const {

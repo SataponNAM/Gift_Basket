@@ -13,8 +13,9 @@ const Sidebar = () => {
 
                 <NavDropdown title="รายการสินค้า" className="sidebar-item" >
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/basket/basketList'>ตะกร้า</NavDropdown.Item>
-                    <NavDropdown.Item>assaw</NavDropdown.Item>
-                    <NavDropdown.Item>tfqwef1</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/flower/flowerList'>ดอกไม้</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/ribbon/ribbonList'>ริบบิ้น</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/bow/bowList'>โบว์</NavDropdown.Item>
                 </NavDropdown>
                 
             </Nav>
