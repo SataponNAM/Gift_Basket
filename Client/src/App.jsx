@@ -45,6 +45,14 @@ import BowList from './screen/Admin/Decoration/Bow/List/BowList.jsx'
 import EditBow from './screen/Admin/Decoration/Bow/Edit/EditBowForm.jsx'
 import AddBow from './screen/Admin/Decoration/Bow/Add/AddBow.jsx'
 
+import DrinkList from './screen/Admin/Product/List/DrinkList.jsx'
+import EditDrink from './screen/Admin/Product/Edit/EditDrink.jsx'
+import AddDrink from './screen/Admin/Product/Add/AddDrink.jsx'
+
+import FruitList from './screen/Admin/Product/List/FruitList.jsx'
+import EditFruit from './screen/Admin/Product/Edit/EditFruit.jsx'
+import AddFruit from './screen/Admin/Product/Add/AddFruit.jsx'
+
 function App() {
 
   return (
@@ -132,6 +140,18 @@ function App() {
                         <Route path='bowList' element={<BowList />} />
                         <Route path='edit/:id' element={<EditBow />} />
                         <Route path='add' element={<AddBow />} />
+                      </Route>
+
+                      <Route path='drink'>
+                        <Route path='drinkList' element={<DrinkList />} />
+                        <Route path='edit/:id' element={<EditDrink />} />
+                        <Route path='add' element={<AddDrink />} />
+                      </Route>
+
+                      <Route path='fruit'>
+                        <Route path='fruitList' element={<FruitList />} />
+                        <Route path='edit/:id' element={<EditFruit />} />
+                        <Route path='add' element={<AddFruit />} />
                       </Route>
 
                     </Route>

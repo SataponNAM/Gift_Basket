@@ -16,6 +16,8 @@ const Sidebar = () => {
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/flower/flowerList'>ดอกไม้</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/ribbon/ribbonList'>ริบบิ้น</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/bow/bowList'>โบว์</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/drink/drinkList'>Drink</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/fruit/fruitList'>Fruit</NavDropdown.Item>
                 </NavDropdown>
                 
             </Nav>

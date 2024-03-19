@@ -35,7 +35,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
 
         addProduct: builder.mutation({
             query: initialProduct => ({
-                url: '/produst',
+                url: '/product',
                 method: 'POST',
                 body: { ...initialProduct },
             }),
@@ -46,7 +46,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
 
         deleteProduct: builder.mutation({
             query: ({ id }) => ({
-                url: '/produst',
+                url: '/product',
                 method: 'DELETE',
                 body: { id },
             }),
@@ -57,7 +57,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
 
         updateProduct: builder.mutation({
             query: initialProduct => ({
-                url: '/produst',
+                url: '/product',
                 method: 'PATCH',
                 body: { ...initialProduct },
             }),
@@ -78,9 +78,9 @@ const selectAllProductData = createSelector(
 )
 
 export const {
-    selectAll: selectAllProduct,
-    selectById: selectAllProductById,
-    selectIds: selectAllProductIds
+    selectAll: selectProduct,
+    selectById: selectProductById,
+    selectIds: selectProductIds
 } = productAdapter.getSelectors(state => selectAllProductData(state) ?? initialState)
 
 export const {
