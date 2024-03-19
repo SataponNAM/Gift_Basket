@@ -53,6 +53,10 @@ import FruitList from './screen/Admin/Product/List/FruitList.jsx'
 import EditFruit from './screen/Admin/Product/Edit/EditFruit.jsx'
 import AddFruit from './screen/Admin/Product/Add/AddFruit.jsx'
 
+import CardList from './screen/Admin/Card/List/CardList.jsx'
+import EditCard from './screen/Admin/Card/Edit/EditCard.jsx'
+import AddCard from './screen/Admin/Card/Add/AddCard.jsx'
+
 function App() {
 
   return (
@@ -152,6 +156,12 @@ function App() {
                         <Route path='fruitList' element={<FruitList />} />
                         <Route path='edit/:id' element={<EditFruit />} />
                         <Route path='add' element={<AddFruit />} />
+                      </Route>
+
+                      <Route path='card'>
+                        <Route path='cardList' element={<CardList />} />
+                        <Route path='edit/:id' element={<EditCard />} />
+                        <Route path='add' element={<AddCard />} />
                       </Route>
 
                     </Route>

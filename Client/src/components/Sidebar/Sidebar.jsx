@@ -8,6 +8,7 @@ const Sidebar = () => {
     return (
         <div className="sidebar-wrapper d-flex">
             <Nav className="flex-column mb-3 sidebar-nav" >
+                <Nav.Link className="sidebar-item" as={Link} to='/adminDash/admin/home'>หน้าหลัก</Nav.Link>
                 <Nav.Link className="sidebar-item" >รายชื่อลูกค้า</Nav.Link>
                 <Nav.Link className="sidebar-item">รายการคำสั่งซื้อ</Nav.Link>
 
@@ -18,6 +19,7 @@ const Sidebar = () => {
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/bow/bowList'>โบว์</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/drink/drinkList'>Drink</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/fruit/fruitList'>Fruit</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/card/cardList'>Card</NavDropdown.Item>
                 </NavDropdown>
                 
             </Nav>

@@ -78,9 +78,9 @@ const selectAllCardData = createSelector(
 )
 
 export const {
-    selectAll: selectAllCard,
-    selectById: selectAllCardById,
-    selectIds: selectAllCardIds
+    selectAll: selectCard,
+    selectById: selectCardById,
+    selectIds: selectCardIds
 } = cardAdapter.getSelectors(state => selectAllCardData(state) ?? initialState)
 
 export const {
