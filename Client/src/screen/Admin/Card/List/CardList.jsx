@@ -55,10 +55,10 @@ function CardList() {
 
     return (
         <Container>
-            <h1>Card</h1>
+            <h1>Card List</h1>
 
             <div>
-                <Button onClick={addCardClick}>เพิ่มสินค้า</Button>
+                <Button onClick={addCardClick}>Add Card</Button>
             </div>
 
             {content}

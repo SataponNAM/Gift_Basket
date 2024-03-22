@@ -57,6 +57,9 @@ import CardList from './screen/Admin/Card/List/CardList.jsx'
 import EditCard from './screen/Admin/Card/Edit/EditCard.jsx'
 import AddCard from './screen/Admin/Card/Add/AddCard.jsx'
 
+import OrderListManage from './screen/Admin/Order/List/OrderList.jsx'
+import OrderDetail from './screen/Admin/Order/Detail/OrderDetail.jsx'
+
 function App() {
 
   return (
@@ -163,8 +166,13 @@ function App() {
                         <Route path='edit/:id' element={<EditCard />} />
                         <Route path='add' element={<AddCard />} />
                       </Route>
-
                     </Route>
+
+                    <Route path='order'>
+                      <Route path='orderListAdmin' element={<OrderListManage />} />
+                      <Route path='orderDetail/:id' element={<OrderDetail />} />
+                    </Route>
+
                   </Route>
                 </Route>
               </Route>

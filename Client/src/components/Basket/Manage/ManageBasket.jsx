@@ -27,11 +27,11 @@ const ManageBasket = ({ basketId }) => {
             <Card.Img variant="top" src={basket.image} />
             <Card.Body>
               <Card.Text>{basket.name}</Card.Text>
-              <Card.Text>ราคา : {basket.price} บาท</Card.Text>
+              <Card.Text>Price : {basket.price} baths</Card.Text>
 
               <Card.Footer >
-                <Button variant='outline-primary' className='m-1' onClick={editClick}>แก้ไข</Button>
-                <Button variant='outline-danger' className='m-1' onClick={deleteClick}>ลบ</Button>
+                <Button variant='outline-primary' className='m-1' onClick={editClick}>Edit</Button>
+                <Button variant='outline-danger' className='m-1' onClick={deleteClick}>Delete</Button>
               </Card.Footer>
 
             </Card.Body>

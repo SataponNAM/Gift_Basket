@@ -91,6 +91,6 @@ const selectAllAddressData = createSelector(
 
 export const {
     selectAll: selectAllAddress,
-    selectById: selectAllAddressById,
-    selectIds: selectAllAddressIds
+    selectById: selectAddressById,
+    selectIds: selectAddressIds
 } = addressAdapter.getSelectors(state => selectAllAddressData(state) ?? initialState)

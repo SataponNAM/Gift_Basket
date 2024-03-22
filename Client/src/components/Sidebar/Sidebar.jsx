@@ -8,16 +8,15 @@ const Sidebar = () => {
     return (
         <div className="sidebar-wrapper d-flex">
             <Nav className="flex-column mb-3 sidebar-nav" >
-                <Nav.Link className="sidebar-item" as={Link} to='/adminDash/admin/home'>หน้าหลัก</Nav.Link>
-                <Nav.Link className="sidebar-item" >รายชื่อลูกค้า</Nav.Link>
-                <Nav.Link className="sidebar-item">รายการคำสั่งซื้อ</Nav.Link>
+                <Nav.Link className="sidebar-item" as={Link} to='/adminDash/admin/home'>Home</Nav.Link>
+                <Nav.Link className="sidebar-item" as={Link} to='/adminDash/admin/order/orderListAdmin'>Order List</Nav.Link>
 
-                <NavDropdown title="รายการสินค้า" className="sidebar-item" >
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/basket/basketList'>ตะกร้า</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/flower/flowerList'>ดอกไม้</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/ribbon/ribbonList'>ริบบิ้น</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/bow/bowList'>โบว์</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/drink/drinkList'>Drink</NavDropdown.Item>
+                <NavDropdown title="All Products" className="sidebar-item" >
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/basket/basketList'>Basket</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/flower/flowerList'>Flower</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/ribbon/ribbonList'>Ribbon</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/bow/bowList'>Bow</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/drink/drinkList'>Beverage</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/fruit/fruitList'>Fruit</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to='/adminDash/admin/product/card/cardList'>Card</NavDropdown.Item>
                 </NavDropdown>

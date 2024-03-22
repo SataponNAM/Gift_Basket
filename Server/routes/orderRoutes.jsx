@@ -15,4 +15,7 @@ router.route('/getOrderId')
 router.route('/getOrder')
     .get(orderController.getOrder)
 
+router.route('/updateDeliver')
+    .patch(orderController.updateDeliver)
+
 module.exports = router

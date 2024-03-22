@@ -55,10 +55,10 @@ function BasketList() {
 
     return (
         <Container>
-            <h1>Basket</h1>
+            <h1>Basket List</h1>
 
             <div>
-                <Button onClick={addBasketClick}>เพิ่มสินค้า</Button>
+                <Button onClick={addBasketClick}>Add BAsket</Button>
             </div>
 
             {content}

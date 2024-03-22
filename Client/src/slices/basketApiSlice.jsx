@@ -92,5 +92,5 @@ const selectBasketData = createSelector(
 export const {
     selectAll: selectAllBasket,
     selectById: selectBasketById,
-    selectIds: selectAllBasketIds
+    selectIds: selectBasketIds
 } = basketAdapter.getSelectors(state => selectBasketData(state) ?? initialState)

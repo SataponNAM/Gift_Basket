@@ -22,19 +22,8 @@ connectDB()
 app.use(logger)
 app.use(cors(corsOption))
 
-// app.use((req, res, next) => {
-//     if (req.originalUrl === "/webhook") {
-//         next();
-//     } else {
-//         express.json()(req, res, next);
-//     }
-// });
-
-
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-// app.use(express.static("public"));
-// app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser())
 
 app.use('/', express.static(path.join(__dirname, '/public')))

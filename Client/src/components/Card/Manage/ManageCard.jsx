@@ -27,11 +27,11 @@ const ManageCard = ({ cardId }) => {
           <Card.Img variant="top" src={`${card.image}`} style={{ height: '50%', objectFit: 'cover' }} />
           <Card.Body style={{ height: '40%' }}>
             <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{card.name}</Card.Title>
-            <Card.Text>ราคา : {card.price} บาท</Card.Text>
+            <Card.Text>Price : {card.price} baths</Card.Text>
           </Card.Body>
           <Card.Footer style={{ height: 'fit-content' }}>
-            <Button variant='outline-primary' className='m-1' onClick={editClick}>แก้ไข</Button>
-            <Button variant='outline-danger' className='m-1' onClick={deleteClick}>ลบ</Button>
+            <Button variant='outline-primary' className='m-1' onClick={editClick}>Edit</Button>
+            <Button variant='outline-danger' className='m-1' onClick={deleteClick}>Delete</Button>
           </Card.Footer>
         </Card>
       </Container>

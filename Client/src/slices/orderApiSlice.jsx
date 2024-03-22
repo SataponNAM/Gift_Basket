@@ -83,6 +83,19 @@ export const orderApiSlice = apiSlice.injectEndpoints({
             },
         }),
 
+        updateDeliver: builder.mutation({
+            query: initialOrder => ({
+                url: '/order/updateDeliver',
+                method: 'PATCH',
+                body: {
+                    ...initialOrder,
+                }
+            }),
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Order', id: arg.id }
+            ]
+        })
+
     })
 })
 
@@ -90,7 +103,8 @@ export const {
     useCheckoutMutation,
     useWebhookMutation,
     useGetOrderIdQuery,
-    useGetOrderQuery
+    useGetOrderQuery,
+    useUpdateDeliverMutation
 } = orderApiSlice;
 
 export const selectOrderResult = orderApiSlice.endpoints.getOrder.select()
@@ -103,8 +117,8 @@ const selecOrderData = createSelector(
 
 export const {
     selectAll: selectAllOrder,
-    selectById: selectAllOrderById,
-    selectIds: selectAllOrderIds
+    selectById: selectOrderById,
+    selectIds: selectOrderIds
 } = orderAdapter.getSelectors(state => selecOrderData(state) ?? initialState)
 
 

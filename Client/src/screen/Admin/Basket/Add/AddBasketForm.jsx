@@ -33,7 +33,7 @@ function AddBasket() {
 
             <Form onSubmit={onAdd}>
                 <Form.Group>
-                    <Form.Label>ชื่อสินค้า</Form.Label>
+                    <Form.Label>Name</Form.Label>
                     <Form.Control
                         type="text"
                         value={name}
@@ -43,7 +43,7 @@ function AddBasket() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>ราคา</Form.Label>
+                    <Form.Label>Price</Form.Label>
                     <Form.Control
                         type="number"
                         value={price}
@@ -53,7 +53,7 @@ function AddBasket() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>รูปภาพ</Form.Label>
+                    <Form.Label>Image</Form.Label>
                     <Form.Control
                         type="file"
                         accept='.jpeg, .png, .jpg'

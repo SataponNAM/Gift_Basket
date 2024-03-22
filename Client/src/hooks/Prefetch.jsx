@@ -18,7 +18,7 @@ const Prefetch = () => {
         const decoration = store.dispatch(decorationApiSlice.endpoints.getDecoration.initiate())
         const product = store.dispatch(productApiSlice.endpoints.getProduct.initiate())
         const card = store.dispatch(cardApiSlice.endpoints.getCard.initiate())
-        const order = store.dispatch(orderApiSlice.endpoints.getOrderId.initiate())
+        const order = store.dispatch(orderApiSlice.endpoints.getOrder.initiate())
 
         return () => {
             console.log('unsubscribing')

@@ -131,9 +131,26 @@ const getOrder = asyncHandler(async (req, res) => {
     res.json(order)
 })
 
+const updateDeliver = asyncHandler(async (req, res) => {
+    const { id } = req.body
+
+    if (!id) {
+        return res.status(400).json({ message: 'Order ID required.' });
+    }
+
+    const order = await Order.findById(id).exec()
+
+    order.isDeliver = true;
+
+    const updatedOrder = await order.save();
+
+    res.json(`${updatedAddress._id} updated`);
+})
+
 module.exports = {
     checkout,
     webhook,
     getOrderId,
-    getOrder
+    getOrder,
+    updateDeliver
 };
