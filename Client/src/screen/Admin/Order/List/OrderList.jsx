@@ -11,11 +11,14 @@ function OrderListManage() {
         navigate(`/adminDash/admin/order/orderDetail/${orderId}`)
     }
 
-    if (orders) {
-        return (
-            <Container>
-                <h1 className="mt-3">Order List</h1>
-                <Table className="mt-3" striped bordered hover >
+    // Sort orders by date created in descending order
+    const sortedOrders = orders ? orders.sort((a, b) => new Date(b.created) - new Date(a.created)) : [];
+
+    return (
+        <Container>
+            <h1 className="mt-3">Order List</h1>
+            {sortedOrders.length > 0 ? (
+                <Table className="mt-3" striped bordered hover>
                     <thead>
                         <tr>
                             <th>Order ID</th>
@@ -27,7 +30,7 @@ function OrderListManage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map(order => (
+                        {sortedOrders.map(order => (
                             <tr key={order._id}>
                                 <td>{order._id}</td>
                                 <td>{order.created}</td>
@@ -39,15 +42,11 @@ function OrderListManage() {
                         ))}
                     </tbody>
                 </Table>
-            </Container>
-        )
-    } else {
-        return (
-            <Container>
-                <p>not found orders.</p>
-            </Container>
-        )
-    }
+            ) : (
+                <p>Not found orders.</p>
+            )}
+        </Container>
+    );
 }
 
-export default OrderListManage
+export default OrderListManage;

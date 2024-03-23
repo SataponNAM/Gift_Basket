@@ -1,5 +1,5 @@
 import { Button, Card, Container } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { selectOrderById, useUpdateDeliverMutation } from "../../../../slices/orderApiSlice"
 import { selectAddressById } from "../../../../slices/addressApiSlice"
@@ -9,17 +9,18 @@ function OrderDetail() {
     const { id } = useParams()
     const order = useSelector((state) => selectOrderById(state, id))
     const address = useSelector((state) => selectAddressById(state, order.address))
-    const basketId = order.product || []
+    const basketId = order.product
+    const [sendDeliver] = useUpdateDeliverMutation()
+    const navigate = useNavigate()
 
-    let basketContent
-    if (basketId) {
-        basketContent = basketId.map(basketID => <BasketDetail basketId={basketID} />)
-    }
-
-    const clickDeliver = async (e) =>{
+    const clickDeliver = async (e) => {
         e.preventDefault()
-        await useUpdateDeliverMutation({id})
+        await sendDeliver({ id })
+        
+        navigate('/adminDash/admin/order/orderListAdmin')
     }
+
+    const basketContent = basketId.map(basketID => <BasketDetail key={basketID} basketId={basketID} />)
 
     return (
         <Container>
@@ -46,7 +47,6 @@ function OrderDetail() {
             <div>
                 <Button onClick={clickDeliver}>Deliver</Button>
             </div>
-
         </Container>
     )
 }

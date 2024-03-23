@@ -208,3 +208,15 @@
     http://localhost:8080
 20240317	17:51:54	f97726f8-bf06-4f41-8383-b90ed0c6beac	PayloadTooLargeError: request entity too large	PATCH	/basket	
     http://localhost:8080
+20240323	14:19:54	8928a8a3-782f-4280-b030-0583a7b92844	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
+20240323	14:21:47	c9d9ed92-f357-4d62-81de-3ec50d92e0e0	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
+20240323	14:22:32	23dba650-e2c8-4581-b763-4e5601f8ec2d	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
+20240323	14:23:01	32a47f3e-defd-4c60-9081-35654d416bdc	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
+20240323	14:23:25	68c08f6a-247b-47bb-a1d3-aebf9ba41694	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
+20240323	14:24:19	144b9a3c-faf0-48a0-ab09-892998218634	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
