@@ -84,7 +84,7 @@ function login() {
     </div>
     <div className="login-container">
         <Form className="mt-5" onSubmit={handleSubmit}>
-            <h2 className="mb-4">LOGIN</h2>
+            <h2 className="mb-4">LOG IN</h2>
             <Form.Group className="mb-3">
                 <h4 className="lb-1">Email</h4>
                 <Form.Control
@@ -126,7 +126,7 @@ function login() {
                 Log in
             </Button>
 
-            <p className='details'>
+            <p className="details">
                 Don't have an account? <Link to="/Register" className="signup-link">Signup</Link>
             </p>
         </Form>

@@ -103,7 +103,7 @@ h2 {
 }
 
 .checkbox-container {
-    margin-left: 35px;
+    margin-left: 40px;
     margin-bottom: 30px;
     font-size: 14px;
 }
@@ -136,12 +136,12 @@ h2 {
 }
 
 .login-button {
-    width: 80%;
+    width: 77%;
     color: #ffffff;
     background-color: #ffac6c !important;
     border-color: transparent !important;
     display: block;
-    margin-left: 32px;
+    margin-left: 40px;
     margin-right: auto;
     font-weight: 500;
 }

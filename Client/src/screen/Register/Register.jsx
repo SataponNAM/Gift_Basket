@@ -3,8 +3,11 @@ import { Container, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRegisterMutation } from "../../slices/authApiSlice";
+import { Row, Col } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import './Register.css';
 
 const Register = () => {
     const errRef = useRef()
@@ -79,77 +82,100 @@ const Register = () => {
     }
 
     return (
-        <>
-        <Container>
-            <h1>Register</h1>
+        <Container className="all-reg-container">
+    <div className="reg-container">
+        <Form className="mt-5" onSubmit={handleSubmit}>
+            <h2 className="mb-4">SIGN UP</h2>
+            <Row>
+                <Col md={6}>
+                    <Form.Group className="mb-3">
+                        <h4 className="lb-1">Firstname</h4>
+                        <Form.Control 
+                            type="text" 
+                            placeholder="Firstname" 
+                            value={firstname} 
+                            onChange={inputFirstname}
+                            required
+                        />
+                    </Form.Group>
+                </Col>
+                <Col md={6}>
+                    <Form.Group className="mb-3">
+                        <h4 className="lb-1">Lastname</h4>
+                        <Form.Control 
+                            type="text" 
+                            placeholder="Lastname" 
+                            value={lastname} 
+                            onChange={inputLastname}
+                            required
+                        />
+                    </Form.Group>
+                </Col>
+            </Row>
 
-            <Form className="mt-5" onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                    <Form.Control 
-                        type="text" 
-                        placeholder="Firstname" 
-                        value={firstname} 
-                        onChange={inputFirstname}
-                        require>
-                    </Form.Control>
-                </Form.Group>
+            <Row>
+                <Col md={6}>
+                    <Form.Group className="mb-3">
+                        <h4 className="lb-1">Email</h4>
+                        <Form.Control 
+                            type="email" 
+                            placeholder="Email" 
+                            value={email} 
+                            onChange={inputEmail}
+                            required
+                        />
+                    </Form.Group>
+                </Col>
+                <Col md={6}>
+                    <Form.Group className="mb-3">
+                        <h4 className="lb-1">Phone Number</h4>
+                        <Form.Control 
+                            type="text" 
+                            placeholder="Phone" 
+                            value={phone} 
+                            onChange={inputPhone}
+                            required
+                        />
+                    </Form.Group>
+                </Col>
+            </Row>
 
-                <Form.Group className="mb-3">
-                    <Form.Control 
-                        type="text" 
-                        placeholder="Lastname" 
-                        value={lastname} 
-                        onChange={inputLastname}
-                        require>   
-                    </Form.Control>
-                </Form.Group>
+            <Row>
+                <Col md={6}>
+                    <Form.Group className="mb-3">
+                        <h4 className="lb-1">Password</h4>
+                        <Form.Control 
+                            type="password"
+                            placeholder="Password" 
+                            value={password} 
+                            onChange={inputPsw}
+                            required
+                        />
+                    </Form.Group>
+                </Col>
+                <Col md={6}>
+                    <Form.Group className="mb-3">
+                        <h4 className="lb-1">Confirm Password</h4>
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Confirm Password" 
+                            value={cpassword} 
+                            onChange={inputCPsw}
+                            required
+                        />
+                    </Form.Group>
+                </Col>
+            </Row>
 
-                <Form.Group className="mb-3">
-                    <Form.Control 
-                        type="email" 
-                        placeholder="Email" 
-                        value={email} 
-                        onChange={inputEmail}
-                        required />
-                </Form.Group>
+            <p ref={errRef} className={errClass} aria-live='assertive'>{errorMessage}</p>
 
-                <Form.Group className="mb-3">
-                    <Form.Control 
-                        type="text" 
-                        placeholder="Phone" 
-                        value={phone} 
-                        onChange={inputPhone}
-                        required />
-                </Form.Group>
+            <Button type="summit" className="reg-button" variant="primary">Sing up</Button>
 
-                <Form.Group className="mb-3">
-                    <Form.Control 
-                        type="password"
-                        placeholder="Password" 
-                        value={password} 
-                        onChange={inputPsw}
-                        require> 
-                     </Form.Control>
-                </Form.Group>
+            <p className="details">Have an account? <Link to="/Login" className="login-link">Log in</Link></p>
+        </Form>
+    </div>
+</Container>
 
-                <Form.Group className="mb-3">
-                    <Form.Control 
-                    type="password" 
-                    placeholder="Confirm Password" 
-                    value={cpassword} 
-                    onChange={inputCPsw}
-                    require>
-                    </Form.Control>
-                </Form.Group>
-
-                <p ref={errRef} className={errClass} aria-live='assertive'>{errorMessage}</p>
-
-                <Button type="summit" variant="primary">ลงทะเบียน</Button>
-
-                <p>คุณมีบัญชีแล้วใช่หรือไม่ <Link to="/Login">เข้าสู่ระบบ</Link></p>
-            </Form>
-        </Container>
-        </>
     )
 }
 
