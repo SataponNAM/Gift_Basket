@@ -1,0 +1,81 @@
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+body {
+    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\main-bg.jpg);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.home-container{
+    animation: transitionIn 0.75s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 1920px !important;
+    width: 100%;
+    max-height: 420px !important;
+    height: 100%;
+    background-color: #ffffff;
+    transform: translate(-50%, -50%);
+
+}
+
+.home-details {
+    text-align: center;
+    width: 100%;
+    padding: 130px;
+    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\login-deco.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    isolation: isolate;
+    color: #ffffff;
+}
+
+.home-details::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #81531b;
+    opacity: 60%;
+    border-radius: 15px;
+    z-index: -1;
+
+}
+
+.home-details .p {
+    margin-bottom: 50px;
+}
+
+.main-button {
+    margin: 50px auto 0;
+    width: 30%;
+    color: #ffffff;
+    background-color: #ffac6c !important;
+    border-color: transparent !important;
+    display: block;
+    font-weight: 500;
+}
+
+.main-button:hover {
+    background-color: #ffdec4 !important;
+    color: #81531b;
+}

@@ -40,19 +40,19 @@ function nav() {
                 <Navbar.Brand className='brand'>Gift Basket</Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
                     <NavDropdown title="Admin" id="dropdown-menu-align-responsive-2" align={{ lg: 'end' }} className='dropdown'>
-                        <NavDropdown.Item onClick={onLogoutClicked}>ออกจากระบบ</NavDropdown.Item>
+                        <NavDropdown.Item onClick={onLogoutClicked}>Log out</NavDropdown.Item>
                     </NavDropdown>
                 </Navbar.Collapse>
             </Navbar>
         ) : (
             <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary custNav" sticky="top">
-                <Link to='/dash/home'>หน้าหลัก</Link>
-                <Link to='/dash/cart'>ตะกร้าสินค้า</Link>
+                <Link to='/dash/home'>Home</Link>
+                <Link to='/dash/cart'>Cart</Link>
 
                 <NavDropdown title="Profile" id='username'>
-                    <NavDropdown.Item as={Link} to='/dash/order/orderlist'>รายการคำสั่งซื้อ</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/dash/address'>ที่อยู่</NavDropdown.Item>
-                    <NavDropdown.Item onClick={onLogoutClicked}>ออกจากระบบ</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/dash/order/orderlist'>Order List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/dash/address'>Address</NavDropdown.Item>
+                    <NavDropdown.Item onClick={onLogoutClicked}>Log out</NavDropdown.Item>
                 </NavDropdown>
             </Navbar>
             // Customer navbar

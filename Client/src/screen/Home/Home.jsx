@@ -3,6 +3,8 @@ import { Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
+import './Home.css';
+
 function home() {
     const navigate = useNavigate()
 
@@ -16,13 +18,11 @@ function home() {
 
     if (!isAdmin) {
         content = (
-            <Container>
-                <div>
-
-                </div>
-
-                <div>
-                    <Button onClick={makeBasket}>Make your own basket.</Button>
+            <Container className="home-container">
+                <div className="home-details">
+                    <h2>Make Your Own Basket</h2>
+                    <p>Let's start decorating your gift basket for your loved one</p>
+                    <Button onClick={makeBasket} className="main-button">Start</Button>
                 </div>
             </Container>
         );
