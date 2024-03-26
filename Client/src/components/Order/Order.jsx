@@ -9,8 +9,6 @@ function Order({ orderId }) {
         })
     })
 
-    console.log(order)
-
     if (order) {
         return (
             <Container>

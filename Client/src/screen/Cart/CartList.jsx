@@ -12,6 +12,11 @@ function CartList() {
     const navigate = useNavigate()
     const [total, setTotal] = useState(0)
 
+    const makePayment = async () => {
+        // go to choose address
+        navigate('/dash/order/selectaddress', {state: {basketId, totalPrice: total}})
+    }
+
     const LoadUser = () => {
         const {
             data: users,
@@ -55,6 +60,7 @@ function CartList() {
     }
 
     let basketId
+    let buttonPayment
 
     if (isSuccess) {
         const { ids, entities } = cart
@@ -64,17 +70,15 @@ function CartList() {
 
         if (filterData.length > 0) {
             basketId = filterData[0].giftBasket;
+            buttonPayment = (<Button onClick={makePayment}>ซื้อสินค้า</Button>)
             //console.log(basketId);
+        }else {
+            buttonPayment = (<Button onClick={makePayment} disabled>ซื้อสินค้า</Button>)
         }
 
         //console.log(filterData)
 
         content = ids?.length && filteredIds.map(cartId => <Cart key={cartId} cartId={cartId} total={total} setTotal={setTotal} />)
-    }
-
-    const makePayment = async () => {
-        // go to choose address
-        navigate('/dash/order/selectaddress', {state: {basketId, totalPrice: total}})
     }
 
     return (
@@ -89,7 +93,7 @@ function CartList() {
 
                 <Container>
                     <p>ราคารวม : {total} บาท</p>
-                    <Button onClick={makePayment}>ซื้อสินค้า</Button>
+                    {buttonPayment}
                 </Container>
 
             </Container>

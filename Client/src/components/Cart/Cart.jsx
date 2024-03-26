@@ -113,10 +113,12 @@ const Cart = ({ cartId, total, setTotal }) => {
                         <div key={item.id} className="m-3 p-3" >
                             <Card >
                                 <div className="m-3">
-                                    <Card.Text>กระเช้า : {basketData?.entities[item.basket]?.name}</Card.Text>
-                                    <Card.Text>ของตกแต่ง : {item.decoration.map(decorationId => decorationData?.entities[decorationId]?.name).join(', ')}</Card.Text>
-                                    <Card.Text>สินค้าในกระเช้า : {item.product.map(productId => productData?.entities[productId]?.name).join(', ')}</Card.Text>
-                                    <Card.Text>ราคารวม : {item.totalPrice} บาท</Card.Text>
+                                    <Card.Text>Basket : {basketData?.entities[item.basket]?.name}</Card.Text>
+                                    <Card.Text>Decorations : {item.decoration.map(decorationId => decorationData?.entities[decorationId]?.name).join(', ')}</Card.Text>
+                                    <Card.Text>Products : {item.product.map(productId => productData?.entities[productId]?.name).join(', ')}</Card.Text>
+                                    <Card.Text>Card : {cardData?.entities[item.card]?.name}</Card.Text>
+                                    <Card.Text>Card Text : {item.cardText}</Card.Text>
+                                    <Card.Text>Total Price : {item.totalPrice} บาท</Card.Text>
                                 </div>
 
                                 <div>
