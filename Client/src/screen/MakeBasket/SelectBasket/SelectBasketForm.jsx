@@ -69,7 +69,7 @@ function SelectBasketForm() {
             </div>
 
             <Container>
-                <p>ราคารวม : {total} บาท</p>
+                <p>Total : {total} ฿</p>
             </Container>
 
             {nextButton}

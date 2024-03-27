@@ -114,7 +114,7 @@ function SelectProductForm() {
 
     return (
         <Container>
-            <h1>กรุณาเลือกสินค้าในกระเช้า</h1>
+            <h1>Select Product</h1>
 
             <Container>
                 {content}
@@ -171,8 +171,8 @@ function SelectProductForm() {
             </Container>
 
             <div>
-                <p>ราคาของ : {nt}</p>
-                <p>ราคารวม : {total} บาท</p>
+                <p>Price : {nt}</p>
+                <p>Total : {total} ฿</p>
             </div>
 
             {nextButton}

@@ -2,6 +2,9 @@ import { Container, Form, Button } from "react-bootstrap";
 import { useState, useEffect  } from "react";
 import { useUpdateAddressMutation } from "../../../slices/addressApiSlice"
 import { useNavigate } from "react-router-dom";
+import { Row, Col } from 'react-bootstrap';
+
+import './EditAddressForm.css';
 
 function EditAddressForm({ address, users }) {
     const [firstname, setFirstname] = useState(address.firstname)
@@ -56,84 +59,113 @@ function EditAddressForm({ address, users }) {
     }
 
     return (
-        <Container>
+        <Container className="all-edit-container">
+            <div className="edit-container">
             <Form className="mt-5" onSubmit={onSaveAddress}>
-                <h2 className="mb-4">Edit Address</h2>
-
+                <h2 className="mb-4">EDIT ADDRESS</h2>
+                <Row>
+                <Col md={6}>
                 <Form.Group className="mb-3">
+                    <h4 className="lb-1">Firstname</h4>
                     <Form.Control
                         type="text"
-                        placeholder="ชื่อ"
+                        placeholder="Firstname"
                         value={firstname}
                         onChange={inFname}
                         required />
                 </Form.Group>
-
+                </Col>
+                <Col md={6}>
                 <Form.Group className="mb-3">
+                <h4 className="lb-1">Lastname</h4>
                     <Form.Control
                         type="text"
-                        placeholder="นามสกุล"
+                        placeholder="Lastname"
                         value={lastname}
                         onChange={inLname}
                         required />
                 </Form.Group>
-
+                </Col>
+                </Row>
+    
+                <Row>
+                <Col md={6}>
                 <Form.Group className="mb-3">
+                <h4 className="lb-1">Address</h4>
                     <Form.Control
                         type="text"
-                        placeholder="ที่อยู่"
+                        placeholder="Address"
                         value={add}
                         onChange={inAdd}
                         required />
                 </Form.Group>
-
+                </Col>
+                <Col md={6}>
                 <Form.Group className="mb-3">
+                <h4 className="lb-1">Province</h4>
                     <Form.Control
                         type="text"
-                        placeholder="จังหวัด"
+                        placeholder="Province"
                         value={province}
                         onChange={inProv}
                         required />
                 </Form.Group>
+                </Col>
+                </Row>
 
+                <Row>
+                <Col md={6}>
                 <Form.Group className="mb-3">
+                <h4 className="lb-1">District</h4>
                     <Form.Control
                         type="text"
-                        placeholder="อำเภอ"
+                        placeholder="District"
                         value={district}
                         onChange={inDistrict}
                         required />
                 </Form.Group>
-
+                </Col>
+                <Col md={6}>
                 <Form.Group className="mb-3">
+                <h4 className="lb-1">Sub-District</h4>
                     <Form.Control
                         type="text"
-                        placeholder="ตำบล"
+                        placeholder="Sub-District"
                         value={subdistrict}
                         onChange={inSubDist}
                         required />
                 </Form.Group>
+                </Col>
+                </Row>
 
+                <Row>
+                <Col md={6}>
                 <Form.Group className="mb-3">
+                <h4 className="lb-1">Postal</h4>
                     <Form.Control
                         type="text"
-                        placeholder="รหัสไปรษณีย์"
+                        placeholder="Postal"
                         value={postal}
                         onChange={inPost}
                         required />
                 </Form.Group>
-
+                </Col>
+                <Col md={6}>
                 <Form.Group className="mb-3">
+                <h4 className="lb-1">Phone Number</h4>
                     <Form.Control
                         type="text"
-                        placeholder="เบอร์โทรศัพท์"
+                        placeholder="Phone"
                         value={phone}
                         onChange={inPhone}
                         required />
                 </Form.Group>
+                </Col>
+                </Row>
 
-                <Button type="summit">Save</Button>
+                <Button type="summit" className="edit-button">Save</Button>
             </Form>
+            </div>
         </Container>
     )
 }

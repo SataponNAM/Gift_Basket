@@ -118,7 +118,7 @@ const Cart = ({ cartId, total, setTotal }) => {
                                     <Card.Text>Products : {item.product.map(productId => productData?.entities[productId]?.name).join(', ')}</Card.Text>
                                     <Card.Text>Card : {cardData?.entities[item.card]?.name}</Card.Text>
                                     <Card.Text>Card Text : {item.cardText}</Card.Text>
-                                    <Card.Text>Total Price : {item.totalPrice} บาท</Card.Text>
+                                    <Card.Text>Total Price : {item.totalPrice} ฿</Card.Text>
                                 </div>
 
                                 <div>

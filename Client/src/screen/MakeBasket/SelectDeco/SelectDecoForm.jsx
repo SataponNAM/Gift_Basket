@@ -76,7 +76,7 @@ function SelectDecoForm() {
 
     return (
         <Container>
-            <h1>select deco</h1>
+            <h1>Select Decoration</h1>
 
             {/* Flower */}
             <div>
@@ -108,7 +108,7 @@ function SelectDecoForm() {
 
             {/* Bow */}
             <div>
-                <h2>Select Ribbon</h2>
+                <h2>Select Bow</h2>
                 <div>
                     <Container>
                         <div style={{ width: '18rem' }}>
@@ -121,7 +121,7 @@ function SelectDecoForm() {
             </div>
 
             <div>
-                <p>ราคารวม : {total} บาท</p>
+                <p>Total : {total} ฿</p>
             </div>
 
             {nextButton}

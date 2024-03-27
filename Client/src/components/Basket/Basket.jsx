@@ -24,7 +24,7 @@ const Basket = ({ basketId, selectedBasket, setSelectedBasket }) => {
           <Card.Img variant="top" src={basket.image} />
           <Card.Body>
             <Card.Text>{basket.name}</Card.Text>
-            <Card.Text>{basket.price} baths</Card.Text>
+            <Card.Text>{basket.price} ฿</Card.Text>
           </Card.Body>
         </Card>
       </Container>

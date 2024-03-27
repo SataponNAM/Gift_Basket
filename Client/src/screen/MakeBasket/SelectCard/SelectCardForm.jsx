@@ -75,7 +75,7 @@ function SelectCardForm() {
 
     return (
         <Container>
-            <h1>กรุณาเลือกรูปแบบการ์ดอวยพร</h1>
+            <h1>Select Card Style</h1>
 
             <div>
                 {content}
@@ -84,12 +84,12 @@ function SelectCardForm() {
             <div className="mt-3">
                 <Form className="m-3">
                     <Form.Group>
-                        <Form.Label>เขียนคำอวยพร</Form.Label>
+                        <Form.Label>Write Something :</Form.Label>
                         <Form.Control
                             as="textarea"
                             rows={3}
                             type="text"
-                            placeholder="คำอวยพร"
+                            placeholder="To..."
                             value={cardText}
                             onChange={writeCard}
                         />
@@ -98,7 +98,7 @@ function SelectCardForm() {
             </div>
 
             <div>
-                <p>ราคารวม : {total} บาท</p>
+                <p>Total : {total} ฿</p>
             </div>
 
             <div>
