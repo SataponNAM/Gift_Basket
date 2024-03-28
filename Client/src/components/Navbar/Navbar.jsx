@@ -45,7 +45,7 @@ function nav() {
                 </Navbar.Collapse>
             </Navbar>
         ) : (
-            <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary custNav" sticky="top">
+            <Navbar expand="lg" className="bg-body-tertiary custNav" sticky="top">
                 <Link to='/dash/home'>Home</Link>
                 <Link to='/dash/cart'>Cart</Link>
 

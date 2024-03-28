@@ -45,7 +45,7 @@ function addAddress({ users }) {
             setSubdistrict('')
             setPostal('')
             setErrorMessage('')
-            navigate('/address')
+            navigate('/dash/address')
         }
     }, [isSuccess, navigate])
        

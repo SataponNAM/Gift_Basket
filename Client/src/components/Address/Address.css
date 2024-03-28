@@ -1,0 +1,21 @@
+.m-5 {
+    color: #81531b;
+    font-weight: 500;
+}
+
+.edit-add-button {
+    width: 15%;
+    color: #ffffff;
+    background-color: #ffac6c !important;
+    border-color: transparent !important;
+    display: block;
+    margin-top: -5px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.edit-add-button:hover {
+    background-color: #ffdec4 !important;
+    color: #81531b;
+}

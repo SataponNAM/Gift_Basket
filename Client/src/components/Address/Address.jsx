@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { memo, useEffect } from 'react'
 import { Button, Container, Card } from "react-bootstrap"
 
+import './Address.css'
+
 const Address = ({ addressId }) => {
     // get address of this user
     const { address } = useGetAddressQuery("addressList", {
@@ -23,11 +25,11 @@ const Address = ({ addressId }) => {
         return (
             <Container>
                 <Card className="m-5" >
-                    <Card.Text className="m-2">{address.firstname} {address.lastname}</Card.Text>
-                    <Card.Text className="m-2">{address.address} {address.city} {address.state} {address.country} </Card.Text>
-                    <Card.Text className="m-2">{address.phone}</Card.Text>
+                    <Card.Text className="m-2">Name : {address.firstname} {address.lastname}</Card.Text>
+                    <Card.Text className="m-2">Address : {address.address} {address.city} {address.state} {address.country} </Card.Text>
+                    <Card.Text className="m-2">Phone Number : {address.phone}</Card.Text>
                     <Container>
-                        <Button onClick={onEditClick}>Edit</Button>
+                        <Button onClick={onEditClick} className="edit-add-button">Edit</Button>
                     </Container>
                 </Card>
             </Container>

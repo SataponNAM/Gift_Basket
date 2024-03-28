@@ -4,10 +4,10 @@
     box-sizing: border-box;
 }
 
-.custNav nav {
-    background-color: rgb(49, 49, 49);
+.navbar {
     padding: 1rem;
     color: white;
+    background-color: #81531b !important;
 }
 
 .custNav a {
@@ -17,7 +17,17 @@
 }
 
 .custNav nav-item {
+    color: #ffffff;
+}
+
+.dropdown-menu {
+    background-color: #ffac6c;
     color: white;
+}
+
+.dropdown-item:hover {
+    color: #81531b;
+    background-color: #ffdec4;
 }
 
 .dropdown {

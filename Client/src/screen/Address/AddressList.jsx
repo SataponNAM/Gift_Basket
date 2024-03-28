@@ -4,6 +4,8 @@ import useAuth from '../../hooks/useAuth.jsx'
 import { useGetAddressQuery } from '../../slices/addressApiSlice.jsx'
 import Address from '../../components/Address/Address.jsx'
 
+import './AddressList.css';
+
 function address(){
     const { email, isAdmin } = useAuth()
 
@@ -48,10 +50,10 @@ function address(){
     }
 
     return (
-        <Container>
-            <h1>Address</h1>
-            <Button onClick={onAddAddressClicked}>Add Address</Button>
-            {content}
+        <Container className="all-container">
+            <h1>ADDRESS</h1>
+            <Button onClick={onAddAddressClicked} className="add-new-button">Add New Address</Button>
+            <div className="content">{content}</div>
         </Container>
     )
 }
