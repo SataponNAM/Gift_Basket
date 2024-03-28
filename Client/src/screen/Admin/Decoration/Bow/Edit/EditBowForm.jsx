@@ -1,4 +1,4 @@
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Card } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useState } from "react";
@@ -35,11 +35,11 @@ function EditBow() {
 
     return (
         <Container>
-            <h1>edit</h1>
+            <h1>Edit</h1>
 
-            <Form className="mt-5" onSubmit={onSave}>
+            <Form className="mt-3" onSubmit={onSave}>
                 <Form.Group className="mt-3">
-                    <Form.Label>ชื่อสินค้า</Form.Label>
+                    <Form.Label>Name</Form.Label>
                     <Form.Control
                         type="text"
                         value={name}
@@ -49,7 +49,7 @@ function EditBow() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>ราคา</Form.Label>
+                    <Form.Label>Price</Form.Label>
                     <Form.Control
                         type="number"
                         value={price}
@@ -59,7 +59,7 @@ function EditBow() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>สี</Form.Label>
+                    <Form.Label>Color</Form.Label>
                     <Form.Control
                         type="text"
                         value={type}
@@ -69,7 +69,7 @@ function EditBow() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>รูปภาพ</Form.Label>
+                    <Form.Label>Image</Form.Label>
                     <Form.Control
                         type="file"
                         accept='.jpeg, .png, .jpg'
@@ -77,7 +77,13 @@ function EditBow() {
                     />
                 </Form.Group>
 
-                <Button type="submit">Save</Button>
+                <Container className="mt-5">
+                    <Card style={{ width: '20rem' }}>
+                        <Card.Img src={image} />
+                    </Card>
+                </Container>
+
+                <Button className="mt-3" type="submit">Save</Button>
 
             </Form>
         </Container>

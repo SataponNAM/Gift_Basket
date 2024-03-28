@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { selectBasketById, useUpdateBasketMutation } from "../../../../slices/basketApiSlice"
-import { Button, Container, Form, Image } from "react-bootstrap";
+import { Button, Card, Container, Form } from "react-bootstrap";
 import { useState } from "react";
 import Base64Convert from "../../../../hooks/Base64Convert";
 
@@ -21,7 +21,7 @@ function BasketEdit() {
         const file = e.target.files[0];
         const im = await Base64Convert(file)
         setImage('data:image/webp;base64,' + im)
-        console.log(image)
+        //console.log(image)
     }
 
     const onSave = async (e) => {
@@ -33,10 +33,10 @@ function BasketEdit() {
     }
 
     return (
-        <Container>
-            <h1>edit</h1>
+        <Container className="mt-2">
+            <h1>Edit</h1>
 
-            <Form className="mt-5" onSubmit={onSave}>
+            <Form className="mt-3" onSubmit={onSave}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control
@@ -66,11 +66,15 @@ function BasketEdit() {
                     />
                 </Form.Group>
 
-                <Button type="submit">Save</Button>
+                <Container className="mt-5">
+                    <Card style={{ width: '20rem' }}>
+                        <Card.Img src={image} />
+                    </Card>
+                </Container>
+
+                <Button className="mt-5" type="submit">Save</Button>
 
             </Form>
-
-            <Image src={image}></Image>
         </Container>
     )
 }

@@ -34,7 +34,7 @@ function BasketList() {
 
         const groupedIds = [];
         while (filteredIds.length > 0) {
-            groupedIds.push(filteredIds.splice(0, 4));
+            groupedIds.push(filteredIds.splice(0, 5));
         }
 
         // Render rows and columns 
@@ -57,9 +57,9 @@ function BasketList() {
         <Container>
             <h1>Basket List</h1>
 
-            <div>
-                <Button onClick={addBasketClick}>Add BAsket</Button>
-            </div>
+            <Container>
+                <Button className='mt-3' onClick={addBasketClick}>Add Basket</Button>
+            </Container>
 
             {content}
         </Container>

@@ -33,7 +33,7 @@ function BowList() {
 
         const groupedIds = [];
         while (bowIds.length > 0) {
-            groupedIds.push(bowIds.splice(0, 4));
+            groupedIds.push(bowIds.splice(0, 5));
         }
 
         // Render rows and columns 
@@ -56,9 +56,9 @@ function BowList() {
         <Container>
             <h1>Bow</h1>
 
-            <div>
+            <Container className="mt-3">
                 <Button onClick={addBowClick}>เพิ่มสินค้า</Button>
-            </div>
+            </Container>
 
             {content}
         </Container>

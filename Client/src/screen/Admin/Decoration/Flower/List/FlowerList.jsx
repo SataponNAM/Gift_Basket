@@ -33,7 +33,7 @@ function FLowerList() {
 
         const groupedIds = [];
         while (flowerIds.length > 0) {
-            groupedIds.push(flowerIds.splice(0, 4));
+            groupedIds.push(flowerIds.splice(0, 5));
         }
 
         // Render rows and columns 
@@ -54,11 +54,11 @@ function FLowerList() {
 
     return (
         <Container>
-            <h1>Flower</h1>
+            <h1>Flower List</h1>
 
-            <div>
-                <Button onClick={addFlowerClick}>เพิ่มสินค้า</Button>
-            </div>
+            <Container>
+                <Button className='mt-3' onClick={addFlowerClick}>เพิ่มสินค้า</Button>
+            </Container>
 
             {content}
         </Container>

@@ -33,7 +33,7 @@ function RibbonList() {
 
         const groupedIds = [];
         while (ribbonIds.length > 0) {
-            groupedIds.push(ribbonIds.splice(0, 4));
+            groupedIds.push(ribbonIds.splice(0, 5));
         }
 
         // Render rows and columns 
@@ -56,9 +56,9 @@ function RibbonList() {
         <Container>
             <h1>Ribbon</h1>
 
-            <div>
-                <Button onClick={addRibbonClick}>เพิ่มสินค้า</Button>
-            </div>
+            <Container>
+                <Button className='mt-3' onClick={addRibbonClick}>เพิ่มสินค้า</Button>
+            </Container>
 
             {content}
         </Container>
