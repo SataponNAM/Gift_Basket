@@ -162,11 +162,10 @@ function makeBasket() {
     
         if (isSuccess) {
             const { ids, entities } = cart;
-            const cartIds = ids?.filter(cartId => entities[cartId].id);
+            const cartIds = ids?.filter(cartId => entities[cartId].user === user);
     
             if (cartIds === undefined || cartIds.length === 0) {
-                // If no cart is found, return a placeholder value
-                refetch();
+
                 return null;
             }
     
@@ -177,6 +176,7 @@ function makeBasket() {
     };
 
     let cartCheck = LoadCart()
+    console.log(cartCheck)
 
     const addToCart = async (e) => {
         e.preventDefault();
