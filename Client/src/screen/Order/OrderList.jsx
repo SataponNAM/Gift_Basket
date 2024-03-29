@@ -5,7 +5,7 @@ import { useGetOrderQuery } from "../../slices/orderApiSlice.jsx";
 import { useGetUsersQuery } from '../../slices/userApiSlice.jsx'
 import Order from "../../components/Order/Order.jsx";
 
-function OrderList () {
+function OrderList() {
     const { email, isAdmin } = useAuth()
 
     const {
@@ -42,27 +42,40 @@ function OrderList () {
         }
     }
 
-    const userId = LoadUser()
+    const getuser = LoadUser()
+    let userId
+    if (getuser) {
+        userId = getuser[0]
+    }
 
     let content
 
-    if(isLoading) content = <p>Loading...</p>
+    if (isLoading) content = <p>Loading...</p>
 
-    if(isError) {
+    if (isError) {
         content = <p className='errmsg'>{error?.data?.message}</p>
     }
 
-    if(isSuccess){
+    if (isSuccess) {
         const { ids, entities } = order
 
         let filteredIds
         if (isAdmin) {
             filteredIds = [...ids]
         } else {
-            filteredIds = ids?.filter(orderId => entities[orderId].user === userId[0])
+            filteredIds = ids?.filter(orderId => entities[orderId].user === userId)
         }
-  
-        content = ids?.length && filteredIds.map(orderId => <Order key={orderId} orderId={orderId} />)
+
+        if (filteredIds.length > 0) {
+            content = ids?.length && filteredIds.map(orderId => <Order key={orderId} orderId={orderId} />)
+        } else[
+            content = (
+                <Container>
+                    <p>You don't have order.</p>
+                </Container>
+            )
+        ]
+
     }
 
     return (
