@@ -1,10 +1,21 @@
-
-.sidebar-wrapper {
-    width: 250px; /* Set the desired width */
-    
-}
-
 .sidebar-nav a {
     color: black;
-    margin: 5px;
+    font-size: 16px;
+}
+
+.submenu{
+    background-color: rgb(240, 240, 240);
+}
+
+.sidebar-item {
+    font-weight: 500;
+}
+
+.sidebar-item:hover {
+    background-color: #ffdec4;
+    color: #81531b !important;
+}
+
+.sidebar-sub-item:hover {
+    color: #81531b;
 }

@@ -2,6 +2,7 @@ import { Button, Container, Table } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import { selectAllOrder } from "../../../../slices/orderApiSlice";
 import { useNavigate } from "react-router-dom";
+import './orderlist.css'
 
 function OrderListManage() {
     const orders = useSelector((state) => selectAllOrder(state));
@@ -16,7 +17,10 @@ function OrderListManage() {
 
     return (
         <Container>
-            <h1 className="mt-3">Order List</h1>
+            <div className="header-container">
+                <h1 className="mt-3">Order List</h1>
+            </div>
+
             {sortedOrders.length > 0 ? (
                 <Table className="mt-3" striped bordered hover>
                     <thead>
@@ -37,7 +41,7 @@ function OrderListManage() {
                                 <td>{order.totalPrice}</td>
                                 <td>{order.status === 'open' ? "ยังไม่ชำระเงิน" : "ชำระเงินสำเร็จ"}</td>
                                 <td>{order.isDeliver ? "Deliver" : "Not Deliver"}</td>
-                                <td><Button size="sm" onClick={() => moreDetail(order._id)}>Detail</Button></td>
+                                <td><Button size="sm" onClick={() => moreDetail(order._id)} className="detail-button">Detail</Button></td>
                             </tr>
                         ))}
                     </tbody>

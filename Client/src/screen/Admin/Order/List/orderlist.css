@@ -1,0 +1,13 @@
+.detail-button {
+    width: 77%;
+    color: #ffffff;
+    background-color: #ffac6c !important;
+    border-color: transparent !important;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.header-container {
+    color: #81531b;
+    margin-bottom: 2rem;
+}

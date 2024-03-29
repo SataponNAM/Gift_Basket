@@ -4,6 +4,7 @@ import { useRefreshMutation } from "../../slices/authApiSlice.jsx"
 import usePersist from "../../hooks/usePersist.jsx"
 import { useSelector } from "react-redux"
 import { selectCurrentToken } from "../../slices/Reducers/authReducers.jsx"
+import { Container } from "react-bootstrap"
 
 const PersistLogin = () => {
     const [persist] = usePersist()
@@ -46,27 +47,29 @@ const PersistLogin = () => {
 
     let content
     if (!persist) {
-         // persist: no
+        // persist: no
         console.log('no persist')
         content = <Outlet />
-    } else if (isLoading) { 
+    } else if (isLoading) {
         //persist: yes, token: no
         console.log('loading')
         content = <p>Loading...</p>
     } else if (isError) {
-         //persist: yes, token: no
+        //persist: yes, token: no
         console.log('error')
         content = (
-            <p className='errmsg'>
-                {`${error.data?.message} - `}
-                <Link to="/login">Please login</Link>.
-            </p>
+            <Container>
+                <p className='errmsg'>
+                    {`${error.data?.message} - `}
+                    <Link to="/login">Please login</Link>.
+                </p>
+            </Container>
         )
-    } else if (isSuccess && trueSuccess) { 
+    } else if (isSuccess && trueSuccess) {
         //persist: yes, token: yes
         console.log('success')
         content = <Outlet />
-    } else if (token && isUninitialized) { 
+    } else if (token && isUninitialized) {
         //persist: yes, token: yes
         console.log('token and uninit')
         console.log(isUninitialized)

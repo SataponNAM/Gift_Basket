@@ -1,1 +1,12 @@
+.wrap{
+    margin-top: 1rem;
+}
+.c-header {
+    color: #81531b;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
 
+.card-detail {
+    font-size: 18px !important;
+}

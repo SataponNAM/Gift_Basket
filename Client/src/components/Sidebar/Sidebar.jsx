@@ -1,28 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import SidebarMenu from 'react-bootstrap-sidebar-menu';
 import './Sidebar.css';
-import { Nav, NavDropdown } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 
 const Sidebar = () => {
+    const [openMenu, setOpenMenu] = useState(null);
+
+    const handleMenuClick = (menuId) => {
+        if (openMenu === menuId) {
+            setOpenMenu(null);
+        } else {
+            setOpenMenu(menuId);
+        }
+    };
+
     return (
-        <div className="sidebar-wrapper d-flex">
-            <Nav className="flex-column mb-3 sidebar-nav" >
+        <div className="d-flex">
+            <Nav className="flex-column sidebar-nav" >
                 <Nav.Link className="sidebar-item" as={Link} to='/adminDash/admin/home'>Home</Nav.Link>
                 <Nav.Link className="sidebar-item" as={Link} to='/adminDash/admin/order/orderListAdmin'>Order List</Nav.Link>
 
-                <NavDropdown title="All Products" className="sidebar-item" >
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/basket/basketList'>Basket</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/flower/flowerList'>Flower</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/ribbon/ribbonList'>Ribbon</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/bow/bowList'>Bow</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/drink/drinkList'>Beverage</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/fruit/fruitList'>Fruit</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to='/adminDash/admin/product/card/cardList'>Card</NavDropdown.Item>
-                </NavDropdown>
-                
+                <NavItemWithSubMenu
+                    title="All Products"
+                    subItems={[
+                        { title: "Basket", to: "/adminDash/admin/product/basket/basketList" },
+                        { title: "Flower", to: "/adminDash/admin/product/flower/flowerList" },
+                        { title: "Ribbon", to: "/adminDash/admin/product/ribbon/ribbonList" },
+                        { title: "Bow", to: "/adminDash/admin/product/bow/bowList" },
+                        { title: "Beverage", to: "/adminDash/admin/product/drink/drinkList" },
+                        { title: "Fruit", to: "/adminDash/admin/product/fruit/fruitList" },
+                        { title: "Card", to: "/adminDash/admin/product/card/cardList" }
+                    ]}
+                    open={openMenu === "products"}
+                    onClick={() => handleMenuClick("products")}
+                />
             </Nav>
         </div>
+    );
+};
+
+const NavItemWithSubMenu = ({ title, to, subItems, open, onClick }) => {
+    return (
+        <Nav.Item>
+            <Nav.Link
+                className="sidebar-item"
+                as={Link}
+                to={to}
+                onClick={onClick}
+            >
+                {title}
+            </Nav.Link>
+            {open && (
+                <div className="submenu">
+                    {subItems.map((item, index) => (
+                        <Nav.Item key={index}>
+                            <Nav.Link as={Link} to={item.to} className="sidebar-sub-item">{item.title}</Nav.Link>
+                        </Nav.Item>
+                    ))}
+                </div>
+            )}
+        </Nav.Item>
     );
 };
 

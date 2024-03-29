@@ -176,7 +176,6 @@ function makeBasket() {
     };
 
     let cartCheck = LoadCart()
-    console.log(cartCheck)
 
     const addToCart = async (e) => {
         e.preventDefault();
