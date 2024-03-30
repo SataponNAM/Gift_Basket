@@ -1,4 +1,4 @@
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'; // Import Row and Col
+import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import Basket from '../../../components/Basket/Basket.jsx';
 import { useGetBasketQuery } from '../../../slices/basketApiSlice';
 import { useState } from 'react';

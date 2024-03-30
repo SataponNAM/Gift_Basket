@@ -2,6 +2,8 @@ import { memo, useEffect } from 'react';
 import { useGetDecorationQuery } from "../../slices/decorationApiSlice";
 import { Container, Image, Card } from "react-bootstrap";
 
+import '../item.css'
+
 const Ribbon = ({ decoId, selectedRibbon, setSelectedRibbon, total, setTotal }) => {
     const { deco } = useGetDecorationQuery("decorationList", {
         selectFromResult: ({ data }) => ({
@@ -21,18 +23,17 @@ const Ribbon = ({ decoId, selectedRibbon, setSelectedRibbon, total, setTotal }) 
         setSelectedRibbon(deco);
     }
 
-    const classes = selectedRibbon != null && deco._id === selectedRibbon.id ? "border border-success" : null;
+    const classes = selectedRibbon != null && deco._id === selectedRibbon.id ? "border border-3 custom-border" : null;
 
     if (deco.category === "Ribbon") {
         return (
             <Container className="mt-2">
-                <Card style={{ width: '10rem' }} onClick={handleOnClick} className={classes}>
-                    <Card.Img variant="top" src={`${deco.image}`} />
-                    <Card.Body>
-                        <Card.Title>{deco.name}</Card.Title>
-                        <Card.Text>{deco.price} baths</Card.Text>
-
-                    </Card.Body>
+                <Card style={{ width: '16rem', height: '18rem' }} onClick={handleOnClick} className={classes}>
+                <Card.Img variant="top" src={`${deco.image}`} style={{ height: '70%', objectFit: 'cover' }} />
+                <Card.Body style={{ height: '40%' }} className="item-card">
+                    <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{deco.name}</Card.Title>
+                    <Card.Text>Price : {deco.price} ฿</Card.Text>
+                </Card.Body>
                 </Card>
             </Container>
         );

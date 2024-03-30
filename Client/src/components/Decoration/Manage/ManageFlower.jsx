@@ -30,7 +30,7 @@ const ManageFlower = ({ decoId }) => {
         <Card.Img variant="top" src={`${deco.image}`} style={{ height: '50%', objectFit: 'cover' }} />
         <Card.Body style={{ height: '40%' }}>
           <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{deco.name}</Card.Title>
-          <Card.Text>Price : {deco.price} baths</Card.Text>
+          <Card.Text>Price : {deco.price} ฿</Card.Text>
         </Card.Body>
         <Card.Footer style={{ height: 'fit-content' }}>
           <Button variant='outline-primary' className='m-1' onClick={editClick}>Edit</Button>

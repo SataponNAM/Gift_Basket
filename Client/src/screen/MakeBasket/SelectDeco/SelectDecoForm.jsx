@@ -1,10 +1,12 @@
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGetDecorationQuery } from "../../../slices/decorationApiSlice";
 import Flower from "../../../components/Decoration/Flower.jsx";
 import Ribbon from "../../../components/Decoration/Ribbon.jsx";
 import Bow from "../../../components/Decoration/Bow.jsx";
+
+import './SelectDecoForm.css'
 
 function SelectDecoForm() {
     const location = useLocation();
@@ -47,81 +49,92 @@ function SelectDecoForm() {
     }
 
     if (isSuccess) {
-        const { ids, entities } = decoration
-
-        let filteredIds
-
-        filteredIds = [...ids]
-        // frontend อยู่ใน  /components/Address.jsx
-        flowerContent = ids?.length && filteredIds.map(decorationId => <Flower key={decorationId} decoId={decorationId} selectedFlower={selectedFlower} setSelectedFlower={setSelectedFlower} total={total} setTotal={setTotal}/>)
-        ribbonContent = ids?.length && filteredIds.map(decorationId => <Ribbon key={decorationId} decoId={decorationId} selectedRibbon={selectedRibbon} setSelectedRibbon={setSelectedRibbon} total={total} setTotal={setTotal}/>)
-        bowContent = ids?.length && filteredIds.map(decorationId => <Bow key={decorationId} decoId={decorationId} selectedBow={selectedBow} setSelectedBow={setSelectedBow} total={total} setTotal={setTotal}/>)
+        const { ids, entities } = decoration;
+    
+        // Filter out decorations that are not flowers
+        const flowerIds = ids.filter(decoId => entities[decoId]?.category === "Flower");
+    
+        // Filter out decorations that are ribbons
+        const ribbonIds = ids.filter(decoId => entities[decoId]?.category === "Ribbon");
+    
+        // Filter out decorations that are bows
+        const bowIds = ids.filter(decoId => entities[decoId]?.category === "Bow");
+    
+        // Render flower content
+        flowerContent = (
+            <Row xs={1} md={3} className="g-4">
+                {flowerIds.map(decorationId => (
+                    <Col key={decorationId}>
+                        <Flower decoId={decorationId} selectedFlower={selectedFlower} setSelectedFlower={setSelectedFlower} total={total} setTotal={setTotal}/>
+                    </Col>
+                ))}
+            </Row>
+        );
+    
+        // Render ribbon content
+        ribbonContent = (
+            <Row xs={1} md={3} className="g-4">
+                {ribbonIds.map(decorationId => (
+                    <Col key={decorationId}>
+                        <Ribbon decoId={decorationId} selectedRibbon={selectedRibbon} setSelectedRibbon={setSelectedRibbon} total={total} setTotal={setTotal}/>
+                    </Col>
+                ))}
+            </Row>
+        );
+    
+        // Render bow content
+        bowContent = (
+            <Row xs={1} md={3} className="g-4">
+                {bowIds.map(decorationId => (
+                    <Col key={decorationId}>
+                        <Bow decoId={decorationId} selectedBow={selectedBow} setSelectedBow={setSelectedBow} total={total} setTotal={setTotal}/>
+                    </Col>
+                ))}
+            </Row>
+        );
     }  
+    
 
     const nextPage = () => {
         const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, total };
-
-        console.log(nextState.selectedDeco)
         navigate('/dash/makeBasket/product', {state : {nextState}})
     }
 
     const nextButton = (
         selectedFlower === null || selectedRibbon === null || selectedBow === null ? (
-            <Button className="mt-2" disabled>Next</Button>
+            <Button className="mt-2 deco-next-button" disabled>Next</Button>
         ) :
         (
-            <Button className="mt-2" onClick={nextPage}>Next</Button>
+            <Button className="mt-2 deco-next-button" onClick={nextPage}>Next</Button>
         )
     )
 
     return (
-        <Container>
-            <h1>Select Decoration</h1>
+        <Container className="all-deco-container">
+            <h2>Select Decoration</h2>
 
+            <div className='deco-content'>
+            <h2>Select Flower</h2>
             {/* Flower */}
-            <div>
-                <h2>Select Flower</h2>
-                <div>
-                    <Container>
-                        <div style={{ width: '18rem' }}>
-                            <Form>
-                                {flowerContent}
-                            </Form>
-                        </div>
-                    </Container>
+
+                <div >
+                    {flowerContent}
                 </div>
-            </div>
 
             {/* Ribbon */}
-            <div>
-                <h2>Select Ribbon</h2>
+            <h2>Select Ribbon</h2>
                 <div>
-                    <Container>
-                        <div style={{ width: '18rem' }}>
-                            <Form>
-                                {ribbonContent}
-                            </Form>
-                        </div>
-                    </Container>
+                    {ribbonContent}
                 </div>
-            </div>
 
             {/* Bow */}
-            <div>
                 <h2>Select Bow</h2>
                 <div>
-                    <Container>
-                        <div style={{ width: '18rem' }}>
-                            <Form>
-                                {bowContent}
-                            </Form>
-                        </div>
-                    </Container>
+                    {bowContent}
                 </div>
             </div>
-
             <div>
-                <p>Total : {total} ฿</p>
+                <p className='total-deco'>Total : {total} ฿</p>
             </div>
 
             {nextButton}
@@ -129,4 +142,4 @@ function SelectDecoForm() {
     )
 }
 
-export default SelectDecoForm
+export default SelectDecoForm;

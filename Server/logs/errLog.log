@@ -220,3 +220,11 @@
     http://localhost:8080
 20240323	14:24:19	144b9a3c-faf0-48a0-ab09-892998218634	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
     http://localhost:8080
+20240331	02:37:58	b366f3df-91ae-4e42-85c7-43a527d37979	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
+20240331	02:38:01	d211bbc8-a5e9-4634-b3f6-b34c31075be7	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
+20240331	02:38:04	25544f50-4fc4-4685-b422-e847a155f557	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
+20240331	02:38:06	eee6db5e-6167-4716-af46-d5b75d451ee2	ReferenceError: updatedAddress is not defined	PATCH	/order/updateDeliver	
+    http://localhost:8080
