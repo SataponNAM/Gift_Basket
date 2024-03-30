@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import './Sidebar.css';
 import { Nav } from "react-bootstrap";
 
+import { FaAngleDown, FaAngleUp  } from "react-icons/fa";
+
 const Sidebar = () => {
     const [openMenu, setOpenMenu] = useState(null);
 
@@ -48,7 +50,8 @@ const NavItemWithSubMenu = ({ title, to, subItems, open, onClick }) => {
                 to={to}
                 onClick={onClick}
             >
-                {title}
+                {title}{' '}
+                {open ? <FaAngleUp  /> : <FaAngleDown />}
             </Nav.Link>
             {open && (
                 <div className="submenu">
@@ -62,5 +65,6 @@ const NavItemWithSubMenu = ({ title, to, subItems, open, onClick }) => {
         </Nav.Item>
     );
 };
+
 
 export default Sidebar;

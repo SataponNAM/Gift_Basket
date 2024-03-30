@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useGetDecorationQuery } from "../../../../../slices/decorationApiSlice";
 import ManageFlower from "../../../../../components/Decoration/Manage/ManageFlower";
 
+import '../../../global_admin.css'
+
 function FLowerList() {
     const {
         data: flower,
@@ -57,7 +59,7 @@ function FLowerList() {
             <h1>Flower List</h1>
 
             <Container>
-                <Button className='mt-3' onClick={addFlowerClick}>เพิ่มสินค้า</Button>
+                <Button className='mt-3 button' onClick={addFlowerClick}>Add Flower</Button>
             </Container>
 
             {content}

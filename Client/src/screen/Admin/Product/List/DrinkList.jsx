@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { useGetProductQuery } from "../../../../slices/productApiSlice"
 import ManageDrink from "../../../../components/Product/Manage/ManageDrink"
 
+import '../../global_admin.css'
+
 function DrinkList() {
     const {
         data: product,
@@ -54,10 +56,10 @@ function DrinkList() {
 
     return (
         <Container>
-            <h1>เครื่องดื่ม</h1>
+            <h1>Beverage List</h1>
 
             <div>
-                <Button onClick={Adddrink}>เพิ่มสินค้า</Button>
+                <Button className='button' onClick={Adddrink}>Add Beverage</Button>
             </div>
 
             {content}

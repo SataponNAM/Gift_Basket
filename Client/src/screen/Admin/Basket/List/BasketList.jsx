@@ -58,7 +58,7 @@ function BasketList() {
             <h1>Basket List</h1>
 
             <Container>
-                <Button className='mt-3' onClick={addBasketClick}>Add Basket</Button>
+                <Button className='mt-3 button' onClick={addBasketClick}>Add Basket</Button>
             </Container>
 
             {content}

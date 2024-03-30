@@ -5,6 +5,8 @@ import { Button, Container, Form, Image } from "react-bootstrap";
 import { useState } from "react";
 import Base64Convert from "../../../../hooks/Base64Convert";
 
+import '../../global_admin.css'
+
 function EditCard() {
     const navigate = useNavigate()
     const { id } = useParams()
@@ -36,9 +38,9 @@ function EditCard() {
 
     return (
         <Container>
-            <h1>edit</h1>
+            <h1>Edit Card</h1>
 
-            <Form className="mt-5" onSubmit={onSave}>
+            <Form className="mt-3" onSubmit={onSave}>
                 <Form.Group className="mt-3">
                     <Form.Label>Name</Form.Label>
                     <Form.Control
@@ -88,7 +90,7 @@ function EditCard() {
                     />
                 </Form.Group>
 
-                <Button type="submit">Save</Button>
+                <Button className="mt-2 button" type="submit">Save</Button>
 
             </Form>
         </Container>

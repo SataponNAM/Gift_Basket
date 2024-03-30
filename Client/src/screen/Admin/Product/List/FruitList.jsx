@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { useGetProductQuery } from "../../../../slices/productApiSlice"
 import ManageFruit from "../../../../components/Product/Manage/ManageFruit"
 
+import '../../global_admin.css'
+
 function FruitList() {
     const {
         data: product,
@@ -54,10 +56,10 @@ function FruitList() {
 
     return (
         <Container>
-            <h1>ผลไม้</h1>
+            <h1>Fruit List</h1>
 
             <div>
-                <Button onClick={AddFruit}>เพิ่มสินค้า</Button>
+                <Button className="button" onClick={AddFruit}>Add Fruit</Button>
             </div>
 
             {content}

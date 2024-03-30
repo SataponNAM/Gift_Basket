@@ -3,6 +3,8 @@ import ManageCard from "../../../../components/Card/Manage/ManageCard.jsx"
 import { useGetCardQuery } from "../../../../slices/cardApiSlice.jsx"
 import { useNavigate } from "react-router-dom"
 
+import '../../global_admin.css'
+
 function CardList() {
     const {
         data: card,
@@ -58,7 +60,7 @@ function CardList() {
             <h1>Card List</h1>
 
             <div>
-                <Button onClick={addCardClick}>Add Card</Button>
+                <Button className="button" onClick={addCardClick}>Add Card</Button>
             </div>
 
             {content}

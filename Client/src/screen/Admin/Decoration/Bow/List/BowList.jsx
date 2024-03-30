@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useGetDecorationQuery } from "../../../../../slices/decorationApiSlice";
 import ManageBow from "../../../../../components/Decoration/Manage/ManageBow";
 
+import '../../../global_admin.css'
+
 function BowList() {
     const {
         data: bow,
@@ -54,10 +56,10 @@ function BowList() {
 
     return (
         <Container>
-            <h1>Bow</h1>
+            <h1>Bow List</h1>
 
             <Container className="mt-3">
-                <Button onClick={addBowClick}>เพิ่มสินค้า</Button>
+                <Button className="button" onClick={addBowClick}>Add Bow</Button>
             </Container>
 
             {content}

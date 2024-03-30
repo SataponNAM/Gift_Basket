@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useUpdateDecorationMutation, selectDecorationById } from "../../../../../slices/decorationApiSlice";
 import Base64Convert from "../../../../../hooks/Base64Convert";
 
+import '../../../global_admin.css'
+
 function EditFlower() {
     const navigate = useNavigate()
     const { id } = useParams()
@@ -35,7 +37,7 @@ function EditFlower() {
 
     return (
         <Container>
-            <h1>Edit</h1>
+            <h1>Edit Ribbon</h1>
 
             <Form className="mt-3" onSubmit={onSave}>
                 <Form.Group className="mt-3">
@@ -83,7 +85,7 @@ function EditFlower() {
                     </Card>
                 </Container>
 
-                <Button className="mt-3" type="submit">Save</Button>
+                <Button className="mt-3 button" type="submit">Save</Button>
 
             </Form>
         </Container>

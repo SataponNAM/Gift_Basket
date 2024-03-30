@@ -4,6 +4,8 @@ import Base64Convert from "../../../../../hooks/Base64Convert"
 import { useNavigate } from "react-router-dom"
 import { useAddDecorationMutation } from "../../../../../slices/decorationApiSlice"
 
+import '../../../global_admin.css'
+
 function AddBow() {
     const [name, setName] = useState("")
     const [price, setPrice] = useState("")
@@ -30,11 +32,11 @@ function AddBow() {
 
     return (
         <Container>
-            <h1>add</h1>
+            <h1>Add Bow</h1>
 
             <Form onSubmit={onAdd}>
             <Form.Group className="mt-3">
-                    <Form.Label>ชื่อสินค้า</Form.Label>
+                    <Form.Label>Name</Form.Label>
                     <Form.Control
                         type="text"
                         value={name}
@@ -44,7 +46,7 @@ function AddBow() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>ราคา</Form.Label>
+                    <Form.Label>Price</Form.Label>
                     <Form.Control
                         type="number"
                         value={price}
@@ -54,7 +56,7 @@ function AddBow() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>สี</Form.Label>
+                    <Form.Label>Color</Form.Label>
                     <Form.Control
                         type="text"
                         value={type}
@@ -64,7 +66,7 @@ function AddBow() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>รูปภาพ</Form.Label>
+                    <Form.Label>Image</Form.Label>
                     <Form.Control
                         type="file"
                         accept='.jpeg, .png, .jpg'
@@ -72,7 +74,7 @@ function AddBow() {
                     />
                 </Form.Group>
 
-                <Button type="submit">Save</Button>
+                <Button className="mt-2 button" type="submit">Save</Button>
 
             </Form>
         </Container>

@@ -4,6 +4,8 @@ import Base64Convert from "../../../../hooks/Base64Convert"
 import { useAddBasketMutation } from "../../../../slices/basketApiSlice"
 import { useNavigate } from "react-router-dom"
 
+import '../../global_admin.css'
+
 function AddBasket() {
     const [name, setName] = useState("")
     const [price, setPrice] = useState("")
@@ -29,7 +31,7 @@ function AddBasket() {
 
     return (
         <Container>
-            <h1>Add</h1>
+            <h1>Add Basket</h1>
 
             <Form onSubmit={onAdd}>
                 <Form.Group>
@@ -61,7 +63,7 @@ function AddBasket() {
                     />
                 </Form.Group>
 
-                <Button type="submit">Save</Button>
+                <Button className="mt-2 button" type="submit">Save</Button>
             </Form>
         </Container>
     )

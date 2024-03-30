@@ -29,7 +29,7 @@
     overflow: hidden;
     transition: all 0.35s ease-in-out;
     padding: 1rem 0 0 2rem;
-    background-color: #eceff8;
+    background-color: #faf5f2;
     flex: 1; /* Fill the remaining space */
 }
 

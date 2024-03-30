@@ -5,6 +5,8 @@ import { useState } from "react";
 import { selectProductById, useUpdateProductMutation } from "../../../../slices/productApiSlice";
 import Base64Convert from "../../../../hooks/Base64Convert";
 
+import '../../global_admin.css'
+
 function EditDrink() {
     const navigate = useNavigate()
     const { id } = useParams()
@@ -35,11 +37,11 @@ function EditDrink() {
     
     return (
         <Container>
-            <h1>Editdrink</h1>
+            <h1>Edit Beverage</h1>
 
             <Form className="mt-5" onSubmit={onSave}>
                 <Form.Group className="mt-3">
-                    <Form.Label>ชื่อสินค้า</Form.Label>
+                    <Form.Label>Name</Form.Label>
                     <Form.Control
                         type="text"
                         value={name}
@@ -49,7 +51,7 @@ function EditDrink() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>ราคา</Form.Label>
+                    <Form.Label>Price</Form.Label>
                     <Form.Control
                         type="number"
                         value={price}
@@ -59,7 +61,7 @@ function EditDrink() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>สี</Form.Label>
+                    <Form.Label>Brand</Form.Label>
                     <Form.Control
                         type="text"
                         value={type}
@@ -69,7 +71,7 @@ function EditDrink() {
                 </Form.Group>
 
                 <Form.Group className="mt-3">
-                    <Form.Label>รูปภาพ</Form.Label>
+                    <Form.Label>Image</Form.Label>
                     <Form.Control
                         type="file"
                         accept='.jpeg, .png, .jpg'
@@ -77,7 +79,7 @@ function EditDrink() {
                     />
                 </Form.Group>
 
-                <Button type="submit">Save</Button>
+                <Button className="mt-2 button" type="submit">Save</Button>
 
             </Form>
         </Container>

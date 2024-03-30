@@ -5,6 +5,8 @@ import { Button, Card, Container, Form } from "react-bootstrap";
 import { useState } from "react";
 import Base64Convert from "../../../../hooks/Base64Convert";
 
+import '../../global_admin.css'
+
 function BasketEdit() {
     const navigate = useNavigate()
     const { id } = useParams()
@@ -34,7 +36,7 @@ function BasketEdit() {
 
     return (
         <Container className="mt-2">
-            <h1>Edit</h1>
+            <h1>Edit Basket</h1>
 
             <Form className="mt-3" onSubmit={onSave}>
                 <Form.Group>
@@ -72,7 +74,7 @@ function BasketEdit() {
                     </Card>
                 </Container>
 
-                <Button className="mt-5" type="submit">Save</Button>
+                <Button className="mt-5 button" type="submit">Save</Button>
 
             </Form>
         </Container>

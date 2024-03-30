@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useGetDecorationQuery } from "../../../../../slices/decorationApiSlice";
 import ManageRibbon from "../../../../../components/Decoration/Manage/ManageRibbon";
 
+import '../../../global_admin.css'
+
 function RibbonList() {
     const {
         data: ribbon,
@@ -57,7 +59,7 @@ function RibbonList() {
             <h1>Ribbon</h1>
 
             <Container>
-                <Button className='mt-3' onClick={addRibbonClick}>เพิ่มสินค้า</Button>
+                <Button className='mt-3 button' onClick={addRibbonClick}>Add Ribbon</Button>
             </Container>
 
             {content}

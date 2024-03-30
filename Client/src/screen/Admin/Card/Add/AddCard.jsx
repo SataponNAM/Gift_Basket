@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import Base64Convert from "../../../../hooks/Base64Convert.jsx"
 
+import '../../global_admin.css'
+
 function AddCard() {
     const [AddCard] = useAddCardMutation()
     const navigate = useNavigate()
@@ -29,7 +31,7 @@ function AddCard() {
 
     return (
         <Container>
-            <h1>add</h1>
+            <h1>Add Card</h1>
 
             <Form onSubmit={onAdd}>
             <Form.Group className="mt-3">
@@ -81,7 +83,7 @@ function AddCard() {
                     />
                 </Form.Group>
 
-                <Button type="submit">Save</Button>
+                <Button className="mt-2 button" type="submit">Save</Button>
 
             </Form>
         </Container>
