@@ -7,7 +7,9 @@
 .navbar {
     padding: 1rem;
     color: white;
-    background-color: #81531b !important;
+    font-weight: 500;
+    background-color: #ffac6c !important;
+    border-bottom: 3px solid white;
 }
 
 .custNav a {

@@ -1,8 +1,10 @@
-import { Container, Form, Button } from 'react-bootstrap'
-import Basket from '../../../components/Basket/Basket.jsx'
-import { useGetBasketQuery } from '../../../slices/basketApiSlice'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Container, Form, Button, Row, Col } from 'react-bootstrap'; // Import Row and Col
+import Basket from '../../../components/Basket/Basket.jsx';
+import { useGetBasketQuery } from '../../../slices/basketApiSlice';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import './SelectBasketForm.css';
 
 function SelectBasketForm() {
     const {
@@ -15,66 +17,73 @@ function SelectBasketForm() {
         pollingInterval: 15000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
-    })
+    });
 
-    let content
-    let total
+    let content;
+    let total;
     const [selectedBasket, setSelectedBasket] = useState(null);
     const navigate = useNavigate();
 
-    if (isLoading) content = <p>Loading...</p>
+    if (isLoading) content = <p>Loading...</p>;
 
     if (isError) {
-        content = <p className='errmsg'>{error?.data?.message}</p>
+        content = <p className='errmsg'>{error?.data?.message}</p>;
     }
 
     if (isSuccess) {
-        const { ids, entities } = basket
+        const { ids, entities } = basket;
 
-        let filteredIds
+        let filteredIds;
 
-        filteredIds = [...ids]
-        // frontend อยู่ใน  /components/Address.jsx
-        content = ids?.length && filteredIds.map(basketId => <Basket key={basketId} basketId={basketId} selectedBasket={selectedBasket} setSelectedBasket={setSelectedBasket} total={total} />)
+        filteredIds = [...ids];
+        content = (
+            <Row xs={1} md={3} className="g-4">
+                {ids?.length && filteredIds.map(basketId => (
+                    <Col key={basketId}>
+                        <Basket basketId={basketId} selectedBasket={selectedBasket} setSelectedBasket={setSelectedBasket} total={total} />
+                    </Col>
+                ))}
+            </Row>
+        );
     }
 
-    if(selectedBasket != null){
-        total = selectedBasket.price
-    }else {
-        total = 0
+    if (selectedBasket != null) {
+        total = selectedBasket.price;
+    } else {
+        total = 0;
     }
 
     const nextState = { selectedBasket, total };
 
     const nextPage = () => {
-        navigate('/dash/makeBasket/decoration', { state: { nextState } })
-    }
+        navigate('/dash/makeBasket/decoration', { state: { nextState } });
+    };
 
     const nextButton = (
         selectedBasket === null ? (
-            <Button className="mt-2" disabled>Next</Button>
+            <Button className="mt-2 basket-next-button" disabled>Next</Button>
         ) :
             (
-                <Button className="mt-2" onClick={nextPage}>Next</Button>
+                <Button className="mt-2 basket-next-button" onClick={nextPage}>Next</Button>
             )
-    )
+    );
 
     return (
 
-        <Container>
+        <Container className="all-basket-container">
             <h2>Select Basket</h2>
 
-            <div>
+            <div className="basket-content">
                 {content}
             </div>
 
             <Container>
-                <p>Total : {total} ฿</p>
+                <p className="total-basket">Total : {total} ฿</p>
             </Container>
 
             {nextButton}
         </Container>
-    )
+    );
 }
 
-export default SelectBasketForm
+export default SelectBasketForm;
