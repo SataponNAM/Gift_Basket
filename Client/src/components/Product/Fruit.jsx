@@ -1,6 +1,8 @@
+import { memo } from 'react';
 import { useGetProductQuery } from "../../slices/productApiSlice";
-import { Container, Form, Card } from "react-bootstrap";
-import { memo, useEffect } from 'react';
+import { Container, Card } from "react-bootstrap";
+
+import '../item.css'
 
 const Fruit = ({ productId, selectedFruit, setSelectedFruit }) => {
     const { product } = useGetProductQuery("productList", {
@@ -9,29 +11,34 @@ const Fruit = ({ productId, selectedFruit, setSelectedFruit }) => {
         })
     });
 
-    const handleOnChange = (e) => {
-        const { id, checked } = e.target;
-
-        if (checked) {
-            setSelectedFruit([...selectedFruit, product]);
+    const handleOnClick = () => {
+        const isSelected = selectedFruit.some(item => item.id === product.id);
+        if (isSelected) {
+            setSelectedFruit(selectedFruit.filter(item => item.id !== product.id));
         } else {
-            setSelectedFruit(selectedFruit.filter((item) => item.id !== id));
+            setSelectedFruit([...selectedFruit, product]);
         }
     };
 
     if (product && product.category === "Fruit") {
+        const isSelected = selectedFruit.some(item => item.id === product.id);
+        const cardStyle = {
+            width: '16rem',
+            height: '18rem',
+            cursor: 'pointer',
+            border: isSelected ? '3px solid #ffac6c' : '1px solid #c7c7c7',
+        };
+    
+
         return (
             <Container>
                 <div className="mb-3">
-                    <Form.Check
-                        type="checkbox"
-                        id={product.id}
-                        value={product.price}
-                        label={product.name}
-                        onChange={handleOnChange}
-                    />
-                    <Card style={{ width: '6rem' }}>
-                        <Card.Img src={product.image}></Card.Img>
+                    <Card style={cardStyle} onClick={handleOnClick}>
+                        <Card.Img variant="top" src={product.image} style={{ height: '70%', objectFit: 'cover' }} />
+                        <Card.Body style={{ height: '40%' }} className="item-card">
+                            <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{product.name}</Card.Title>
+                            <Card.Text>Price : {product.price} ฿</Card.Text>
+                        </Card.Body>
                     </Card>
                 </div>
             </Container>

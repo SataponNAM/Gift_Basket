@@ -1,45 +1,51 @@
-import { useGetProductQuery } from "../../slices/productApiSlice"
-import { Container, Image, Form, Card } from "react-bootstrap";
 import { memo } from 'react';
+import { useGetProductQuery } from "../../slices/productApiSlice";
+import { Container, Card } from "react-bootstrap";
+
+import '../item.css'
 
 const Drink = ({ productId, selectedDrink, setSelectedDrink }) => {
     const { product } = useGetProductQuery("productList", {
         selectFromResult: ({ data }) => ({
             product: data?.entities[productId]
         })
-    })
+    });
 
-    const handleOnChange = (e) => {
-        const { id, checked } = e.target;
-    
-        if (checked) {
-            setSelectedDrink([...selectedDrink, product]);
+    const handleOnClick = () => {
+        const isSelected = selectedDrink.some(item => item.id === product.id);
+        if (isSelected) {
+            setSelectedDrink(selectedDrink.filter(item => item.id !== product.id));
         } else {
-            setSelectedDrink(selectedDrink.filter((item) => item.id !== id));
+            setSelectedDrink([...selectedDrink, product]);
         }
     };
 
     if (product && product.category === "Drink") {
+        const isSelected = selectedDrink.some(item => item.id === product.id);
+        const cardStyle = {
+            width: '16rem',
+            height: '18rem',
+            cursor: 'pointer',
+            border: isSelected ? '3px solid #ffac6c' : '1px solid #c7c7c7',
+        };
+
         return (
-            <>
-                {['checkbox'].map((type) => (
-                    <div key={`default-${type}`} className="mb-3">
-                        <Form.Check
-                            type={type}
-                            id={product.id}
-                            value={product.price}
-                            label={product.name}
-                            onChange={handleOnChange}
-                        />
-                        <Card style={{ width: '6rem' }}>
-                            <Card.Img src={product.image}></Card.Img>
-                        </Card>
-                    </div>
-                ))}
-            </>
-        )
+            <Container>
+                <div className="mb-3">
+                    <Card style={cardStyle} onClick={handleOnClick}>
+                        <Card.Img variant="top" src={product.image} style={{ height: '70%', objectFit: 'cover' }} />
+                        <Card.Body style={{ height: '40%' }} className="item-card">
+                            <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{product.name}</Card.Title>
+                            <Card.Text>Price : {product.price} ฿</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+            </Container>
+        );
+    } else {
+        return null; // or render something else for non-Drink products
     }
-}
+};
 
 const memorized = memo(Drink);
 

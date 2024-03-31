@@ -1,18 +1,20 @@
-import { Container, Form, Button, Card } from "react-bootstrap";
+import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Fruit from '../../../components/Product/Fruit.jsx'
 import Drink from '../../../components/Product/Drink.jsx'
 import { useGetProductQuery } from "../../../slices/productApiSlice";
 
-// problem
-// คิดราคารวมยังไม่ได้ แต่แยกคิดได้ และส่งราคารวมไปหน้าต่อไปได้ถูกต้อง
+import './SelectProductForm.css'
 
 function SelectProductForm() {
     const navigate = useNavigate();
     const location = useLocation();
     const [total, setTotal] = useState(location.state.nextState.total)
     const [nt, setNt] = useState(0)
+    const [selectedProductType, setSelectedProductType] = useState(null);
+    const [disableFruit, setDisableFruit] = useState(true);
+    const [disableDrink, setDisableDrink] = useState(true);
 
     const {
         data: product,
@@ -26,10 +28,40 @@ function SelectProductForm() {
         refetchOnMountOrArgChange: true
     })
 
-    const [selectedProduct, setSelectedProduct] = useState([])
     const [selectedFruit, setSelectedFruit] = useState([])
     const [selectedDrink, setSelectedDrink] = useState([])
-    const [selectedProductType, setSelectedProductType] = useState(null);
+
+    useEffect(() => {
+        if (selectedProductType === 'fruit') {
+            setDisableFruit(false);
+            setDisableDrink(true);
+        } else if (selectedProductType === 'drink') {
+            setDisableFruit(true);
+            setDisableDrink(false);
+        } else {
+            setDisableFruit(true);
+            setDisableDrink(true);
+        }
+    }, [selectedProductType]);
+
+    const handleProductTypeChange = (type) => {
+        setSelectedProductType(type);
+    }
+
+    const navigateToNextPage = () => {
+        const nextState = { ...location.state.nextState, selectedFruit, selectedDrink, total: total + nt };
+        navigate('/dash/makeBasket/card', { state: { nextState } })
+    }
+
+    const nextButton = (
+        selectedProductType && (selectedFruit.length > 0 || selectedDrink.length > 0) ? (
+            <Button className="mt-2 product-next-button" onClick={navigateToNextPage}>Next</Button>
+        ) :
+            (
+                <Button className="mt-2 product-next-button" disabled>Next</Button>
+            )
+    )
+
     let FruitContent = null
     let DrinkContent = null
     let content = null
@@ -43,135 +75,95 @@ function SelectProductForm() {
     }
 
     if (isSuccess) {
-        const { ids, entities } = product
+        const { ids, entities } = product;
 
-        let filteredIds
+        // Filter out products that are fruits
+        const fruitIds = ids.filter(productId => entities[productId]?.category === "Fruit");
 
-        filteredIds = [...ids]
+        // Filter out products that are drinks
+        const drinkIds = ids.filter(productId => entities[productId]?.category === "Drink");
 
-        FruitContent = ids?.length && filteredIds.map(productId => <Fruit key={productId} productId={productId}
-            selectedFruit={selectedFruit} setSelectedFruit={setSelectedFruit} />)
+        // Render fruit content
+        FruitContent = (
+            <Row xs={1} md={3} className="g-2">
+                {fruitIds.map(productId => (
+                    <Col key={productId}>
+                        <Fruit productId={productId} selectedFruit={selectedFruit} setSelectedFruit={setSelectedFruit} />
+                    </Col>
+                ))}
+            </Row>
+        );
 
-        DrinkContent = ids?.length && filteredIds.map(productId => <Drink key={productId} productId={productId}
-            selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink} />)
+        // Render drink content
+        DrinkContent = (
+            <Row xs={1} md={3} className="g-2">
+                {drinkIds.map(productId => (
+                    <Col key={productId}>
+                        <Drink productId={productId} selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink} />
+                    </Col>
+                ))}
+            </Row>
+        );
     }
 
-    const [sumFruit, setSumFruit] = useState(0)
-    const [sumDrink, setSumDrink] = useState(0)
-
-    const calculateFruitTotal = () => {
-        let fruitTotal = 0;
-        selectedFruit.forEach((fruit) => {
-            fruitTotal +=  fruit.price;
-        });
-        setSumFruit(fruitTotal);
-    };
-
-    const calculateDrinkTotal = () => {
-        let drinkTotal = 0;
-        selectedDrink.forEach((drink) => {
-            drinkTotal +=  drink.price;
-        });
-        setSumDrink(drinkTotal);
-    };
-
     const calculateTotal = () => {
-        calculateFruitTotal();
-        calculateDrinkTotal();
+        const sumFruit = selectedFruit.reduce((total, fruit) => total + fruit.price, 0);
+        const sumDrink = selectedDrink.reduce((total, drink) => total + drink.price, 0);
+        setNt(selectedProductType === 'fruit' ? sumFruit : sumDrink);
     };
 
     useEffect(() => {
-        setSelectedProduct(selectedProductType === 'fruit' ? selectedFruit : selectedDrink);
-        setNt(selectedProductType === 'fruit' ? sumFruit : sumDrink);
         calculateTotal();
-    }, [selectedFruit, selectedDrink, selectedProductType, sumFruit, sumDrink]);
-
-
-    const handleProductTypeChange = (type) => {
-        setSelectedProductType(type);
-    }
-
-    const nextPage = () => {
-        const selectedBasket = location.state.nextState.selectedBasket
-        const selectedFlower = location.state.nextState.selectedFlower
-        const selectedRibbon = location.state.nextState.selectedRibbon
-        const selectedBow = location.state.nextState.selectedBow
-
-        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, selectedProduct, total: total + nt };
-        // console.log(selectedProduct)
-        navigate('/dash/makeBasket/card', { state: { nextState } })
-    }
-
-    const nextButton = (
-        selectedProduct.length <= 0 ? (
-            <Button className="mt-2" disabled>Next</Button>
-        ) :
-            (
-                <Button className="mt-2" onClick={nextPage}>Next</Button>
-            )
-    )
-
+    }, [selectedFruit, selectedDrink, selectedProductType]);
 
     return (
-        <Container>
-            <h1>Select Product</h1>
+        <Container className="all-product-container">
+            <h2>Select Product</h2>
 
             <Container>
                 {content}
             </Container>
 
+            <div className="product-content">
+
+            <div className="custom-radio">
             <Form.Check
                 type="radio"
                 label="Fruit"
                 name="productType"
                 id="fruit"
                 onChange={() => handleProductTypeChange('fruit')}
+                className="product-radio"
             />
+            </div>
 
-            <Container>
-                {selectedProductType != 'fruit' ? (
-                    <fieldset disabled>
-                        <Form>
-                            {FruitContent}
-                        </Form>
-                    </fieldset>
-                ) : (
-                    <fieldset>
-                        <Form>
-                            {FruitContent}
-                        </Form>
-                    </fieldset>
-                )
-                }
+            <Container className={disableFruit ? 'disabled-content' : ''}>
+                <div className="in-product-content">
+                {FruitContent}
+                </div>
             </Container>
 
+            <div className="custom-radio">
             <Form.Check
                 type="radio"
                 label="Drink"
                 name="productType"
                 id="drink"
                 onChange={() => handleProductTypeChange('drink')}
+                className="product-radio"
             />
+            </div>
 
-            <Container>
-                {selectedProductType != 'drink' ? (
-                    <fieldset disabled>
-                        <Form>
-                            {DrinkContent}
-                        </Form>
-                    </fieldset>
-                ) : (
-                    <fieldset>
-                        <Form>
-                            {DrinkContent}
-                        </Form>
-                    </fieldset>
-                )
-                }
+            <Container className={disableDrink ? 'disabled-content' : ''}>
+            <div className="in-product-content">
+                {DrinkContent}
+                </div>
             </Container>
 
-            <div>
-                <p>Total : {total+nt} ฿</p>
+            </div>
+
+            <div className="total-product">
+                <p>Total : {total + nt} ฿</p>
             </div>
 
             {nextButton}
@@ -179,4 +171,4 @@ function SelectProductForm() {
     )
 }
 
-export default SelectProductForm
+export default SelectProductForm;
