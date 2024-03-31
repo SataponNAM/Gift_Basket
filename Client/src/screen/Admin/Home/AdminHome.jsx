@@ -1,13 +1,20 @@
 import { selectAllOrder } from '../../../slices/orderApiSlice'
 import { useSelector } from "react-redux"
 import './Home.css'
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 function AdminHome() {
     const orders = useSelector((state) => selectAllOrder(state));
 
     const filterOrders = orders?.filter(order => order.isDeliver == false)
     const newOD = filterOrders.length
+
+    const navigate = useNavigate()
+
+    const viewNewOrder = () =>{
+        navigate('/adminDash/admin/order/neworder')
+    }
 
     const newOrder = () => {
         return (
@@ -16,6 +23,7 @@ function AdminHome() {
                 <Card.Body>
                     <Card.Text>{newOD} Orders</Card.Text>
                 </Card.Body>
+                <Button className='button' onClick={viewNewOrder}>View</Button>
             </Card>
         )
     }

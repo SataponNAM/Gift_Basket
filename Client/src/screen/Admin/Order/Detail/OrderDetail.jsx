@@ -6,21 +6,24 @@ import { selectAddressById } from "../../../../slices/addressApiSlice"
 import BasketDetail from "../../../../components/Basket/Manage/BasketDetail"
 
 function OrderDetail() {
-    const { id } = useParams()
-    const order = useSelector((state) => selectOrderById(state, id))
-    const address = useSelector((state) => selectAddressById(state, order.address))
-    const basketId = order.product
-    const [sendDeliver] = useUpdateDeliverMutation()
-    const navigate = useNavigate()
+    const { id } = useParams();
+    const [sendDeliver] = useUpdateDeliverMutation();
+    const navigate = useNavigate();
+
+    const order = useSelector((state) => selectOrderById(state, id));
+    const address = useSelector((state) => selectAddressById(state, order?.address || ""));
+    const basketId = order?.product || [];
+
+    // Fetch basket details outside of JSX
+    const basketContent = basketId.map((basketID) => {
+        return <BasketDetail key={basketID} basketId={basketID} />;
+    });
 
     const clickDeliver = async (e) => {
-        e.preventDefault()
-        await sendDeliver({ id })
-        
-        navigate('/adminDash/admin/order/orderListAdmin')
+        e.preventDefault();
+        await sendDeliver({ id });
+        navigate('/adminDash/admin/order/orderListAdmin');
     }
-
-    const basketContent = basketId.map(basketID => <BasketDetail key={basketID} basketId={basketID} />)
 
     return (
         <Container>
@@ -33,22 +36,22 @@ function OrderDetail() {
                 <h2>Address</h2>
                 <Card className="mt-2">
                     <Card.Body>
-                        <Card.Text>{address.firstname} {address.lastname}</Card.Text>
-                        <Card.Text>{address.address} {address.subdistrict} {address.district} {address.province} {address.postal}</Card.Text>
-                        <Card.Text>{address.phone}</Card.Text>
+                        <Card.Text>{address?.firstname} {address?.lastname}</Card.Text>
+                        <Card.Text>{address?.address} {address?.subdistrict} {address?.district} {address?.province} {address?.postal}</Card.Text>
+                        <Card.Text>{address?.phone}</Card.Text>
                     </Card.Body>
                 </Card>
             </div>
 
             <div className="mt-3">
-                <h4>Total Price : {order.totalPrice}</h4>
+                <h4>Total Price : {order?.totalPrice}</h4>
             </div>
 
             <div>
                 <Button onClick={clickDeliver}>Deliver</Button>
             </div>
         </Container>
-    )
+    );
 }
 
-export default OrderDetail
+export default OrderDetail;

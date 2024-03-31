@@ -29,7 +29,7 @@ function OrderListManage() {
                             <th>Date Created</th>
                             <th>Total Price</th>
                             <th>Status</th>
-                            <th>Deliver</th>
+                            <th>Delivery</th>
                             <th>Detail</th>
                         </tr>
                     </thead>
@@ -39,8 +39,8 @@ function OrderListManage() {
                                 <td>{order._id}</td>
                                 <td>{order.created}</td>
                                 <td>{order.totalPrice}</td>
-                                <td>{order.status === 'open' ? "ยังไม่ชำระเงิน" : "ชำระเงินสำเร็จ"}</td>
-                                <td>{order.isDeliver ? "Deliver" : "Not Deliver"}</td>
+                                <td>{order.status === "complete" ? "ชำระเงินสำเร็จ" : "ยังไม่ชำระเงิน"}</td>
+                                <td>{order.isDeliver ? "Yes" : "No"}</td>
                                 <td><Button size="sm" onClick={() => moreDetail(order._id)} className="detail-button">Detail</Button></td>
                             </tr>
                         ))}

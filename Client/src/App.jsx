@@ -59,6 +59,7 @@ import AddCard from './screen/Admin/Card/Add/AddCard.jsx'
 
 import OrderListManage from './screen/Admin/Order/List/OrderList.jsx'
 import OrderDetail from './screen/Admin/Order/Detail/OrderDetail.jsx'
+import NewOrder from './screen/Admin/Order/newOrder/newOrder.jsx'
 
 function App() {
 
@@ -171,6 +172,7 @@ function App() {
                     <Route path='order'>
                       <Route path='orderListAdmin' element={<OrderListManage />} />
                       <Route path='orderDetail/:id' element={<OrderDetail />} />
+                      <Route path='neworder' element={<NewOrder />} />
                     </Route>
 
                   </Route>

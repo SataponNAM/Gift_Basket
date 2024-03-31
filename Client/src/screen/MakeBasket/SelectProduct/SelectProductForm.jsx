@@ -171,8 +171,7 @@ function SelectProductForm() {
             </Container>
 
             <div>
-                <p>Price : {nt}</p>
-                <p>Total : {total} ฿</p>
+                <p>Total : {total+nt} ฿</p>
             </div>
 
             {nextButton}

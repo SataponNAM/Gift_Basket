@@ -1,5 +1,5 @@
 import { useGetProductQuery } from "../../slices/productApiSlice";
-import { Container, Form, Image } from "react-bootstrap";
+import { Container, Form, Card } from "react-bootstrap";
 import { memo, useEffect } from 'react';
 
 const Fruit = ({ productId, selectedFruit, setSelectedFruit }) => {
@@ -11,11 +11,11 @@ const Fruit = ({ productId, selectedFruit, setSelectedFruit }) => {
 
     const handleOnChange = (e) => {
         const { id, checked } = e.target;
-    
+
         if (checked) {
             setSelectedFruit([...selectedFruit, product]);
         } else {
-            setSelectedFruit(selectedFruit.filter((item) => item.id !== id));   
+            setSelectedFruit(selectedFruit.filter((item) => item.id !== id));
         }
     };
 
@@ -30,6 +30,9 @@ const Fruit = ({ productId, selectedFruit, setSelectedFruit }) => {
                         label={product.name}
                         onChange={handleOnChange}
                     />
+                    <Card style={{ width: '6rem' }}>
+                        <Card.Img src={product.image}></Card.Img>
+                    </Card>
                 </div>
             </Container>
         );

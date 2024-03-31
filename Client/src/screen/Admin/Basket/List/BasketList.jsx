@@ -3,6 +3,8 @@ import ManageBasket from '../../../../components/Basket/Manage/ManageBasket.jsx'
 import { useGetBasketQuery } from "../../../../slices/basketApiSlice"
 import { useNavigate } from "react-router-dom"
 
+import '../../global_admin.css'
+
 function BasketList() {
     const {
         data: basket,
@@ -34,7 +36,7 @@ function BasketList() {
 
         const groupedIds = [];
         while (filteredIds.length > 0) {
-            groupedIds.push(filteredIds.splice(0, 5));
+            groupedIds.push(filteredIds.splice(0, 4));
         }
 
         // Render rows and columns 

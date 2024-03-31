@@ -1,5 +1,5 @@
 import { useGetProductQuery } from "../../slices/productApiSlice"
-import { Container, Image, Card, CardBody, Form } from "react-bootstrap";
+import { Container, Image, Form, Card } from "react-bootstrap";
 import { memo } from 'react';
 
 const Drink = ({ productId, selectedDrink, setSelectedDrink }) => {
@@ -31,6 +31,9 @@ const Drink = ({ productId, selectedDrink, setSelectedDrink }) => {
                             label={product.name}
                             onChange={handleOnChange}
                         />
+                        <Card style={{ width: '6rem' }}>
+                            <Card.Img src={product.image}></Card.Img>
+                        </Card>
                     </div>
                 ))}
             </>
