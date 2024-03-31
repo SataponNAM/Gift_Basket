@@ -47,6 +47,8 @@ function SelectBasketForm() {
         );
     }
 
+    console.log("Selected Basket:", selectedBasket);
+
     if (selectedBasket != null) {
         total = selectedBasket.price;
     } else {

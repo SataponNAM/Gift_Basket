@@ -28,6 +28,7 @@ function SelectProductForm() {
         refetchOnMountOrArgChange: true
     })
 
+    const [selectedProduct, setSelectedProduct] = useState([])
     const [selectedFruit, setSelectedFruit] = useState([])
     const [selectedDrink, setSelectedDrink] = useState([])
 
@@ -48,23 +49,22 @@ function SelectProductForm() {
         setSelectedProductType(type);
     }
 
-    const navigateToNextPage = () => {
-        const nextState = { ...location.state.nextState, selectedFruit, selectedDrink, total: total + nt };
-        navigate('/dash/makeBasket/card', { state: { nextState } })
-    }
-
-    const nextButton = (
-        selectedProductType && (selectedFruit.length > 0 || selectedDrink.length > 0) ? (
-            <Button className="mt-2 product-next-button" onClick={navigateToNextPage}>Next</Button>
-        ) :
-            (
-                <Button className="mt-2 product-next-button" disabled>Next</Button>
-            )
-    )
-
     let FruitContent = null
     let DrinkContent = null
     let content = null
+
+    
+    useEffect(() => {
+        console.log("Selected Fruit:", selectedFruit);
+    }, [selectedFruit]);
+
+    useEffect(() => {
+        console.log("Selected Drink:", selectedDrink);
+    }, [selectedDrink]);
+
+    useEffect(() => {
+        console.log("Selected Product:", selectedProduct);
+    }, [selectedProduct]);
 
     if (isLoading) {
         content = <p>Loading...</p>
@@ -106,15 +106,55 @@ function SelectProductForm() {
         );
     }
 
+    const [sumFruit, setSumFruit] = useState(0)
+    const [sumDrink, setSumDrink] = useState(0)
+
+    const calculateFruitTotal = () => {
+        let fruitTotal = 0;
+        selectedFruit.forEach((fruit) => {
+            fruitTotal +=  fruit.price;
+        });
+        setSumFruit(fruitTotal);
+    };
+
+    const calculateDrinkTotal = () => {
+        let drinkTotal = 0;
+        selectedDrink.forEach((drink) => {
+            drinkTotal +=  drink.price;
+        });
+        setSumDrink(drinkTotal);
+    };
+
     const calculateTotal = () => {
-        const sumFruit = selectedFruit.reduce((total, fruit) => total + fruit.price, 0);
-        const sumDrink = selectedDrink.reduce((total, drink) => total + drink.price, 0);
-        setNt(selectedProductType === 'fruit' ? sumFruit : sumDrink);
+        calculateFruitTotal();
+        calculateDrinkTotal();
     };
 
     useEffect(() => {
+        setSelectedProduct(selectedProductType === 'fruit' ? selectedFruit : selectedDrink);
+        setNt(selectedProductType === 'fruit' ? sumFruit : sumDrink);
         calculateTotal();
-    }, [selectedFruit, selectedDrink, selectedProductType]);
+    }, [selectedFruit, selectedDrink, selectedProductType, sumFruit, sumDrink]);
+
+    const nextPage = () => {
+        const selectedBasket = location.state.nextState.selectedBasket
+        const selectedFlower = location.state.nextState.selectedFlower
+        const selectedRibbon = location.state.nextState.selectedRibbon
+        const selectedBow = location.state.nextState.selectedBow
+
+        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, selectedProduct, total: total + nt };
+        // console.log(selectedProduct)
+        navigate('/dash/makeBasket/card', { state: { nextState } })
+    }
+
+    const nextButton = (
+        selectedProduct.length <= 0 ? (
+            <Button className="mt-2 product-next-button" disabled>Next</Button>
+        ) :
+            (
+                <Button className="mt-2 product-next-button" onClick={nextPage}>Next</Button>
+            )
+    )
 
     return (
         <Container className="all-product-container">

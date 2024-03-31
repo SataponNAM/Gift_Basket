@@ -13,7 +13,7 @@ function makeBasket() {
     const navigate = useNavigate()
     let content
     const errRef = useRef()
-    const [errorMessage, setErrorMessage] = useState('Err') // test เฉยๆ 
+    const [errorMessage, setErrorMessage] = useState('') // test เฉยๆ 
     const errClass = errorMessage ? "errmsg" : "offscreen"
 
     const basket = location.state.nextState.selectedBasket
@@ -223,14 +223,14 @@ function makeBasket() {
 
     return (
         <Container>
-            <h1>Make</h1>
+            <h2>Gift Basket You Make</h2>
 
             <Container>
                 <p>{basket.name}</p>
                 <p>{flower.name}</p>
                 <p>{ribbon.name}</p>
                 <p>{bow.name}</p>
-                {productData.map(entity => (
+                {product.map(entity => (
                     <li key={entity.id}>{entity.name}</li>
                 ))}
                 <p>{card.name}</p>

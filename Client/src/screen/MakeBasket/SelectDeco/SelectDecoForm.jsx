@@ -34,6 +34,18 @@ function SelectDecoForm() {
     const [selectedRibbon, setSelectedRibbon] = useState(null);
     const [selectedBow, setSelectedBow] = useState(null);
 
+    useEffect(() => {
+        console.log("Selected Flower:", selectedFlower);
+    }, [selectedFlower]);
+
+    useEffect(() => {
+        console.log("Selected Ribbon:", selectedRibbon);
+    }, [selectedRibbon]);
+
+    useEffect(() => {
+        console.log("Selected Bow:", selectedBow);
+    }, [selectedBow]);
+
     if (isLoading) {
         content = <p>Loading...</p>
         flowerContent = null
