@@ -8,6 +8,8 @@ import { useAddGiftBasketMutation } from "../../../slices/giftBasketApiSlice.jsx
 import { useAddCartMutation } from "../../../slices/cartApiSlice.jsx";
 import { useGetCartQuery, useUpdateCartMutation } from "../../../slices/cartApiSlice.jsx";
 
+import './makeGiftBasket.css'
+
 function makeBasket() {
     const location = useLocation()
     const navigate = useNavigate()
@@ -218,25 +220,41 @@ function makeBasket() {
 
 
     const addToCartButton = (
-        <Button className="mt-2" type="submit">Add to cart</Button>
+        <Button className="mt-2 add-to-cart" type="submit">Add to cart</Button>
     )
 
     return (
-        <Container>
+        <Container className="all-make-container">
             <h2>Gift Basket You Make</h2>
 
-            <Container>
-                <p>{basket.name}</p>
-                <p>{flower.name}</p>
-                <p>{ribbon.name}</p>
-                <p>{bow.name}</p>
+            <Container className="make-content">
+                <p>
+                    <span className="bold-text">Basket :</span> {basket.name}
+                </p>
+                <p>
+                    <span className="bold-text">Flower :</span> {flower.name}
+                </p>
+                <p>
+                    <span className="bold-text">Ribbon :</span> {ribbon.name}
+                </p>
+                <p>
+                    <span className="bold-text">Bow :</span> {bow.name}
+                </p>
+
+                <p className="bold-text">Product :</p>
                 {product.map(entity => (
-                    <li key={entity.id}>{entity.name}</li>
+                    <p key={entity.id}> - {entity.name}</p>
                 ))}
-                <p>{card.name}</p>
-                <p>{cardText}</p>
-                <p>ราคารวม : {totalPrice} บาท</p>
+
+                <p>
+                    <span className="bold-text">Card Style:</span> {card.name}
+                </p>
+                <p>
+                    <span className="bold-text">Text:</span> {cardText}
+                </p>
+                <p className="total-make">Total Price : {totalPrice} ฿</p>
             </Container>
+
             <Form onSubmit={addToCart}>
                 {addToCartButton}
             </Form>
