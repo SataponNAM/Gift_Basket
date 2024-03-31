@@ -23,11 +23,11 @@ const Basket = ({ basketId, selectedBasket, setSelectedBasket }) => {
     return (
       <Container className="mt-2">
         <Card style={{ width: '16rem', height: '18rem' }} onClick={selectedCard} className={classes}>
-          <Card.Img variant="top" src={basket.image}/>
-          <Card.Body className="item-card">
-            <Card.Text >{basket.name}</Card.Text>
-            <Card.Text>{basket.price} ฿</Card.Text>
-          </Card.Body>
+        <Card.Img variant="top" src={`${basket.image}`} style={{ height: '70%', objectFit: 'cover' }} />
+                <Card.Body style={{ height: '40%' }} className="item-card">
+                    <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{basket.name}</Card.Title>
+                    <Card.Text>Price : {basket.price} ฿</Card.Text>
+                </Card.Body>
         </Card>
       </Container>
     );

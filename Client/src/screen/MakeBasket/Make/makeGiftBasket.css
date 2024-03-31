@@ -1,0 +1,78 @@
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+body {
+    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\main-bg.jpg);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
+.all-basket-container {
+    animation: transitionIn 0.75s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    max-width: 900px !important;
+    width: 100%;
+    max-height: 600px !important;
+    height: 100%;
+    background-color: #ffffff;
+    transform: translate(-50%, 0);
+    border-radius: 15px;
+    color: #81531b;
+    margin-top: 10vh;
+}
+
+.basket-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    
+}
+
+.all-basket-container h2 {
+    margin-top: 20px;
+}
+
+.total-basket{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.basket-next-button {
+    width: 15%;
+    color: #ffffff;
+    background-color: #ffac6c !important;
+    border-color: transparent !important;
+    display: block;
+    margin-top: -5px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.basket-next-button:hover {
+    background-color: #ffdec4 !important;
+    color: #81531b;
+}
+
+
+

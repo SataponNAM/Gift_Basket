@@ -1,0 +1,94 @@
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+body {
+    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\main-bg.jpg);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
+.all-card-container {
+    animation: transitionIn 0.75s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    max-width: 900px !important;
+    width: 100%;
+    max-height: 600px !important;
+    height: 100%;
+    background-color: #ffffff;
+    transform: translate(-50%, 0);
+    border-radius: 15px;
+    color: #81531b;
+    margin-top: 10vh;
+}
+
+.card-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    
+}
+
+.all-card-container h2 {
+    margin-top: 20px;
+}
+
+.card-form {
+    border-radius: 15px;
+}
+
+.card-write-text {
+    color: #81531b;
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.total-card{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.total-card p {
+    margin-right: auto;
+}
+
+.card-next-button {
+    width: 15%;
+    color: #ffffff;
+    background-color: #ffac6c !important;
+    border-color: transparent !important;
+    margin-top: -5px;
+    margin-left: auto;
+    margin-right: -12px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.card-next-button:hover {
+    background-color: #ffdec4 !important;
+    color: #81531b;
+}
+
+
+

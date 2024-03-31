@@ -1,8 +1,10 @@
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import CardCompo from '../../../components/Card/Card.jsx'
 import { useGetCardQuery } from "../../../slices/cardApiSlice.jsx";
+
+import './SelectCardForm.css'
 
 function SelectCardForm() {
     const navigate = useNavigate();
@@ -40,8 +42,15 @@ function SelectCardForm() {
 
         filteredIds = [...ids]
 
-        content = ids?.length && filteredIds.map(cardId => <CardCompo key={cardId} cardId={cardId} 
-            selectedCard={selectedCard} setSelectedCard={setSelectedCard} total={total} setTotal={setTotal} />)
+        content = (
+            <Row xs={1} md={3} className="g-4">
+                 {ids?.length && filteredIds.map(cardId => (
+                     <Col key={cardId}>
+                        <CardCompo cardId={cardId} selectedCard={selectedCard} setSelectedCard={setSelectedCard} total={total} setTotal={setTotal} />
+                    </Col>
+                ))}
+             </Row>
+         );
     }
 
     const nextPage = () => {
@@ -60,10 +69,10 @@ function SelectCardForm() {
 
     const nextButton = (
         selectedCard === null || cardText.length <= 0 ? (
-            <Button className="mt-2" disabled>Next</Button>
+            <Button className="mt-2 card-next-button" disabled>Next</Button>
         ) :
             (
-                <Button className="mt-2" onClick={nextPage}>Next</Button>
+                <Button className="mt-2 card-next-button" onClick={nextPage}>Next</Button>
             )
     )
 
@@ -74,36 +83,35 @@ function SelectCardForm() {
 
 
     return (
-        <Container>
-            <h1>Select Card Style</h1>
+        <Container className="all-card-container">
+            <h2>Select Card Style</h2>
 
-            <div>
+            <div className='card-content'>
                 {content}
             </div>
 
-            <div className="mt-3">
+            <div className="card-write-text">
                 <Form className="m-3">
                     <Form.Group>
                         <Form.Label>Write Something :</Form.Label>
                         <Form.Control
                             as="textarea"
-                            rows={3}
+                            rows={4}
                             type="text"
                             placeholder="To..."
                             value={cardText}
                             onChange={writeCard}
+                            className="card-form"
                         />
                     </Form.Group>
                 </Form>
             </div>
 
-            <div>
+            <Container className='total-card'>
                 <p>Total : {total} ฿</p>
-            </div>
-
-            <div>
+        
                 {nextButton}
-            </div>
+            </Container>
         </Container>
     )
 }
