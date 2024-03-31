@@ -79,9 +79,9 @@ function OrderList() {
     }
 
     return (
-        <Container>
+        <Container className="all-container">
             <h1>Order</h1>
-            <div>
+            <div className="content">
                 {content}
             </div>
         </Container>

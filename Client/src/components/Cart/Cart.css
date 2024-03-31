@@ -1,3 +1,13 @@
 .button-block {
     width: 150px;
+    color: rgb(210, 0, 0) !important;
+}
+
+.button-block:hover {
+    color: white !important;
+}
+
+.m-3 {
+    color: #81531b;
+    font-weight: 500;
 }

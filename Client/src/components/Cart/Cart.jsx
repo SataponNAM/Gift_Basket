@@ -122,7 +122,7 @@ const Cart = ({ cartId, total, setTotal }) => {
                                 </div>
 
                                 <div>
-                                    <Button value={item.id} variant="outline-danger" size="sm" className=" button-block m-3" onClick={deleteOnclick}>ลบสินค้า</Button>
+                                    <Button value={item.id} variant="outline-danger" size="sm" className=" button-block m-3" onClick={deleteOnclick}>Delete</Button>
                                 </div>
                             </Card>
                         </div>

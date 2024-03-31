@@ -6,6 +6,8 @@ import { useGetCartQuery } from '../../slices/cartApiSlice.jsx'
 import { useGetUsersQuery } from '../../slices/userApiSlice.jsx'
 import Cart from '../../components/Cart/Cart.jsx'
 
+import './CartList.css'
+
 function CartList() {
     let content
     const { email, isAdmin } = useAuth()
@@ -70,10 +72,10 @@ function CartList() {
 
         if (filterData.length > 0) {
             basketId = filterData[0].giftBasket;
-            buttonPayment = (<Button onClick={makePayment}>ซื้อสินค้า</Button>)
+            buttonPayment = (<Button onClick={makePayment} className="buy-button">Buy</Button>)
             //console.log(basketId);
         }else {
-            buttonPayment = (<Button onClick={makePayment} disabled>ซื้อสินค้า</Button>)
+            buttonPayment = (<Button className="buy-button" onClick={makePayment} disabled >Buy</Button>)
         }
 
         //console.log(filterData)
@@ -83,16 +85,13 @@ function CartList() {
 
     return (
         <>
-            <Container>
+            <Container className="all-container">
                 <h1>Cart</h1>
-                <Container>
-                    <Form>
+                    <div className="content">
                         {content}
-                    </Form>
-                </Container>
-
-                <Container>
-                    <p>ราคารวม : {total} บาท</p>
+                    </div>
+                <Container className='buy-container'>
+                    <p>Total : {total} ฿</p>
                     {buttonPayment}
                 </Container>
 

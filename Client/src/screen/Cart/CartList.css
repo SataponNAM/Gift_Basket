@@ -1,0 +1,21 @@
+.buy-container {
+    font-size: 20px;
+    font-weight: 500;
+    padding-top: 20px;
+}
+
+.buy-button {
+    width: 15%;
+    color: #ffffff;
+    background-color: #ffac6c !important;
+    border-color: transparent !important;
+    font-weight: 500;
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+}
+
+.buy-button:hover {
+    background-color: #ffdec4 !important;
+    color: #81531b;
+}
