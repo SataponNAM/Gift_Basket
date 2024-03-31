@@ -133,6 +133,16 @@ const register = asyncHandler(async (req, res) => {
         return res.status(409).json({ message : 'Email is used'})
     }
 
+    if(password.length < 6){
+        return res.status(400).json({ message: 'Password must be at least 6 characters long.'})
+    }
+
+    // Check if password meets complexity requirements
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/
+    if (!passwordRegex.test(password)) {
+        return res.status(400).json({ message: 'Password must contain at least one lowercase letter, one uppercase letter, and one number.' })
+    }
+
     // chech password and confirm password
     if (password !== cpassword){
         return res.status(401).json({ message: 'Password not match.'})

@@ -12,8 +12,6 @@ const getAllUsers = asyncHandler (async (req, res) => {
     res.json(users)
 })
 
-
-// SignUp
 // route POST /users
 const createNewUser = asyncHandler (async (req, res) => {
     const { firstname, lastname, email, password, phone ,roles } = req.body

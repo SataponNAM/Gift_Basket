@@ -15,7 +15,6 @@ const checkout = asyncHandler(async (req, res) => {
         // create order
         const orderObj = { user, product: productIds, totalPrice, address, status, session_id }
         const order = await Order.create(orderObj);
-        const orderId = order._id
 
         // Get product details from giftbasket
         const products = await GiftBasket.find({ _id: { $in: productIds } })

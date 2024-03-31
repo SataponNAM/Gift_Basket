@@ -17,7 +17,7 @@ const Register = () => {
     const [phone, setPhone] = useState('')
     const [password, setPassword] = useState('')
     const [cpassword, setCPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState('err')
 
     const navigate = useNavigate()
 
@@ -25,34 +25,24 @@ const Register = () => {
 
     useEffect(() => {
         setErrorMessage('')
-    }, [])
+    }, [email, password])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // have problem ไม่ catch error
-        // ยังไม่ได้แก้
         try {
-            const result = await register({ firstname, lastname, email ,phone ,password, cpassword})
-            console.log(result)
-            
-            // setEmail('')
-            // setFirstname('')
-            // setLastname('')
-            // setPhone('')
-            // setPassword('')
-            // setCPassword('')
-            //navigate('/login')
-            
+            await register({ firstname, lastname, email ,phone ,password, cpassword}).unwrap()
+
+            setEmail('')
+            setFirstname('')
+            setLastname('')
+            setPhone('')
+            setPassword('')
+            setCPassword('')
+            navigate('/login')
         } catch (error) {
             if(!error.status){
                 setErrorMessage('No server response')
-            }else if(error.status === 400){
-                setErrorMessage('All fiedls are required.')
-            }else if(error.status === 409){
-                setErrorMessage('Email is used.')
-            }else if(error.status === 401) {
-                setErrorMessage("Password do not match.")
             }else {
                 setErrorMessage(error.data?.message)
             }
@@ -86,6 +76,7 @@ const Register = () => {
     <div className="reg-container">
         <Form className="mt-5" onSubmit={handleSubmit}>
             <h2 className="mb-4">SIGN UP</h2>
+            
             <Row>
                 <Col md={6}>
                     <Form.Group className="mb-3">
@@ -174,6 +165,7 @@ const Register = () => {
             <p className="details">Have an account? <Link to="/Login" className="login-link">Log in</Link></p>
         </Form>
     </div>
+    
 </Container>
 
     )
