@@ -26,7 +26,7 @@ const checkout = asyncHandler(async (req, res) => {
                 product_data: {
                     name: product.id,
                 },
-                unit_amount: product.totalPrice * 100,
+                unit_amount: Math.round(product.totalPrice * 100),
             },
             quantity: 1,
         }));

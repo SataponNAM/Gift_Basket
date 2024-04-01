@@ -67,11 +67,11 @@ function Checkout() {
 
     const cartId = LoadCart()
     //console.log(cartId)
-
     const placeorder = async () => {
-        console.log("placeorder")
+        
 
         const result = await checkout({ user, productIds, totalPrice, address: addressID })
+        console.log(result)
 
         for(const giftBasketId of productIds){
             await deleteBasket({id: cartId, giftBasketId})

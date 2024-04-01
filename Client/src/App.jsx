@@ -19,6 +19,7 @@ import Cart from './screen/Cart/CartList.jsx'
 import SelectAddress from './screen/Address/Select/SelectAddress.jsx'
 import Success from './screen/Payment/success/Success.jsx'
 import OrderList from './screen/Order/OrderList.jsx'
+import Checkout from './screen/CheckOut/CheckOut.jsx'
 
 import AdminHome from './screen/Admin/Home/AdminHome.jsx'
 
@@ -104,6 +105,7 @@ function App() {
                   </Route>
 
                   <Route path='order'>
+                    <Route path='checkout' element={<Checkout />} />
                     <Route path='selectaddress' element={<SelectAddress />} />
                     <Route path='success/:status' element={<Success />} />
                     <Route path='orderlist' element={<OrderList />} />
