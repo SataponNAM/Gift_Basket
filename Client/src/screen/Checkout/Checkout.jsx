@@ -164,7 +164,7 @@ function Checkout() {
 
     return (
         <>
-            <h1>checkout</h1>
+            <h1>Check Out</h1>
             <div>
                 <Container>
                     <Card className="m-5" >
@@ -211,7 +211,7 @@ function Checkout() {
                 <p>Total Price : {totalPrice.toFixed(2)}</p>
             </div>
 
-            <Button onClick={placeorder}>ชำระเงิน</Button>
+            <Button onClick={placeorder}>Pay Now</Button>
         </>
     );
 }
