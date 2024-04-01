@@ -21,7 +21,6 @@ const Bow = ({ decoId, selectedBow, setSelectedBow, total, setTotal }) => {
             setTotal((prevTotal) => prevTotal + deco.price);
         }
         setSelectedBow(deco);
-
     }
 
     const classes = selectedBow != null && deco._id === selectedBow.id ? "border border-3 custom-border" : null;

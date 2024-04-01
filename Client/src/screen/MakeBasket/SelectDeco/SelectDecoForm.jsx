@@ -101,8 +101,8 @@ function SelectDecoForm() {
             <Row xs={1} md={3} className="g-4">
                 {bowIds.map(decorationId => (
                     <Col key={decorationId}>
-                        <Bow decoId={decorationId} selectedBow={selectedBow} s
-                        etSelectedBow={setSelectedBow} total={total} setTotal={setTotal}/>
+                        <Bow decoId={decorationId} selectedBow={selectedBow} 
+                        setSelectedBow={setSelectedBow} total={total} setTotal={setTotal}/>
                     </Col>
                 ))}
             </Row>
