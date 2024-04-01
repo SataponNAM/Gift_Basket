@@ -51,7 +51,7 @@ function address(){
 
     return (
         <Container className="all-container">
-            <h1>ADDRESS</h1>
+            <h1>Address</h1>
             <Button onClick={onAddAddressClicked} className="add-new-button">Add New Address</Button>
             <div className="content">{content}</div>
         </Container>

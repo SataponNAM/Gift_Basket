@@ -80,7 +80,7 @@ function addAddress({ users }) {
         <Container className="all-add-container">
             <div className="add-container">
             <Form className="mt-5" onSubmit={onAddAddress}>
-                <h2 className="mb-4">ADD ADDRESS</h2>
+                <h2 className="mb-4">Add Address</h2>
                 <Row>
                 <Col md={6}>
                 <Form.Group className="mb-3">

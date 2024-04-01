@@ -62,7 +62,7 @@ function EditAddressForm({ address, users }) {
         <Container className="all-edit-container">
             <div className="edit-container">
             <Form className="mt-5" onSubmit={onSaveAddress}>
-                <h2 className="mb-4">EDIT ADDRESS</h2>
+                <h2 className="mb-4">Edit Address</h2>
                 <Row>
                 <Col md={6}>
                 <Form.Group className="mb-3">
