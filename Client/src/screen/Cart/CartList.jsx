@@ -128,7 +128,7 @@ function CartList() {
                     {content}
                 </div>
                 <Container className='buy-container'>
-                    <p>Total : {total} ฿</p>
+                    <p>Total : {total.toFixed(2)} ฿</p>
                     {buttonPayment}
                 </Container>
 
