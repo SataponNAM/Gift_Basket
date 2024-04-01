@@ -6,10 +6,10 @@ import { useGetUsersQuery } from '../../slices/userApiSlice.jsx';
 import { useGetCartQuery, useDeleteCartProductMutation } from '../../slices/cartApiSlice.jsx';
 import { selectAddressById } from '../../slices/addressApiSlice.jsx';
 import { useGetGiftBasketQuery } from '../../slices/giftBasketApiSlice.jsx';
-import { useGetBasketQuery } from "../../slices/basketApiSlice";
-import { useGetProductQuery } from "../../slices/productApiSlice";
-import { useGetDecorationQuery } from "../../slices/decorationApiSlice";
-import { useGetCardQuery } from "../../slices/cardApiSlice";
+import { useGetBasketQuery } from "../../slices/basketApiSlice.jsx";
+import { useGetProductQuery } from "../../slices/productApiSlice.jsx";
+import { useGetDecorationQuery } from "../../slices/decorationApiSlice.jsx";
+import { useGetCardQuery } from "../../slices/cardApiSlice.jsx";
 import useAuth from '../../hooks/useAuth.jsx';
 
 import { Button } from 'react-bootstrap';
