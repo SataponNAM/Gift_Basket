@@ -188,7 +188,7 @@ function SelectProductForm() {
             <div className="custom-radio">
             <Form.Check
                 type="radio"
-                label="Drink"
+                label="Beverage"
                 name="productType"
                 id="drink"
                 onChange={() => handleProductTypeChange('drink')}
