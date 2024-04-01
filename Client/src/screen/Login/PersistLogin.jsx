@@ -6,6 +6,8 @@ import { useSelector } from "react-redux"
 import { selectCurrentToken } from "../../slices/Reducers/authReducers.jsx"
 import { Container } from "react-bootstrap"
 
+import './Persist.css'
+
 const PersistLogin = () => {
     const [persist] = usePersist()
     const token = useSelector(selectCurrentToken)
@@ -58,10 +60,10 @@ const PersistLogin = () => {
         //persist: yes, token: no
         console.log('error')
         content = (
-            <Container>
-                <p className='errmsg'>
-                    {`${error.data?.message} - `}
-                    <Link to="/login">Please login</Link>.
+            <Container className="time-out-container">
+                <p className='errmsg errmsg-time-out'>
+                    {`${error.data?.message} - `}Please
+                    <Link to="/login" className="relogin-link"> Login</Link>
                 </p>
             </Container>
         )

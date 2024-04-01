@@ -7,7 +7,7 @@ function Success() {
 
     useEffect(() => {
         if (status) {
-            setMessage("ชำระเงินสำเร็จ");
+            setMessage("Success");
         }
     }, []);
 
