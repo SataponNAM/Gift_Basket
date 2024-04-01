@@ -76,9 +76,9 @@ function SelectAddress() {
                         setSelectAddress={setSelectAddress} />)
         } else {
             content = (
-                <div>
-                    <p>Not address founded.</p>
-                    <p>Please <Link to='/dash/address/addAddress' >add address</Link></p>
+                <div className="noadd">
+                    <p>No Address Founded</p>
+                    <p>Please <Link to='/dash/address/addAddress' className="addadd-link">Add Address</Link></p>
                 </div>
             )
         }

@@ -119,7 +119,7 @@ function CartList() {
             buttonPayment = (<Button className="buy-button" onClick={makePayment} disabled>Buy</Button>)
         }
 
-        consol.log(filterData)
+        console.log(filterData)
     }
 
     return (

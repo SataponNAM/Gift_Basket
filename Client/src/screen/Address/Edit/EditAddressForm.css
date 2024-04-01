@@ -82,6 +82,7 @@ body {
     display: block;
     margin-left: auto;
     font-weight: 500;
+    margin-bottom: 10px;
 }
 
 .edit-button:hover {

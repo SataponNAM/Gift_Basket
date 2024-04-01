@@ -5,6 +5,8 @@ import { selectOrderById, useUpdateDeliverMutation } from "../../../../slices/or
 import { selectAddressById } from "../../../../slices/addressApiSlice"
 import BasketDetail from "../../../../components/Basket/Manage/BasketDetail"
 
+import './OrderDetail.css'
+
 function OrderDetail() {
     const { id } = useParams();
     const [sendDeliver] = useUpdateDeliverMutation();
@@ -50,7 +52,7 @@ function OrderDetail() {
             </div>
 
             <div>
-                <Button onClick={clickDeliver}>Deliver</Button>
+                <Button onClick={clickDeliver} className="delivery-button">Deliver</Button>
             </div>
         </Container>
     );

@@ -41,7 +41,7 @@ function NewOrder() {
                                 <td>{order._id}</td>
                                 <td>{order.created}</td>
                                 <td>{order.totalPrice}</td>
-                                <td>{order.status === 'open' ? "ยังไม่ชำระเงิน" : "ชำระเงินสำเร็จ"}</td>
+                                <td>{order.status === 'open' ? "Payment Pending" : "Payment Completed"}</td>
                                 <td>{order.isDeliver ? "Yes" : "No"}</td>
                                 <td><Button size="sm" onClick={() => moreDetail(order._id)} 
                                      className="detail-button">Detail</Button></td>

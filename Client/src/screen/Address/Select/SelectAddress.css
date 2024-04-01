@@ -17,3 +17,20 @@
     background-color: #ffdec4 !important;
     color: #81531b;
 }
+
+.noadd {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.addadd-link {
+    color: #ffac6c;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.addadd-link:hover {
+    color: #ffdec4;
+}
