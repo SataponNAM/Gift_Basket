@@ -9,7 +9,7 @@ import { useGetDecorationQuery } from "../../slices/decorationApiSlice";
 import { useGetCardQuery } from "../../slices/cardApiSlice";
 import "./Cart.css"
 
-const Cart = ({ cartId, total, setTotal }) => {
+const Cart = ({ cartId }) => {
     const { cart } = useGetCartQuery("cartList", {
         selectFromResult: ({ data }) => ({
             cart: data?.entities[cartId]
@@ -104,8 +104,6 @@ const Cart = ({ cartId, total, setTotal }) => {
         const giftBasket = filteredGiftBasketItems;
 
         if (giftBasket) {
-            const newTotal = giftBasket.reduce((acc, item) => acc + item.totalPrice, 0);
-            setTotal(newTotal);
 
             content = (
                 <Form.Group>

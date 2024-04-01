@@ -149,7 +149,6 @@ function makeBasket() {
             isSuccess,
             isError,
             error,
-            refetch
         } = useGetCartQuery('cartList', {
             pollingInterval: 15000,
             refetchOnFocus: true,
@@ -164,20 +163,21 @@ function makeBasket() {
     
         if (isSuccess) {
             const { ids, entities } = cart;
-            const cartIds = ids?.filter(cartId => entities[cartId].user === user);
+            const cartIds = ids?.filter(cartId => entities[cartId].user === user[0]);
     
             if (cartIds === undefined || cartIds.length === 0) {
 
                 return null;
             }
-    
-            return cartIds;
+
+            return cartIds;  
         }
     
         return null;
     };
 
     let cartCheck = LoadCart()
+    //console.log(cartCheck)
 
     const addToCart = async (e) => {
         e.preventDefault();

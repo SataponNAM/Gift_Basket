@@ -1,22 +1,25 @@
 import { Button, Container, Form } from 'react-bootstrap'
-import { useState } from 'react'
-import { useNavigate  } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth.jsx'
 import { useGetCartQuery } from '../../slices/cartApiSlice.jsx'
 import { useGetUsersQuery } from '../../slices/userApiSlice.jsx'
+import { useGetGiftBasketQuery } from '../../slices/giftBasketApiSlice.jsx'
 import Cart from '../../components/Cart/Cart.jsx'
 
 import './CartList.css'
 
 function CartList() {
     let content
+    let newTotal
     const { email, isAdmin } = useAuth()
     const navigate = useNavigate()
     const [total, setTotal] = useState(0)
 
     const makePayment = async () => {
         // go to choose address
-        navigate('/dash/order/selectaddress', {state: {basketId, totalPrice: total}})
+        navigate('/dash/order/selectaddress', { state: { basketId, totalPrice: total } })
     }
 
     const LoadUser = () => {
@@ -40,7 +43,6 @@ function CartList() {
             return filteredIds
         }
     }
-
     const userId = LoadUser()
 
     const {
@@ -54,6 +56,38 @@ function CartList() {
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
     })
+
+    const {
+        data: giftbaskets,
+        isGBLoading,
+        isGBSuccess,
+        isGBError,
+        GBerror
+    } = useGetGiftBasketQuery('giftbasketList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    })
+
+    useEffect(() => {
+        if (isSuccess && isGBSuccess) {
+            const { ids, entities } = cart
+            const { entities: gb } = giftbaskets;
+
+            const filterData = ids?.filter(cartId => entities[cartId].user === userId[0]).map(cartId => entities[cartId])
+
+            if (filterData.length > 0) {
+                basketId = filterData[0].giftbasket;
+                buttonPayment = (<Button onClick={makePayment} className="buy-button">Buy</Button>)
+
+                newTotal = 0
+                basketId?.forEach(basketID => {
+                    newTotal += gb[basketID].totalPrice
+                });
+                setTotal(newTotal)
+            }
+        }
+    }, [cart, giftbaskets])
 
     if (isLoading) content = <p>Loading...</p>
 
@@ -73,23 +107,21 @@ function CartList() {
         if (filterData.length > 0) {
             basketId = filterData[0].giftBasket;
             buttonPayment = (<Button onClick={makePayment} className="buy-button">Buy</Button>)
-            //console.log(basketId);
-        }else {
-            buttonPayment = (<Button className="buy-button" onClick={makePayment} disabled >Buy</Button>)
+
+            content = ids?.length && filteredIds.map(cartId => <Cart key={cartId} cartId={cartId} />)
+        } else {
+            content = (<p>You don't have products in cart.</p>)
+            buttonPayment = (<Button className="buy-button" onClick={makePayment} disabled>Buy</Button>)
         }
-
-        //console.log(filterData)
-
-        content = ids?.length && filteredIds.map(cartId => <Cart key={cartId} cartId={cartId} total={total} setTotal={setTotal} />)
     }
 
     return (
         <>
             <Container className="all-container">
                 <h1>Cart</h1>
-                    <div className="content">
-                        {content}
-                    </div>
+                <div className="content">
+                    {content}
+                </div>
                 <Container className='buy-container'>
                     <p>Total : {total} ฿</p>
                     {buttonPayment}
