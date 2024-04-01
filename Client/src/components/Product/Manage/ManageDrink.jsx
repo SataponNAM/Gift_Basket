@@ -35,7 +35,7 @@ const ManageDrink = ({ drinkId }) => {
                         {product.name}
                     </Card.Title>
                     
-                    <Card.Text>Price : {product.price} baths</Card.Text>
+                    <Card.Text>Price : {product.price} ฿</Card.Text>
                 </Card.Body>
 
                 <Card.Footer style={{ height: 'fit-content' }}>

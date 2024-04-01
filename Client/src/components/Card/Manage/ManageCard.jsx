@@ -32,7 +32,7 @@ const ManageCard = ({ cardId }) => {
               {card.name}
             </Card.Title>
 
-            <Card.Text>Price : {card.price} baths</Card.Text>
+            <Card.Text>Price : {card.price} ฿</Card.Text>
           </Card.Body>
 
           <Card.Footer style={{ height: 'fit-content' }}>
