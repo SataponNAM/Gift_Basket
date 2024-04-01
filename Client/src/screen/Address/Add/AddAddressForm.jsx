@@ -52,7 +52,8 @@ function addAddress({ users }) {
     const onAddAddress = async (e) => {
         e.preventDefault()
         try {
-            await addAddress({ user: userId, firstname, lastname, address: add, province, district, subdistrict, postal, phone, isDefault})
+            await addAddress({ user: userId, firstname, lastname, address: add, 
+                  province, district, subdistrict, postal, phone, isDefault})
         } catch (error) {
             if(!error.status){
                 setErrorMessage('No server response')

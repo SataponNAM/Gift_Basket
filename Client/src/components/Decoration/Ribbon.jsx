@@ -29,11 +29,17 @@ const Ribbon = ({ decoId, selectedRibbon, setSelectedRibbon, total, setTotal }) 
         return (
             <Container className="mt-2">
                 <Card style={{ width: '16rem', height: '18rem' }} onClick={handleOnClick} className={classes}>
+                
                 <Card.Img variant="top" src={`${deco.image}`} style={{ height: '70%', objectFit: 'cover' }} />
+                
                 <Card.Body style={{ height: '40%' }} className="item-card">
-                    <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{deco.name}</Card.Title>
+                    <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', 
+                                         overflow: 'hidden', textOverflow: 'ellipsis', 
+                                         whiteSpace: 'nowrap' }}>{deco.name}</Card.Title>
+                    
                     <Card.Text>Price : {deco.price} ฿</Card.Text>
                 </Card.Body>
+                
                 </Card>
             </Container>
         );

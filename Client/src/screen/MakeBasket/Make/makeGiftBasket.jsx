@@ -59,64 +59,6 @@ function makeBasket() {
         }
     }
 
-    const LoadProductData = () => {
-        // Product data
-        const {
-            data: productData,
-            isLoading,
-            isSuccess,
-            isError,
-            error
-        } = useGetProductQuery('productList', {
-            pollingInterval: 15000,
-            refetchOnFocus: true,
-            refetchOnMountOrArgChange: true
-        })
-
-        if (isLoading) content = <p>Loading...</p>
-
-        if (isError) {
-            content = <p className='errmsg'>{error?.data?.message}</p>
-        }
-
-        if (isSuccess) {
-            const { ids, entities } = productData
-
-            const productIds = ids?.filter(productId => product.includes(entities[productId].id)).map(productId => entities[productId])
-
-            return productIds
-        }
-    }
-
-    const LoadProductId = () => {
-        // Product data
-        const {
-            data: productData,
-            isLoading,
-            isSuccess,
-            isError,
-            error
-        } = useGetProductQuery('productList', {
-            pollingInterval: 15000,
-            refetchOnFocus: true,
-            refetchOnMountOrArgChange: true
-        })
-
-        if (isLoading) content = <p>Loading...</p>
-
-        if (isError) {
-            content = <p className='errmsg'>{error?.data?.message}</p>
-        }
-
-        if (isSuccess) {
-            const { ids, entities } = productData
-
-            const productIds = ids?.filter(productId => product.includes(entities[productId].id))
-
-            return productIds
-        }
-    }
-
     const LoadDecoration = () => {
         const decoration = []
 
@@ -134,7 +76,6 @@ function makeBasket() {
     }
 
     const user = LoadUser()
-    const productData = LoadProductData()
     const productIds = product.map(product => product.id);
     const decoration = LoadDecoration()
 
@@ -264,7 +205,6 @@ function makeBasket() {
             <p ref={errRef} className={errClass} aria-live='assertive'>{errorMessage}</p>
         </Container>
     )
-
 }
 
 export default makeBasket

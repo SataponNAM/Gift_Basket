@@ -71,7 +71,9 @@ function SelectAddress() {
 
         if (filteredIds.length) {
             // frontend อยู่ใน  /components/Address.jsx
-            content = ids?.length && filteredIds.map(addressId => <SelectAddr key={addressId} addressId={addressId} selectAddress={selectAddress} setSelectAddress={setSelectAddress} />)
+            content = ids?.length && filteredIds.map(addressId => 
+            <SelectAddr key={addressId} addressId={addressId} selectAddress={selectAddress} 
+                        setSelectAddress={setSelectAddress} />)
         } else {
             content = (
                 <div>

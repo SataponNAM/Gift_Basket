@@ -33,17 +33,23 @@ const Drink = ({ productId, selectedDrink, setSelectedDrink }) => {
             <Container>
                 <div className="mb-3">
                     <Card style={cardStyle} onClick={handleOnClick}>
-                        <Card.Img variant="top" src={product.image} style={{ height: '70%', objectFit: 'cover' }} />
+                        <Card.Img variant="top" src={product.image} 
+                                  style={{ height: '70%', objectFit: 'cover' }} />
+                        
                         <Card.Body style={{ height: '40%' }} className="item-card">
-                            <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{product.name}</Card.Title>
+                            <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', 
+                                                 overflow: 'hidden', textOverflow: 'ellipsis', 
+                                                 whiteSpace: 'nowrap' }}>{product.name}</Card.Title>
+                            
                             <Card.Text>Price : {product.price} ฿</Card.Text>
+                        
                         </Card.Body>
                     </Card>
                 </div>
             </Container>
         );
     } else {
-        return null; // or render something else for non-Drink products
+        return null;
     }
 };
 

@@ -14,7 +14,8 @@ function NewOrder() {
 
     const filterOrders = orders?.filter(order => order.isDeliver == false)
     // Sort orders by date created in descending order
-    const sortedOrders = filterOrders ? filterOrders.sort((a, b) => new Date(b.created) - new Date(a.created)) : [];
+    const sortedOrders = filterOrders ? filterOrders.sort((a, b) => 
+                         new Date(b.created) - new Date(a.created)) : [];
 
     return (
         <Container>
@@ -42,7 +43,8 @@ function NewOrder() {
                                 <td>{order.totalPrice}</td>
                                 <td>{order.status === 'open' ? "ยังไม่ชำระเงิน" : "ชำระเงินสำเร็จ"}</td>
                                 <td>{order.isDeliver ? "Yes" : "No"}</td>
-                                <td><Button size="sm" onClick={() => moreDetail(order._id)} className="detail-button">Detail</Button></td>
+                                <td><Button size="sm" onClick={() => moreDetail(order._id)} 
+                                     className="detail-button">Detail</Button></td>
                             </tr>
                         ))}
                     </tbody>

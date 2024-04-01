@@ -52,7 +52,6 @@ function SelectProductForm() {
     let FruitContent = null
     let DrinkContent = null
     let content = null
-
     
     useEffect(() => {
         console.log("Selected Fruit:", selectedFruit);
@@ -88,7 +87,8 @@ function SelectProductForm() {
             <Row xs={1} md={3} className="g-2">
                 {fruitIds.map(productId => (
                     <Col key={productId}>
-                        <Fruit productId={productId} selectedFruit={selectedFruit} setSelectedFruit={setSelectedFruit} />
+                        <Fruit productId={productId} selectedFruit={selectedFruit} 
+                        setSelectedFruit={setSelectedFruit} />
                     </Col>
                 ))}
             </Row>
@@ -99,7 +99,8 @@ function SelectProductForm() {
             <Row xs={1} md={3} className="g-2">
                 {drinkIds.map(productId => (
                     <Col key={productId}>
-                        <Drink productId={productId} selectedDrink={selectedDrink} setSelectedDrink={setSelectedDrink} />
+                        <Drink productId={productId} selectedDrink={selectedDrink} 
+                        setSelectedDrink={setSelectedDrink} />
                     </Col>
                 ))}
             </Row>
@@ -142,7 +143,8 @@ function SelectProductForm() {
         const selectedRibbon = location.state.nextState.selectedRibbon
         const selectedBow = location.state.nextState.selectedBow
 
-        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, selectedProduct, total: total + nt };
+        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, 
+            selectedProduct, total: total + nt };
         // console.log(selectedProduct)
         navigate('/dash/makeBasket/card', { state: { nextState } })
     }

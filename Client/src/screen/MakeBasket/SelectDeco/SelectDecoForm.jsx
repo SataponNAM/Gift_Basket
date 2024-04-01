@@ -77,7 +77,8 @@ function SelectDecoForm() {
             <Row xs={1} md={3} className="g-4">
                 {flowerIds.map(decorationId => (
                     <Col key={decorationId}>
-                        <Flower decoId={decorationId} selectedFlower={selectedFlower} setSelectedFlower={setSelectedFlower} total={total} setTotal={setTotal}/>
+                        <Flower decoId={decorationId} selectedFlower={selectedFlower} 
+                        setSelectedFlower={setSelectedFlower} total={total} setTotal={setTotal}/>
                     </Col>
                 ))}
             </Row>
@@ -88,7 +89,8 @@ function SelectDecoForm() {
             <Row xs={1} md={3} className="g-4">
                 {ribbonIds.map(decorationId => (
                     <Col key={decorationId}>
-                        <Ribbon decoId={decorationId} selectedRibbon={selectedRibbon} setSelectedRibbon={setSelectedRibbon} total={total} setTotal={setTotal}/>
+                        <Ribbon decoId={decorationId} selectedRibbon={selectedRibbon} 
+                        setSelectedRibbon={setSelectedRibbon} total={total} setTotal={setTotal}/>
                     </Col>
                 ))}
             </Row>
@@ -99,7 +101,8 @@ function SelectDecoForm() {
             <Row xs={1} md={3} className="g-4">
                 {bowIds.map(decorationId => (
                     <Col key={decorationId}>
-                        <Bow decoId={decorationId} selectedBow={selectedBow} setSelectedBow={setSelectedBow} total={total} setTotal={setTotal}/>
+                        <Bow decoId={decorationId} selectedBow={selectedBow} s
+                        etSelectedBow={setSelectedBow} total={total} setTotal={setTotal}/>
                     </Col>
                 ))}
             </Row>

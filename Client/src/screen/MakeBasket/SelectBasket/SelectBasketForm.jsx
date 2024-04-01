@@ -40,7 +40,8 @@ function SelectBasketForm() {
             <Row xs={1} md={3} className="g-4">
                 {ids?.length && filteredIds.map(basketId => (
                     <Col key={basketId}>
-                        <Basket basketId={basketId} selectedBasket={selectedBasket} setSelectedBasket={setSelectedBasket} total={total} />
+                        <Basket basketId={basketId} selectedBasket={selectedBasket} 
+                        setSelectedBasket={setSelectedBasket} total={total} />
                     </Col>
                 ))}
             </Row>

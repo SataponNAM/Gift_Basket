@@ -7,7 +7,7 @@ import Base64Convert from "../../../../../hooks/Base64Convert";
 
 import '../../../global_admin.css'
 
-function EditFlower() {
+function EditRibbon() {
     const navigate = useNavigate()
     const { id } = useParams()
     const flower = useSelector((state) => selectDecorationById(state, id));
@@ -92,4 +92,4 @@ function EditFlower() {
     )
 }
 
-export default EditFlower
+export default EditRibbon

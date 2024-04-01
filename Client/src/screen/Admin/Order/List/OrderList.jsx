@@ -39,9 +39,10 @@ function OrderListManage() {
                                 <td>{order._id}</td>
                                 <td>{order.created}</td>
                                 <td>{order.totalPrice}</td>
-                                <td>{order.status === "complete" ? "ชำระเงินสำเร็จ" : "ยังไม่ชำระเงิน"}</td>
+                                <td>{order.status === "complete" ? "Payment Completed " : "Payment Pending"}</td>
                                 <td>{order.isDeliver ? "Yes" : "No"}</td>
-                                <td><Button size="sm" onClick={() => moreDetail(order._id)} className="detail-button">Detail</Button></td>
+                                <td><Button size="sm" onClick={() => moreDetail(order._id)} 
+                                     className="detail-button">Detail</Button></td>
                             </tr>
                         ))}
                     </tbody>

@@ -37,7 +37,9 @@ function OrderDetail() {
                 <Card className="mt-2">
                     <Card.Body>
                         <Card.Text>{address?.firstname} {address?.lastname}</Card.Text>
-                        <Card.Text>{address?.address} {address?.subdistrict} {address?.district} {address?.province} {address?.postal}</Card.Text>
+                        <Card.Text>
+                            {address?.address} {address?.subdistrict} {address?.district} {address?.province} {address?.postal}
+                        </Card.Text>
                         <Card.Text>{address?.phone}</Card.Text>
                     </Card.Body>
                 </Card>

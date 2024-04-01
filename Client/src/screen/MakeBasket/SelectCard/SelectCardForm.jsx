@@ -46,7 +46,8 @@ function SelectCardForm() {
             <Row xs={1} md={3} className="g-4">
                  {ids?.length && filteredIds.map(cardId => (
                      <Col key={cardId}>
-                        <CardCompo cardId={cardId} selectedCard={selectedCard} setSelectedCard={setSelectedCard} total={total} setTotal={setTotal} />
+                        <CardCompo cardId={cardId} selectedCard={selectedCard} 
+                        setSelectedCard={setSelectedCard} total={total} setTotal={setTotal} />
                     </Col>
                 ))}
              </Row>
@@ -62,7 +63,8 @@ function SelectCardForm() {
         const state = location.state.nextState
         console.log(state)
 
-        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, selectedProduct, selectedCard, cardText, total };
+        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, 
+            selectedProduct, selectedCard, cardText, total };
 
         navigate('/dash/makeBasket/giftbasket', { state: { nextState } })
     }

@@ -42,12 +42,12 @@ function login() {
             setEmail('')
             setPassword('')
 
-            if(role[0] == 'Customer'){
+            if (role[0] == 'Customer') {
                 navigate('/dash')
             } else {
                 navigate('/adminDash/admin')
             }
-            
+
         } catch (err) {
             if (!err.status) {
                 setErrorMessage('No server response')
@@ -78,61 +78,60 @@ function login() {
 
     return (
         <Container className="all-login-container">
-    <div className="form-details">
-        <h2>Welcome Back</h2>
-        <p>Please log in to decorate your gift basket</p>
-    </div>
-    <div className="login-container">
-        <Form className="mt-5" onSubmit={handleSubmit}>
-            <h2 className="mb-4">LOG IN</h2>
-            <Form.Group className="mb-3">
-                <h4 className="lb-1">Email</h4>
-                <Form.Control
-                    type="email"
-                    placeholder="Email"
-                    ref={userRef}
-                    value={email}
-                    onChange={inputEmail}
-                    required
-                />
-            </Form.Group>
+            <div className="form-details">
+                <h2>Welcome Back</h2>
+                <p>Please log in to decorate your gift basket</p>
+            </div>
+            <div className="login-container">
+                <Form className="mt-5" onSubmit={handleSubmit}>
+                    <h2 className="mb-4">LOG IN</h2>
+                    <Form.Group className="mb-3">
+                        <h4 className="lb-1">Email</h4>
+                        <Form.Control
+                            type="email"
+                            placeholder="Email"
+                            ref={userRef}
+                            value={email}
+                            onChange={inputEmail}
+                            required
+                        />
+                    </Form.Group>
 
-            <Form.Group className="mb-3">
-                <h4 className="lb-1">Password</h4>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={inputPassword}
-                    required
-                />
-            </Form.Group>
-            { /* print error message*/}
-            <p ref={errRef} className={errClass} aria-live="assertive">
-                {errorMessage}
-            </p>
+                    <Form.Group className="mb-3">
+                        <h4 className="lb-1">Password</h4>
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={inputPassword}
+                            required
+                        />
+                    </Form.Group>
+                    { /* print error message*/}
+                    <p ref={errRef} className={errClass} aria-live="assertive">
+                        {errorMessage}
+                    </p>
 
-            <Form.Group className='checkbox-container'>
-                <input
-                    type="checkbox"
-                    onChange={handleToggle}
-                    checked={persist}
-                    className="checkbox-input"
-                />
-                Remember me
-            </Form.Group>
+                    <Form.Group className='checkbox-container'>
+                        <input
+                            type="checkbox"
+                            onChange={handleToggle}
+                            checked={persist}
+                            className="checkbox-input"
+                        />
+                        Remember me
+                    </Form.Group>
 
-            <Button type="submit" className="login-button" variant="primary">
-                Log in
-            </Button>
+                    <Button type="submit" className="login-button" variant="primary">
+                        Log in
+                    </Button>
 
-            <p className="details">
-                Don't have an account? <Link to="/Register" className="signup-link">Signup</Link>
-            </p>
-        </Form>
-    </div>
-</Container>
-
+                    <p className="details">
+                        Don't have an account? <Link to="/Register" className="signup-link">Signup</Link>
+                    </p>
+                </Form>
+            </div>
+        </Container>
     )
 }
 

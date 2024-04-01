@@ -55,7 +55,8 @@ function EditAddressForm({ address, users }) {
 
     const onSaveAddress = async (e) => {
         e.preventDefault()
-        await updateAddress({ id: addressId, user: userId, firstname, lastname, add, province, district, subdistrict, postal, phone, isDefault })
+        await updateAddress({ id: addressId, user: userId, firstname, lastname, add, 
+             province, district, subdistrict, postal, phone, isDefault })
     }
 
     return (
