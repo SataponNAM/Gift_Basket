@@ -22,10 +22,17 @@ const Basket = ({ basketId, selectedBasket, setSelectedBasket }) => {
   if (basket) {
     return (
       <Container className="mt-2">
-        <Card style={{ width: '16rem', height: '18rem' }} onClick={selectedCard} className={classes}>
-        <Card.Img variant="top" src={`${basket.image}`} style={{ height: '70%', objectFit: 'cover' }} />
+        <Card style={{ width: '16rem', height: '18rem' }} 
+              onClick={selectedCard} className={classes}>
+        <Card.Img variant="top" 
+                  src={`${basket.image}`} 
+                  style={{ height: '70%', objectFit: 'cover' }} />
                 <Card.Body style={{ height: '40%' }} className="item-card">
-                    <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{basket.name}</Card.Title>
+                    <Card.Title style={{ fontSize: '1rem', 
+                                lineHeight: '1.2', overflow: 'hidden', 
+                                textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {basket.name}
+                    </Card.Title>
                     <Card.Text>Price : {basket.price} ฿</Card.Text>
                 </Card.Body>
         </Card>

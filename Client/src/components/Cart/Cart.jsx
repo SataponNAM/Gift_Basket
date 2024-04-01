@@ -100,7 +100,9 @@ const Cart = ({ cartId }) => {
     if (isSuccess && basketIsSuccess && decorationIsSuccess) {
         const { ids, entities } = giftbasket;
 
-        const filteredGiftBasketItems = ids?.filter(giftBasketId => cartGift.includes(entities[giftBasketId].id)).map(giftBasketId => entities[giftBasketId]);
+        const filteredGiftBasketItems = ids?.filter(giftBasketId => cartGift
+            .includes(entities[giftBasketId].id))
+            .map(giftBasketId => entities[giftBasketId]);
         const giftBasket = filteredGiftBasketItems;
 
         if (giftBasket) {
@@ -111,16 +113,41 @@ const Cart = ({ cartId }) => {
                         <div key={item.id} className="m-3 p-3" >
                             <Card >
                                 <div className="m-3">
-                                    <Card.Text>Basket : {basketData?.entities[item.basket]?.name}</Card.Text>
-                                    <Card.Text>Decorations : {item.decoration.map(decorationId => decorationData?.entities[decorationId]?.name).join(', ')}</Card.Text>
-                                    <Card.Text>Products : {item.product.map(productId => productData?.entities[productId]?.name).join(', ')}</Card.Text>
-                                    <Card.Text>Card : {cardData?.entities[item.card]?.name}</Card.Text>
-                                    <Card.Text>Card Text : {item.cardText}</Card.Text>
-                                    <Card.Text>Total Price : {item.totalPrice} ฿</Card.Text>
+                                    <Card.Text>
+                                        Basket : {basketData?.entities[item.basket]?.name}
+                                    </Card.Text>
+
+                                    <Card.Text>
+                                        Decorations : {item.decoration.map(decorationId => 
+                                        decorationData?.entities[decorationId]?.name).join(', ')}
+                                    </Card.Text>
+
+                                    <Card.Text>
+                                        Products : {item.product.map(productId => 
+                                        productData?.entities[productId]?.name).join(', ')}
+                                    </Card.Text>
+
+                                    <Card.Text>
+                                        Card : {cardData?.entities[item.card]?.name}
+                                    </Card.Text>
+
+                                    <Card.Text>
+                                        Card Text : {item.cardText}
+                                    </Card.Text>
+
+                                    <Card.Text>
+                                        Total Price : {item.totalPrice} ฿
+                                    </Card.Text>
                                 </div>
 
                                 <div>
-                                    <Button value={item.id} variant="outline-danger" size="sm" className=" button-block m-3" onClick={deleteOnclick}>Delete</Button>
+                                    <Button value={item.id} 
+                                        variant="outline-danger"
+                                        size="sm" className=" 
+                                        button-block m-3" 
+                                        onClick={deleteOnclick}>
+                                        Delete
+                                    </Button>
                                 </div>
                             </Card>
                         </div>
