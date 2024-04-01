@@ -23,18 +23,21 @@ const ManageBasket = ({ basketId }) => {
   if (basket) {
     return (
       <Container className="mt-2">
-          <Card style={{ width: '13rem' }}>
-            <Card.Img variant="top" src={basket.image} />
-            <Card.Body>
-              <Card.Text>{basket.name}</Card.Text>
+          <Card style={{ width: '13rem', height: '22rem' }}>
+            <Card.Img variant="top" src={basket.image} style={{ height: '50%', objectFit: 'cover' }}/>
+            <Card.Body style={{ height: '40%' }}>
+              <Card.Text style={{ fontSize: '1rem', lineHeight: '1.2', 
+                               overflow: 'hidden', textOverflow: 'ellipsis', 
+                               whiteSpace: 'nowrap' }}>{basket.name}</Card.Text>
               <Card.Text>Price : {basket.price} ฿</Card.Text>
+            </Card.Body>
 
-              <Card.Footer >
+              <Card.Footer style={{ height: 'fit-content' }}>
                 <Button variant='outline-primary' className='m-1' onClick={editClick}>Edit</Button>
                 <Button variant='outline-danger' className='m-1' onClick={deleteClick}>Delete</Button>
               </Card.Footer>
 
-            </Card.Body>
+            
           </Card>
       </Container>
     );

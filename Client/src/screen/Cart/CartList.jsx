@@ -118,6 +118,8 @@ function CartList() {
             content = (<p>You don't have products in cart.</p>)
             buttonPayment = (<Button className="buy-button" onClick={makePayment} disabled>Buy</Button>)
         }
+
+        consol.log(filterData)
     }
 
     return (
