@@ -1,5 +1,4 @@
 import { Card } from "react-bootstrap";
-import { useGetGiftBasketQuery } from "../../../slices/giftBasketApiSlice";
 import { selectCardById } from "../../../slices/cardApiSlice";
 import { selectDecorationById } from "../../../slices/decorationApiSlice";
 import { selectProductById } from "../../../slices/productApiSlice";

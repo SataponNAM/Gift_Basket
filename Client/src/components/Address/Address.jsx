@@ -25,9 +25,18 @@ const Address = ({ addressId }) => {
         return (
             <Container>
                 <Card className="m-5" >
-                    <Card.Text className="m-2">Name : {address.firstname} {address.lastname}</Card.Text>
-                    <Card.Text className="m-2">Address : {address.address} {address.city} {address.state} {address.country} </Card.Text>
-                    <Card.Text className="m-2">Phone Number : {address.phone}</Card.Text>
+                    <Card.Text className="m-2">
+                        Name : {address.firstname} {address.lastname}
+                    </Card.Text>
+
+                    <Card.Text className="m-2">
+                        Address : {address.address} {address.city} {address.state} {address.country} 
+                    </Card.Text>
+
+                    <Card.Text className="m-2">
+                        Phone Number : {address.phone}
+                    </Card.Text>
+                    
                     <Container>
                         <Button onClick={onEditClick} className="edit-add-button">Edit</Button>
                     </Container>

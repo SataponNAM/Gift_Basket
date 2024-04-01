@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Container, Card, Button, Row } from "react-bootstrap";
+import { Container, Card, Button } from "react-bootstrap";
 import { useGetBasketQuery, useDeleteBasketMutation } from "../../../slices/basketApiSlice";
 
 const ManageBasket = ({ basketId }) => {

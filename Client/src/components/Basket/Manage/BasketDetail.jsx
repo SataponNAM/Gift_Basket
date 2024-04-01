@@ -1,10 +1,4 @@
-
 import { useGetGiftBasketQuery } from "../../../slices/giftBasketApiSlice";
-import { selectCardById } from "../../../slices/cardApiSlice";
-import { selectDecorationById } from "../../../slices/decorationApiSlice";
-import { selectProductById } from "../../../slices/productApiSlice";
-import { selectBasketById } from "../../../slices/basketApiSlice";
-import { useSelector } from "react-redux";
 
 import BasketDetailCard from "./BasketDetailCard";
 

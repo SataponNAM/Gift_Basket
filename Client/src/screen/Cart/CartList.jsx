@@ -12,7 +12,7 @@ import './CartList.css'
 
 function CartList() {
     let content
-    let newTotal
+    let newTotal = 0
     const { email, isAdmin } = useAuth()
     const navigate = useNavigate()
     const [total, setTotal] = useState(0)
@@ -60,7 +60,7 @@ function CartList() {
     const {
         data: giftbaskets,
         isGBLoading,
-        isGBSuccess,
+        isSuccess :isGBSuccess,
         isGBError,
         GBerror
     } = useGetGiftBasketQuery('giftbasketList', {
@@ -75,16 +75,21 @@ function CartList() {
             const { entities: gb } = giftbaskets;
 
             const filterData = ids?.filter(cartId => entities[cartId].user === userId[0]).map(cartId => entities[cartId])
+            const filterUnwrap = filterData[0]
 
-            if (filterData.length > 0) {
-                basketId = filterData[0].giftbasket;
+            if (filterUnwrap && filterUnwrap.giftBasket.length > 0) {
+                basketId = filterUnwrap.giftBasket;
                 buttonPayment = (<Button onClick={makePayment} className="buy-button">Buy</Button>)
 
                 newTotal = 0
                 basketId?.forEach(basketID => {
                     newTotal += gb[basketID].totalPrice
+                    console.log(newTotal)
                 });
+
                 setTotal(newTotal)
+            }else {
+                setTotal(0)
             }
         }
     }, [cart, giftbaskets])
@@ -103,8 +108,8 @@ function CartList() {
 
         const filteredIds = ids?.filter(cartId => entities[cartId].user === userId[0])
         const filterData = ids?.filter(cartId => entities[cartId].user === userId[0]).map(cartId => entities[cartId])
-
-        if (filterData.length > 0) {
+        
+        if (filterData[0].giftBasket.length > 0) {
             basketId = filterData[0].giftBasket;
             buttonPayment = (<Button onClick={makePayment} className="buy-button">Buy</Button>)
 

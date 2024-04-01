@@ -16,7 +16,6 @@ import Product from './screen/MakeBasket/SelectProduct/SelectProductForm.jsx'
 import Card from './screen/MakeBasket/SelectCard/SelectCardForm.jsx'
 import MakeBasket from './screen/MakeBasket/Make/makeGiftBasket.jsx'
 import Cart from './screen/Cart/CartList.jsx'
-import Checkout from './screen/CheckOut/CheckOut.jsx'
 import SelectAddress from './screen/Address/Select/SelectAddress.jsx'
 import Success from './screen/Payment/success/Success.jsx'
 import OrderList from './screen/Order/OrderList.jsx'
@@ -105,7 +104,6 @@ function App() {
                   </Route>
 
                   <Route path='order'>
-                    <Route path='checkout' element={<Checkout />} />
                     <Route path='selectaddress' element={<SelectAddress />} />
                     <Route path='success/:status' element={<Success />} />
                     <Route path='orderlist' element={<OrderList />} />
