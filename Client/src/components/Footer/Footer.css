@@ -1,0 +1,28 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    background-color: #ffac6c !important;
+    border-top: 3px solid white;
+}
+
+footer h6 {
+    margin-top: -30px;
+    color:#ffffff;
+}
+
+footer span {
+    margin-top: -20px;
+    color:#ffffff;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.footer-icons {
+    margin-left: 20px;
+}
+
+.footer-text {
+    margin-left: 5px;
+}

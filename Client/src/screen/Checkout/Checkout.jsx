@@ -14,6 +14,8 @@ import useAuth from '../../hooks/useAuth.jsx';
 
 import { Button } from 'react-bootstrap';
 
+import './CheckOut.css'
+
 function Checkout() {
     const location = useLocation();
     const addressID = location.state.selectAddress
@@ -164,8 +166,10 @@ function Checkout() {
 
     return (
         <>
+            
+            <Container className="all-container checkout">
             <h1>Check Out</h1>
-            <div>
+            <div className="content">
                 <Container>
                     <Card className="m-5" >
                         <Card.Title>Address</Card.Title>
@@ -185,7 +189,7 @@ function Checkout() {
 
                 <Container>
                     <Card className="m-5">
-                        <Card.Title>Gift Baskets</Card.Title>
+                        <Card.Title className="checkout-text">Gift Baskets</Card.Title>
                         {filteredGiftBasketItems.map((giftBasket, index) => (
                             <div key={index} className='mt-5'>
                                 <Card.Text>Gift Basket {index + 1} </Card.Text>
@@ -207,11 +211,14 @@ function Checkout() {
                         ))}
                     </Card>
                 </Container>
-
+                </div>
+                <Container className='buy-container'>
                 <p>Total Price : {totalPrice.toFixed(2)}</p>
-            </div>
+                <Button className="buy-button" onClick={placeorder}>Pay Now</Button>
+                </Container>
+            </Container>
 
-            <Button onClick={placeorder}>Pay Now</Button>
+            
         </>
     );
 }
