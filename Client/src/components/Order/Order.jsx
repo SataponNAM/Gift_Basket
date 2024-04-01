@@ -13,10 +13,12 @@ function Order({ orderId }) {
     return (
         <Container>
             <Card className="m-5">
-                <Card.Text className="m-2">หมายเลขคำสั่งซื้อ {order._id}</Card.Text>
-                <Card.Text className="m-2">วันที่ทำรายการ {order.created}</Card.Text>
-                <Card.Text className="m-2">ราคารวม {order.totalPrice}</Card.Text>
-                <Card.Text className="m-2">{order.status == 'open' ? "ยังไม่ชำระเงิน" : "ชำระเงินสำเร็จ"}</Card.Text>
+                <Card.Text className="m-2">Order Number : {order._id}</Card.Text>
+                <Card.Text className="m-2">Transaction Date : {order.created}</Card.Text>
+                <Card.Text className="m-2">Total Price : {order.totalPrice}</Card.Text>
+                <Card.Text className="m-2" style={{ color: order.status === 'open' ? 'red' : 'green' }}>
+                  {order.status === 'open' ? "Payment Pending" : "Payment Completed"}
+                </Card.Text>
             </Card>
         </Container>
     )

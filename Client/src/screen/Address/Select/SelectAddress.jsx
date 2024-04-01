@@ -6,6 +6,8 @@ import { useGetAddressQuery } from "../../../slices/addressApiSlice"
 import { useGetUsersQuery } from "../../../slices/userApiSlice.jsx";
 import SelectAddr from '../../../components/SelectAddress/SelectAddr.jsx'
 
+import './SelectAddress.css'
+
 function SelectAddress() {
     const location = useLocation();
     const { email, isAdmin } = useAuth()
@@ -92,23 +94,23 @@ function SelectAddress() {
 
     const nextButton = (
         selectAddress === null ? (
-            <Button className="mt-2" disabled>ตกลง</Button>
+            <Button className="mt-2 confirm-button" disabled>Confirm</Button>
         ) :
             (
-                <Button className="mt-2" onClick={onPaymentClick}>ตกลง</Button>
+                <Button className="mt-2 confirm-button" onClick={onPaymentClick}>Confirm</Button>
             )
     )
 
     return (
-        <Container>
+        <Container className="all-container">
             <h1>Select Address</h1>
-            <Container>
+            <div className="content select-add-content">
                 {content}
-            </Container>
-
-            <div>
-                {nextButton}
             </div>
+
+            <Container>
+                {nextButton}
+            </Container>
         </Container>
     )
 }
