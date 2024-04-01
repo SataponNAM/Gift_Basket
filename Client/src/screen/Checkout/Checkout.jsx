@@ -83,12 +83,12 @@ function Checkout() {
 
     return (
         <>
-            <h1>checkout</h1>
+            <h1>Check Out</h1>
             <div>
                 {/* ข้อมูลชอง ราคา ที่อยู่ */}
             </div>
 
-            <Button onClick={placeorder}>ชำระเงิน</Button>
+            <Button onClick={placeorder}>Pay Now</Button>
         </>
     );
 }
