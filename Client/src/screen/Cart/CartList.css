@@ -19,3 +19,10 @@
     background-color: #ffdec4 !important;
     color: #81531b;
 }
+
+.nopro {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}

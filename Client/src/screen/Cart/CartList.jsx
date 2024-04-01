@@ -115,7 +115,7 @@ function CartList() {
 
             content = ids?.length && filteredIds.map(cartId => <Cart key={cartId} cartId={cartId} />)
         } else {
-            content = (<p>You don't have products in cart.</p>)
+            content = (<p className="nopro">You Don't Have Products In Cart</p>)
             buttonPayment = (<Button className="buy-button" onClick={makePayment} disabled>Buy</Button>)
         }
 
