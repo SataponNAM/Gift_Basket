@@ -165,8 +165,7 @@ function Checkout() {
     
 
     return (
-        <>
-              
+        <>    
             <Container className="all-container checkout">
             <h1>Check Out</h1>
             <div className="content">
