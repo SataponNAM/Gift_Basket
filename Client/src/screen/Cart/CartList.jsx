@@ -108,8 +108,9 @@ function CartList() {
 
         const filteredIds = ids?.filter(cartId => entities[cartId].user === userId[0])
         const filterData = ids?.filter(cartId => entities[cartId].user === userId[0]).map(cartId => entities[cartId])
+        console.log(cart)
         
-        if (filterData[0].giftBasket.length > 0) {
+        if (filterData && filterData.length > 0 && filterData[0].giftBasket.length > 0) {
             basketId = filterData[0].giftBasket;
             buttonPayment = (<Button onClick={makePayment} className="buy-button">Buy</Button>)
 
