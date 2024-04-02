@@ -16,8 +16,6 @@ body {
     height: 100vh;
 }
 
-
-
 .all-add-container {
     animation: transitionIn 0.75s;
 
@@ -85,4 +83,22 @@ body {
 .add-button:hover {
     background-color: #ffdec4 !important;
     color: #81531b;
+}
+
+.suggestion-container {
+    position: absolute;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    max-height: 150px;
+    overflow: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.suggestion-option {
+    padding: 4px 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor:pointer;
 }

@@ -30,7 +30,7 @@ const Address = ({ addressId }) => {
                     </Card.Text>
 
                     <Card.Text className="m-2">
-                        Address : {address.address} {address.city} {address.state} {address.country} 
+                        Address : {address.address} {address.subdistrict}  {address.district} {address.province} {address.postal} 
                     </Card.Text>
 
                     <Card.Text className="m-2">
