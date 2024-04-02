@@ -6,6 +6,7 @@ import { selectAddressById } from "../../../../slices/addressApiSlice"
 import BasketDetail from "../../../../components/Basket/Manage/BasketDetail"
 
 import './OrderDetail.css'
+import '../../global_admin.css'
 
 function OrderDetail() {
     const { id } = useParams();
@@ -48,11 +49,11 @@ function OrderDetail() {
             </div>
 
             <div className="mt-3">
-                <h4>Total Price : {order?.totalPrice}</h4>
+                <h4>Total Price : {Math.floor(order?.totalPrice)}</h4>
             </div>
 
             <div>
-                <Button onClick={clickDeliver} className="delivery-button">Deliver</Button>
+                <Button onClick={clickDeliver} className="delivery-button button">Deliver</Button>
             </div>
         </Container>
     );

@@ -38,7 +38,7 @@ function OrderListManage() {
                             <tr key={order._id}>
                                 <td>{order._id}</td>
                                 <td>{order.created}</td>
-                                <td>{order.totalPrice}</td>
+                                <td>{Math.floor(order.totalPrice)}</td>
                                 <td>{order.status === "complete" ? "Payment Completed " : "Payment Pending"}</td>
                                 <td>{order.isDeliver ? "Yes" : "No"}</td>
                                 <td><Button size="sm" onClick={() => moreDetail(order._id)} 
