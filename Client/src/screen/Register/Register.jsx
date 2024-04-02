@@ -160,7 +160,7 @@ const Register = () => {
 
             <p ref={errRef} className={errClass} aria-live='assertive'>{errorMessage}</p>
 
-            <Button type="summit" className="reg-button" variant="primary">Sing up</Button>
+            <Button type="summit" className="reg-button" variant="primary">Sign up</Button>
 
             <p className="details">Have an account? <Link to="/Login" className="login-link">Log in</Link></p>
         </Form>
