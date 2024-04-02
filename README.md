@@ -1,13 +1,12 @@
 Server
 1. express
-2. mongoose
-3. bcrypt
-4. dotenv
-5. uuid
-6. cookie-parser
-7. JWT
+2. Node
+3. mongoose
+4. bcrypt
+5. cookie-parser
+6. JWT
 
 Client
-1. redux
-2. router
+1. react
+2. reduxjs/toolkit
 3. react-bootstrap
