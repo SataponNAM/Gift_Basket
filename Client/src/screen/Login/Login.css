@@ -8,15 +8,12 @@
     }
 }
 
-
 body {
-    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\main-bg.jpg);
+    background-image: url(./../WebDecoPic/main-bg.jpg) !important;
     margin: 0;
     padding: 0;
     height: 100vh;
 }
-
-
 
 .all-login-container {
     animation: transitionIn 0.75s;
@@ -40,7 +37,7 @@ body {
     padding-top: 148px;
     padding-bottom: 148px;
     margin-right: 10px;
-    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\login-deco.jpg);
+    background-image: url(./../WebDecoPic/login-deco.jpg);
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;

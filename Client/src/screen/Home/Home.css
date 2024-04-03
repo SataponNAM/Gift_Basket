@@ -8,14 +8,6 @@
     }
 }
 
-
-body {
-    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\main-bg.jpg);
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-}
-
 .home-container{
     animation: transitionIn 0.75s;
 
@@ -38,7 +30,7 @@ body {
     text-align: center;
     width: 100%;
     padding: 125px;
-    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\home-deco.jpg);
+    background-image: url(./../WebDecoPic/home-deco.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

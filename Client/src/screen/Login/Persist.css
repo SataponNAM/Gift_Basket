@@ -9,15 +9,6 @@
 }
 
 
-body {
-    background-image: url(C:\AMM\SE\Gift-Basket\Client\src\screen\WebDecoPic\main-bg.jpg);
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-}
-
-
-
 .time-out-container {
     animation: transitionIn 0.75s;
 
