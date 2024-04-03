@@ -8,6 +8,15 @@
     }
 }
 
+
+body {
+    background-image: url(D:\Code\Gift-Basket\Client\src\screen\WebDecoPic\main-bg.jpg) ;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
 .all-basket-container {
     animation: transitionIn 0.75s;
 

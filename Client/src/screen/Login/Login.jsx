@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux'
 import { setCredentials } from '../../slices/Reducers/authReducers.jsx'
 import { useLoginMutation } from '../../slices/authApiSlice.jsx'
 import usePersist from '../../hooks/usePersist.jsx'
-import useAuth from '../../hooks/useAuth.jsx'
 
 import './Login.css';
 

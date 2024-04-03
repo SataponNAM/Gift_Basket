@@ -1,4 +1,4 @@
-import { Button, Container, Form } from "react-bootstrap"
+import { Button, Container } from "react-bootstrap"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../../hooks/useAuth.jsx";
@@ -70,7 +70,6 @@ function SelectAddress() {
         console.log(filteredIds)
 
         if (filteredIds.length) {
-            // frontend อยู่ใน  /components/Address.jsx
             content = ids?.length && filteredIds.map(addressId => 
             <SelectAddr key={addressId} addressId={addressId} selectAddress={selectAddress} 
                         setSelectAddress={setSelectAddress} />)
@@ -86,8 +85,6 @@ function SelectAddress() {
 
 
     const onPaymentClick = () => {
-        // สร้าง order ลบ basket ใน cart
-
         const basketId = location.state.basketId
         const totalPrice = location.state.totalPrice
 

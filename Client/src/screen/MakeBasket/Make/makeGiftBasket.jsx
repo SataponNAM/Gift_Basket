@@ -2,7 +2,6 @@ import { Container, Button, Form } from "react-bootstrap"
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { useGetUsersQuery } from "../../../slices/userApiSlice.jsx";
-import { useGetProductQuery } from "../../../slices/productApiSlice.jsx";
 import { useState, useRef, useEffect } from "react";
 import { useAddGiftBasketMutation } from "../../../slices/giftBasketApiSlice.jsx";
 import { useAddCartMutation } from "../../../slices/cartApiSlice.jsx";
@@ -95,25 +94,25 @@ function makeBasket() {
             refetchOnFocus: true,
             refetchOnMountOrArgChange: true
         });
-    
+
         if (isLoading) content = <p>Loading...</p>;
-    
+
         if (isError) {
             content = <p className='errmsg'>{error?.data?.message}</p>;
         }
-    
+
         if (isSuccess) {
             const { ids, entities } = cart;
             const cartIds = ids?.filter(cartId => entities[cartId].user === user[0]);
-    
+
             if (cartIds === undefined || cartIds.length === 0) {
 
                 return null;
             }
 
-            return cartIds;  
+            return cartIds;
         }
-    
+
         return null;
     };
 

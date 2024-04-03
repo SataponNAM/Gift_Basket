@@ -31,8 +31,9 @@ const ManageBow = ({ decoId }) => {
         
         <Card.Body style={{ height: '40%' }}>
           <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', 
-                               overflow: 'hidden', textOverflow: 'ellipsis', 
-                               whiteSpace: 'nowrap' }}>{deco.name}</Card.Title>
+              overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {deco.name}
+          </Card.Title>
           
           <Card.Text>Price : {deco.price} ฿</Card.Text>
         </Card.Body>

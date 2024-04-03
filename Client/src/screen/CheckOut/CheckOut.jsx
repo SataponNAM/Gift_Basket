@@ -23,7 +23,6 @@ function Checkout() {
     const user = location.state.user[0]
     const totalPrice = location.state.totalPrice
     const navigate = useNavigate()
-    //console.log(totalPrice)
     const { email, isAdmin } = useAuth()
 
     const [checkout] = useCheckoutMutation()
@@ -78,7 +77,6 @@ function Checkout() {
     }
 
     const cartId = LoadCart()
-    //console.log(cartId)
 
     const {
         data: giftbasket,
@@ -142,7 +140,7 @@ function Checkout() {
 
     let filteredGiftBasketItems
 
-    if(isSuccess){
+    if (isSuccess) {
         const { ids, entities } = giftbasket;
 
         filteredGiftBasketItems = ids?.filter(giftBasketId => productIds
@@ -159,65 +157,65 @@ function Checkout() {
             await deleteBasket({ id: cartId, giftBasketId })
         }
 
-        //console.log(result)
         window.location.href = result.data.url
     }
-    
+
 
     return (
-        <>    
+        <>
             <Container className="all-container checkout">
-            <h1>Check Out</h1>
-            <div className="content">
-                <Container>
-                    <Card className="m-5" >
-                        <Card.Title className="checkout-txt title">Address</Card.Title>
-                        <Card.Text className="m-2 checkout-txt">
-                            Name : {address.firstname} {address.lastname}
-                        </Card.Text>
+                <h1>Check Out</h1>
+                <div className="content">
+                    <Container>
+                        <Card className="m-5" >
+                            <Card.Title className="checkout-txt title">Address</Card.Title>
+                            <Card.Text className="m-2 checkout-txt">
+                                Name : {address.firstname} {address.lastname}
+                            </Card.Text>
 
-                        <Card.Text className="m-2 checkout-txt">
-                            Address : {address.address} {address.city} {address.state} {address.country}
-                        </Card.Text>
+                            <Card.Text className="m-2 checkout-txt">
+                                Address : {address.address} {address.city} {address.state} {address.country}
+                            </Card.Text>
 
-                        <Card.Text className="m-2 checkout-txt">
-                            Phone Number : {address.phone}
-                        </Card.Text>
-                    </Card>
-                </Container>
+                            <Card.Text className="m-2 checkout-txt">
+                                Phone Number : {address.phone}
+                            </Card.Text>
+                        </Card>
+                    </Container>
 
-                <Container>
-                    <Card className="m-5">
-                        <Card.Title className="checkout-text checkout-txt title">Gift Baskets</Card.Title>
-                        {filteredGiftBasketItems.map((giftBasket, index) => (
-                            <div key={index} className='mt-5'>
-                                <Card.Text className="checkout-txt">Gift Basket {index + 1} </Card.Text>
+                    <Container>
+                        <Card className="m-5">
+                            <Card.Title className="checkout-text checkout-txt title">Gift Baskets</Card.Title>
+                            {filteredGiftBasketItems.map((giftBasket, index) => (
+                                <div key={index} className='mt-5'>
+                                    <Card.Text className="checkout-txt">Gift Basket {index + 1} </Card.Text>
 
-                                <Card.Text className="checkout-txt">Basket : {basketData?.entities[giftBasket.basket]?.name}</Card.Text>
+                                    <Card.Text className="checkout-txt">Basket : {basketData?.entities[giftBasket.basket]?.name}</Card.Text>
 
-                                <Card.Text className="checkout-txt">Decorations : {giftBasket.decoration.map(decorationId => 
+                                    <Card.Text className="checkout-txt">Decorations : {giftBasket.decoration.map(decorationId =>
                                         decorationData?.entities[decorationId]?.name).join(', ')}</Card.Text>
 
-                                <Card.Text className="checkout-txt">Products : {giftBasket.product.map(productId => 
+                                    <Card.Text className="checkout-txt">Products : {giftBasket.product.map(productId =>
                                         productData?.entities[productId]?.name).join(', ')}</Card.Text>
 
-                                <Card.Text className="checkout-txt">Card : {cardData?.entities[giftBasket.card]?.name}</Card.Text>
+                                    <Card.Text className="checkout-txt">Card : {cardData?.entities[giftBasket.card]?.name}</Card.Text>
 
-                                <Card.Text className="checkout-txt">Card Text : {giftBasket.cardText}</Card.Text>
+                                    <Card.Text className="checkout-txt">Card Text : {giftBasket.cardText}</Card.Text>
 
-                                <Card.Text className="checkout-txt">Price : {giftBasket.totalPrice}</Card.Text>
-                            </div>
-                        ))}
-                    </Card>
-                </Container>
+                                    <Card.Text className="checkout-txt">Price : {giftBasket.totalPrice}</Card.Text>
+                                </div>
+                            ))}
+                        </Card>
+                    </Container>
                 </div>
+
                 <Container className='buy-container'>
-                <p>Total Price : {totalPrice.toFixed(2)}</p>
-                <Button className="buy-button" onClick={placeorder}>Pay Now</Button>
+                    <p>Total Price : {totalPrice.toFixed(2)}</p>
+                    <Button className="buy-button" onClick={placeorder}>Pay Now</Button>
                 </Container>
             </Container>
 
-            
+
         </>
     );
 }

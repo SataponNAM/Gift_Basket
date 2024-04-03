@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { memo, useEffect, useState } from 'react';
-import { Button, Container, Card, Form, ButtonGroup } from "react-bootstrap";
+import { memo } from 'react';
+import { Button, Container, Card, Form} from "react-bootstrap";
 import { useGetCartQuery, useDeleteCartProductMutation } from "../../slices/cartApiSlice";
 import { useGetGiftBasketQuery } from "../../slices/giftBasketApiSlice";
 import { useGetBasketQuery } from "../../slices/basketApiSlice";
@@ -15,8 +14,6 @@ const Cart = ({ cartId }) => {
             cart: data?.entities[cartId]
         })
     });
-
-    const navigate = useNavigate();
     const cartGift = cart.giftBasket;
 
     const {

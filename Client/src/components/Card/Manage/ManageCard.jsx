@@ -17,18 +17,20 @@ const ManageCard = ({ cardId }) => {
   }
 
   const deleteClick = async () => {
-    await senDel({id : card._id})
+    await senDel({ id: card._id })
   }
 
   if (card) {
     return (
-        <Container className="mt-2">
+      <Container className="mt-2">
         <Card style={{ width: '13rem', height: '22rem' }}>
           <Card.Img variant="top" src={`${card.image}`} style={{ height: '50%', objectFit: 'cover' }} />
           <Card.Body style={{ height: '40%' }}>
-            <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', 
-                                 overflow: 'hidden', textOverflow: 'ellipsis', 
-                                 whiteSpace: 'nowrap' }}>
+            <Card.Title style={{
+              fontSize: '1rem', lineHeight: '1.2',
+              overflow: 'hidden', textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap'
+            }}>
               {card.name}
             </Card.Title>
 

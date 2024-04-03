@@ -8,6 +8,14 @@
     }
 }
 
+
+body {
+    background-image: url(./../WebDecoPic/main-bg.jpg);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
 .home-container{
     animation: transitionIn 0.75s;
 
@@ -30,7 +38,7 @@
     text-align: center;
     width: 100%;
     padding: 125px;
-    background-image: url(./../WebDecoPic/home-deco.jpg);
+    background-image: url(./../WebDecoPic/home-deco.jpg) !important;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

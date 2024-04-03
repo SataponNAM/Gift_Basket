@@ -17,7 +17,7 @@ const ManageRibbon = ({ decoId }) => {
   }
 
   const deleteClick = async () => {
-    await senDel({id : deco._id})
+    await senDel({ id: deco._id })
   }
 
   if (!deco || deco.category !== "Ribbon") {
@@ -28,12 +28,13 @@ const ManageRibbon = ({ decoId }) => {
     <Container className="mt-2">
       <Card style={{ width: '13rem', height: '22rem' }}>
         <Card.Img variant="top" src={`${deco.image}`} style={{ height: '50%', objectFit: 'cover' }} />
-        
+
         <Card.Body style={{ height: '40%' }}>
-          <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', 
-                               overflow: 'hidden', textOverflow: 'ellipsis', 
-                               whiteSpace: 'nowrap' }}>{deco.name}</Card.Title>
-          
+          <Card.Title style={{
+            fontSize: '1rem', lineHeight: '1.2',
+            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'
+          }}> {deco.name} </Card.Title>
+
           <Card.Text>Price : {deco.price} ฿</Card.Text>
         </Card.Body>
 
@@ -41,7 +42,7 @@ const ManageRibbon = ({ decoId }) => {
           <Button variant='outline-primary' className='m-1' onClick={editClick}>
             Edit
           </Button>
-          
+
           <Button variant='outline-danger' className='m-1' onClick={deleteClick}>
             Delete
           </Button>
@@ -51,7 +52,7 @@ const ManageRibbon = ({ decoId }) => {
       </Card>
     </Container>
   );
-  
+
 }
 
 export default ManageRibbon;

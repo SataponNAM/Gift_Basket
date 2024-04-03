@@ -1,6 +1,5 @@
 import { Button, Container, Form } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth.jsx'
 import { useGetCartQuery } from '../../slices/cartApiSlice.jsx'
@@ -60,7 +59,7 @@ function CartList() {
     const {
         data: giftbaskets,
         isGBLoading,
-        isSuccess :isGBSuccess,
+        isSuccess: isGBSuccess,
         isGBError,
         GBerror
     } = useGetGiftBasketQuery('giftbasketList', {
@@ -88,7 +87,7 @@ function CartList() {
                 });
 
                 setTotal(newTotal)
-            }else {
+            } else {
                 setTotal(0)
             }
         }
@@ -108,8 +107,7 @@ function CartList() {
 
         const filteredIds = ids?.filter(cartId => entities[cartId].user === userId[0])
         const filterData = ids?.filter(cartId => entities[cartId].user === userId[0]).map(cartId => entities[cartId])
-        //console.log(cart)
-        
+
         if (filterData && filterData.length > 0 && filterData[0].giftBasket.length > 0) {
             basketId = filterData[0].giftBasket;
             buttonPayment = (<Button onClick={makePayment} className="buy-button">Buy</Button>)
@@ -119,24 +117,22 @@ function CartList() {
             content = (<p className="nopro">You Don't Have Products In Cart</p>)
             buttonPayment = (<Button className="buy-button" onClick={makePayment} disabled>Buy</Button>)
         }
-
-        //console.log(filterData)
     }
 
     return (
-        <>
-            <Container className="all-container">
-                <h1>Cart</h1>
-                <div className="content">
-                    {content}
-                </div>
-                <Container className='buy-container'>
-                    <p>Total : {total.toFixed(2)} ฿</p>
-                    {buttonPayment}
-                </Container>
 
+        <Container className="all-container">
+            <h1>Cart</h1>
+            <div className="content">
+                {content}
+            </div>
+            <Container className='buy-container'>
+                <p>Total : {total.toFixed(2)} ฿</p>
+                {buttonPayment}
             </Container>
-        </>
+
+        </Container>
+
     )
 }
 

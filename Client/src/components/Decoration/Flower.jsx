@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { useGetDecorationQuery } from "../../slices/decorationApiSlice";
-import { memo, useEffect } from 'react';
-import { Container, Image, Card } from "react-bootstrap";
+import { memo } from 'react';
+import { Container, Card } from "react-bootstrap";
 
 import '../item.css'
 

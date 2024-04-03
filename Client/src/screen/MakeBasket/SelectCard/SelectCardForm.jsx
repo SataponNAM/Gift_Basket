@@ -44,14 +44,14 @@ function SelectCardForm() {
 
         content = (
             <Row xs={1} md={3} className="g-4">
-                 {ids?.length && filteredIds.map(cardId => (
-                     <Col key={cardId}>
-                        <CardCompo cardId={cardId} selectedCard={selectedCard} 
-                        setSelectedCard={setSelectedCard} total={total} setTotal={setTotal} />
+                {ids?.length && filteredIds.map(cardId => (
+                    <Col key={cardId}>
+                        <CardCompo cardId={cardId} selectedCard={selectedCard}
+                            setSelectedCard={setSelectedCard} total={total} setTotal={setTotal} />
                     </Col>
                 ))}
-             </Row>
-         );
+            </Row>
+        );
     }
 
     const nextPage = () => {
@@ -63,8 +63,10 @@ function SelectCardForm() {
         const state = location.state.nextState
         console.log(state)
 
-        const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, 
-            selectedProduct, selectedCard, cardText, total };
+        const nextState = {
+            selectedBasket, selectedFlower, selectedRibbon, selectedBow,
+            selectedProduct, selectedCard, cardText, total
+        };
 
         navigate('/dash/makeBasket/giftbasket', { state: { nextState } })
     }
@@ -80,7 +82,6 @@ function SelectCardForm() {
 
     const writeCard = (e) => {
         setCardText(e.target.value)
-        // console.log(cardText)
     }
 
 
@@ -111,7 +112,7 @@ function SelectCardForm() {
 
             <Container className='total-card'>
                 <p>Total : {total} ฿</p>
-        
+
                 {nextButton}
             </Container>
         </Container>

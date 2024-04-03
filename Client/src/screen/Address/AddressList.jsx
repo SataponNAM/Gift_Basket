@@ -6,7 +6,7 @@ import Address from '../../components/Address/Address.jsx'
 
 import './AddressList.css';
 
-function address(){
+function address() {
     const { email, isAdmin } = useAuth()
 
     const navigate = useNavigate()
@@ -25,13 +25,13 @@ function address(){
 
     let content
 
-    if(isLoading) content = <p>Loading...</p>
+    if (isLoading) content = <p>Loading...</p>
 
-    if(isError) {
+    if (isError) {
         content = <p className='errmsg'>{error?.data?.message}</p>
     }
 
-    if(isSuccess){
+    if (isSuccess) {
         const { ids, entities } = address
 
         let filteredIds
@@ -41,7 +41,6 @@ function address(){
             filteredIds = ids?.filter(addressId => entities[addressId].email === email)
         }
 
-        // frontend อยู่ใน  /components/Address.jsx
         content = ids?.length && filteredIds.map(addressId => <Address key={addressId} addressId={addressId} />)
     }
 

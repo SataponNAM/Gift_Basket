@@ -147,15 +147,15 @@ function addAddress({ users }) {
                                         placeholder="Sub-District"
                                         required
                                     />
-                                    <ThailandAddressTypeahead.Suggestion 
-                                    containerProps={{
-                                        className: 'suggestion-container'
-                                    }}
-                                    optionItemProps={{
-                                        className: 'suggestion-option'
-                                    }} 
+                                    <ThailandAddressTypeahead.Suggestion
+                                        containerProps={{
+                                            className: 'suggestion-container'
+                                        }}
+                                        optionItemProps={{
+                                            className: 'suggestion-option'
+                                        }}
 
-                                />
+                                    />
                                 </ThailandAddressTypeahead>
                             </div>
 
@@ -173,13 +173,13 @@ function addAddress({ users }) {
                                     type="text"
                                     placeholder="District"
                                     required />
-                                <ThailandAddressTypeahead.Suggestion 
+                                <ThailandAddressTypeahead.Suggestion
                                     containerProps={{
                                         className: 'suggestion-container'
                                     }}
                                     optionItemProps={{
                                         className: 'suggestion-option'
-                                    }} 
+                                    }}
 
                                 />
                             </ThailandAddressTypeahead>
@@ -195,13 +195,13 @@ function addAddress({ users }) {
                                     type="text"
                                     placeholder="Province"
                                     required />
-                                <ThailandAddressTypeahead.Suggestion 
+                                <ThailandAddressTypeahead.Suggestion
                                     containerProps={{
                                         className: 'suggestion-container'
                                     }}
                                     optionItemProps={{
                                         className: 'suggestion-option'
-                                    }} 
+                                    }}
 
                                 />
                             </ThailandAddressTypeahead>
@@ -220,13 +220,13 @@ function addAddress({ users }) {
                                     placeholder="Postal"
                                     required
                                 />
-                                <ThailandAddressTypeahead.Suggestion 
+                                <ThailandAddressTypeahead.Suggestion
                                     containerProps={{
                                         className: 'suggestion-container'
                                     }}
                                     optionItemProps={{
                                         className: 'suggestion-option'
-                                    }} 
+                                    }}
 
                                 />
                             </ThailandAddressTypeahead>

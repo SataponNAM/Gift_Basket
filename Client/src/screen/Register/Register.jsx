@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRegisterMutation } from "../../slices/authApiSlice";
 import { Row, Col } from 'react-bootstrap';

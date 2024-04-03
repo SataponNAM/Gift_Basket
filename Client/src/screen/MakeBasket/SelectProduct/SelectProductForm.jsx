@@ -145,7 +145,7 @@ function SelectProductForm() {
 
         const nextState = { selectedBasket, selectedFlower, selectedRibbon, selectedBow, 
             selectedProduct, total: total + nt };
-        // console.log(selectedProduct)
+            
         navigate('/dash/makeBasket/card', { state: { nextState } })
     }
 

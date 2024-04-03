@@ -31,6 +31,7 @@ function BasketDetailCard({ giftbasket }) {
                         </span>
                     ))}
                 </Card.Text>
+                
                 <Card.Text>
                     Decoration :
                     {decorations.map((deco, index) => (
@@ -39,9 +40,10 @@ function BasketDetailCard({ giftbasket }) {
                         </span>
                     ))}
                 </Card.Text>
+
                 <Card.Text>Card : {card?.name}</Card.Text>
                 <Card.Text>Card Text : {cardText}</Card.Text>
-                <Card.Text>Price : {giftbasket.totalPrice}</Card.Text>
+                <Card.Text>Price : {Math.round(giftbasket.totalPrice)}</Card.Text>
             </Card.Body>
         </Card>
     );

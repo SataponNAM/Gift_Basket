@@ -1,6 +1,6 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { useGetDecorationQuery } from "../../slices/decorationApiSlice";
-import { Container, Image, Card } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 
 import '../item.css'
 

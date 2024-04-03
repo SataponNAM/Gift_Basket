@@ -1,7 +1,7 @@
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { Container, Navbar, NavDropdown } from 'react-bootstrap'
+import { Navbar, NavDropdown } from 'react-bootstrap'
 import { useSendLogoutMutation } from '../../slices/authApiSlice'
 import useAuth from '../../hooks/useAuth'
 

@@ -1,8 +1,6 @@
 import { useGetAddressQuery } from "../../slices/addressApiSlice.jsx"
-import { useNavigate } from "react-router-dom"
-import { memo, useEffect } from 'react'
-import { Form, Container, Card } from "react-bootstrap"
-import { useDeleteAddressMutation } from '../../slices/addressApiSlice.jsx'
+import { memo } from 'react'
+import { Container, Card } from "react-bootstrap"
 
 import '../item.css'
 
@@ -16,9 +14,8 @@ const SelectAddr = ({ addressId, selectAddress, setSelectAddress }) => {
 
     const classes = selectAddress != null && address._id === selectAddress ? "border border-3 custom-border m-5" : "m-5";
 
-    const handleOnClick = () =>{
+    const handleOnClick = () => {
         setSelectAddress(address.id)
-        //console.log(address.id)
     }
 
     if (address) {

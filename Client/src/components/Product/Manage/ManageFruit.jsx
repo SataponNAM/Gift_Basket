@@ -30,8 +30,10 @@ const ManageFruit = ({ drinkId }) => {
                 <Card.Img variant="top" src={product.image} style={{ height: '50%', objectFit: 'cover' }} />
 
                 <Card.Body style={{ height: '40%' }}>
-                    <Card.Title style={{ fontSize: '1rem', lineHeight: '1.2', 
-                                         overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <Card.Title style={{
+                        fontSize: '1rem', lineHeight: '1.2',
+                        overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'
+                    }}>
                         {product.name}
                     </Card.Title>
 
@@ -47,7 +49,7 @@ const ManageFruit = ({ drinkId }) => {
                         Delete
                     </Button>
                 </Card.Footer>
-                
+
             </Card>
         </Container>
     )
